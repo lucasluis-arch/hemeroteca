@@ -263,6 +263,7 @@
     <span class="lbl">días de colchón listo</span>
   </div>
 </div>
+<div class="buffer-note" id="bufferNote" style="text-align:center;font-family:'JetBrains Mono', monospace;font-size:11px;color:var(--ink-soft);margin-top:2px;"></div>
 
 <div class="controls">
   <div class="filter-group" role="group" aria-label="Filtro de publicación">
@@ -347,9 +348,22 @@
   const WEEKDAYS_ES = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
   const MONTHS_ES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
 
+  // Uruguay is fixed at UTC-3 year-round (no DST since 2015), independent of the device's own timezone.
+  function montevideoNow(){
+    const shifted = new Date(Date.now() - 3*60*60*1000);
+    return {
+      iso: isoFromParts(shifted.getUTCFullYear(), shifted.getUTCMonth()+1, shifted.getUTCDate()),
+      hour: shifted.getUTCHours(),
+    };
+  }
   function todayISO(){
-    const d = new Date();
-    return isoFromParts(d.getFullYear(), d.getMonth()+1, d.getDate());
+    return montevideoNow().iso;
+  }
+  // The day's edition is considered published once it's past noon in Montevideo,
+  // so from then on "today" no longer counts toward the readiness buffer.
+  function publishCutoffISO(){
+    const mv = montevideoNow();
+    return mv.hour >= 12 ? addDaysISO(mv.iso, 1) : mv.iso;
   }
   function isoFromParts(y,m,d){
     return `${y.toString().padStart(4,'0')}-${m.toString().padStart(2,'0')}-${d.toString().padStart(2,'0')}`;
@@ -383,8 +397,8 @@
 
   /* ================= Content config ================= */
   const SECUNDARIA_CONFIG = {
-    1: [{key:'martin', label:'Editorial de Opinión — Martín'}, {key:'matilde', label:'Editorial de Opinión — Matilde'}],
-    5: [{key:'martin', label:'Editorial de Opinión — Martín'}, {key:'matilde', label:'Editorial de Opinión — Matilde'}],
+    1: [{key:'matilde', label:'Editorial de Opinión — Matilde'}],
+    5: [{key:'martin', label:'Editorial de Opinión — Martín'}],
     2: [{key:'noticias', label:'Noticias del Mundo'}],
     4: [{key:'noticias', label:'Noticias del Mundo'}],
     3: [{key:'donde_estoy', label:'El Dónde Estoy'}],
@@ -521,13 +535,16 @@
 
   function getDay(iso){
     if(!state.appData.days[iso]) state.appData.days[iso] = defaultDayData(iso);
-    else{
-      const wd = weekdayIndex(iso);
-      (SECUNDARIA_CONFIG[wd]||[]).forEach(item=>{
-        if(!state.appData.days[iso].secundaria[item.key]) state.appData.days[iso].secundaria[item.key] = {status:'pendiente', notes:''};
-      });
-    }
-    return state.appData.days[iso];
+    const day = state.appData.days[iso];
+    const wd = weekdayIndex(iso);
+    const expectedKeys = (SECUNDARIA_CONFIG[wd]||[]).map(item=>item.key);
+    expectedKeys.forEach(k=>{
+      if(!day.secundaria[k]) day.secundaria[k] = {status:'pendiente', notes:''};
+    });
+    Object.keys(day.secundaria).forEach(k=>{
+      if(!expectedKeys.includes(k)) delete day.secundaria[k];
+    });
+    return day;
   }
 
   /* ================= Save queue ================= */
@@ -621,7 +638,7 @@
   /* ================= Buffer ================= */
   function computeBuffer(){
     let count = 0;
-    let iso = todayISO();
+    let iso = publishCutoffISO();
     for(let i=0;i<60;i++){
       const data = getDay(iso);
       if(isFullyReady(data)){ count++; iso = addDaysISO(iso,1); }
@@ -634,6 +651,11 @@
     const stampEl = document.getElementById('bufferStamp');
     document.getElementById('bufferNum').textContent = n;
     stampEl.classList.toggle('zero', n===0);
+    const mv = montevideoNow();
+    const note = document.getElementById('bufferNote');
+    note.textContent = mv.hour >= 12
+      ? `hoy (${todayISO()}) ya se considera publicado — cuenta desde mañana`
+      : `cuenta desde hoy (${todayISO()}) — corte a las 12:00 hora Uruguay`;
   }
 
   /* ================= Rendering: chips ================= */
