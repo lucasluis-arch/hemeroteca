@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Heraldo de Goma — Control de Redacción</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f1ead9;
+    --paper-dark:#e6dcc4;
+    --paper-darker:#d9cdae;
+    --ink:#241f18;
+    --ink-soft:#6b6153;
+    --rule:#c7bb9e;
+    --stamp-red:#a4382c;
+    --stamp-red-soft:rgba(164,56,44,0.09);
+    --stamp-green:#2e6a4f;
+    --stamp-green-soft:rgba(46,106,79,0.09);
+    --mustard:#b57e1f;
+    --mustard-soft:rgba(181,126,31,0.10);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(circle at 1px 1px, rgba(36,31,24,0.05) 1px, transparent 0) 0 0/14px 14px,
+      var(--paper);
+    color:var(--ink);
+    font-family:'Lora', serif;
+    line-height:1.4;
+    padding-bottom:60px;
+  }
+  ::selection{ background: var(--stamp-red); color:var(--paper); }
+  a{color:inherit;}
+
+  header.masthead{
+    border-bottom:4px double var(--ink);
+    padding:22px 24px 14px;
+    text-align:center;
+    position:relative;
+  }
+  header.masthead .kicker{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  header.masthead h1{
+    font-family:'Special Elite', monospace;
+    font-size:clamp(28px,5vw,44px);
+    margin:6px 0 4px;
+    letter-spacing:.02em;
+  }
+  header.masthead .sub{
+    font-size:13px;
+    color:var(--ink-soft);
+    font-style:italic;
+  }
+  .conn-status{
+    max-width:900px;
+    margin:10px auto 0;
+    padding:0 20px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    color:var(--ink-soft);
+  }
+  .conn-status .dot{ width:7px;height:7px;border-radius:50%; background:var(--rule); display:inline-block; }
+  .conn-status .dot.ok{ background:var(--stamp-green); }
+  .conn-status .dot.err{ background:var(--stamp-red); }
+  .conn-status button{
+    font-family:'JetBrains Mono', monospace; font-size:10px; text-transform:uppercase;
+    border:1px solid var(--rule); background:transparent; border-radius:10px; padding:2px 8px; cursor:pointer; color:var(--ink-soft);
+  }
+
+  .buffer-wrap{ display:flex; justify-content:center; margin:22px 0 8px; }
+  .buffer-stamp{
+    font-family:'Special Elite', monospace;
+    border:3px solid var(--stamp-red);
+    border-radius:6px 16px 8px 18px / 18px 8px 16px 6px;
+    color:var(--stamp-red);
+    padding:14px 30px;
+    text-align:center;
+    transform:rotate(-2deg);
+    background:var(--stamp-red-soft);
+    box-shadow: 0 0 0 1.5px rgba(164,56,44,0.18) inset;
+    min-width:220px;
+  }
+  .buffer-stamp .num{ font-size:40px; display:block; line-height:1; }
+  .buffer-stamp .lbl{ font-size:11px; letter-spacing:.12em; text-transform:uppercase; display:block; margin-top:4px; }
+  .buffer-stamp.zero{ color:var(--ink-soft); border-color:var(--rule); background:transparent; box-shadow:none; }
+
+  .controls{
+    max-width:900px; margin:18px auto 0; padding:0 20px;
+    display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:center;
+  }
+  .btn{
+    font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:.03em;
+    border:1.5px solid var(--ink); background:transparent; color:var(--ink);
+    padding:7px 12px; border-radius:3px; cursor:pointer; text-transform:uppercase;
+  }
+  .btn:hover{ background:var(--paper-dark); }
+  .btn.active{ background:var(--ink); color:var(--paper); }
+  .btn:focus-visible, .stamp-btn:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-visible{
+    outline:2px solid var(--stamp-red); outline-offset:2px;
+  }
+  input[type="date"].btn{ cursor:pointer; }
+  .filter-group, .nav-group{ display:flex; gap:6px; border:1px dashed var(--rule); padding:4px; border-radius:4px; }
+
+  .chips{
+    max-width:900px; margin:16px auto 0; padding:0 20px;
+    display:flex; gap:6px; overflow-x:auto; scrollbar-width:thin;
+  }
+  .chip{
+    flex:0 0 auto; font-family:'JetBrains Mono', monospace; font-size:11px; text-align:center;
+    border:1px solid var(--rule); border-radius:3px; padding:6px 8px; cursor:pointer;
+    background:var(--paper-dark); min-width:44px;
+  }
+  .chip .dot{ width:8px;height:8px;border-radius:50%; margin:3px auto 0; background:var(--rule); border:1px solid var(--ink-soft); }
+  .chip .dot.progreso{ background:var(--mustard); border-color:var(--mustard); }
+  .chip .dot.listo{ background:var(--stamp-red); border-color:var(--stamp-red); }
+  .chip .dot.skip{ background:var(--paper); border-color:var(--rule); opacity:.5; }
+  .chip.is-today{ border-color:var(--ink); font-weight:600; }
+
+  .panel{
+    max-width:900px; margin:22px auto 0; padding:14px 18px;
+    border:1.5px solid var(--stamp-green); background:var(--stamp-green-soft); border-radius:4px;
+  }
+  .panel h2{
+    font-family:'Special Elite', monospace; font-size:15px; margin:0 0 8px;
+    color:var(--stamp-green); text-transform:uppercase; letter-spacing:.05em;
+  }
+  .panel .row{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; font-size:13px; }
+  .panel .edit-form{ display:none; flex-wrap:wrap; gap:10px; margin-top:10px; align-items:center; }
+  .panel .edit-form.open{ display:flex; }
+  .field-mini{ text-align:left; margin-bottom:8px; }
+  .field-mini label{ display:block; font-family:'JetBrains Mono', monospace; font-size:10px; text-transform:uppercase; color:var(--ink-soft); margin-bottom:3px; }
+  .field-mini input, .field-mini select{
+    font-family:'Lora', serif; font-size:13px; padding:6px 8px; border:1px solid var(--rule); border-radius:3px; background:var(--paper); width:100%;
+  }
+  .warn{ color:var(--stamp-red); font-weight:600; }
+
+  .day-list{ max-width:900px; margin:22px auto 0; padding:0 20px; display:flex; flex-direction:column; gap:18px; }
+  .card{ background:var(--paper-dark); border:1px solid var(--rule); border-radius:4px; position:relative; overflow:hidden; }
+  .card.is-skip{ opacity:.55; }
+  .card-head{
+    display:flex; justify-content:space-between; align-items:center; padding:10px 16px;
+    border-bottom:1px dashed var(--rule); flex-wrap:wrap; gap:8px;
+  }
+  .card-head .date-label{ font-family:'Special Elite', monospace; font-size:16px; }
+  .card-head .date-iso{ font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--ink-soft); margin-left:6px; }
+  .card-badges{ display:flex; gap:6px; align-items:center; }
+  .badge{ font-family:'JetBrains Mono', monospace; font-size:10px; padding:3px 7px; border-radius:10px; border:1px solid var(--rule); text-transform:uppercase; }
+  .badge.ready{ border-color:var(--stamp-red); color:var(--stamp-red); }
+  .badge.skip-badge{ border-color:var(--ink-soft); color:var(--ink-soft); }
+  .skip-toggle{
+    font-family:'JetBrains Mono', monospace; font-size:10px; background:transparent;
+    border:1px solid var(--rule); border-radius:10px; padding:3px 8px; cursor:pointer; color:var(--ink-soft);
+  }
+
+  .section-block{ padding:12px 16px; border-bottom:1px dashed var(--rule); }
+  .section-block:last-child{ border-bottom:none; }
+  .section-block.sec-heraldo{ border-left:4px solid var(--stamp-red); }
+  .section-block.sec-galeria{ border-left:4px solid var(--stamp-green); }
+  body.filter-heraldo .sec-galeria{ display:none; }
+  body.filter-galeria .sec-heraldo{ display:none; }
+
+  .section-title{
+    font-family:'JetBrains Mono', monospace; font-size:10.5px; text-transform:uppercase;
+    letter-spacing:.1em; color:var(--ink-soft); margin:0 0 8px;
+  }
+  .item-row{ display:flex; gap:10px; align-items:flex-start; flex-wrap:wrap; margin-bottom:10px; }
+  .item-row:last-child{ margin-bottom:0; }
+  .item-label{ flex:0 0 180px; font-size:13.5px; padding-top:6px; }
+  .item-controls{ flex:1 1 260px; display:flex; flex-direction:column; gap:6px; min-width:220px; }
+  .item-controls-row{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+
+  .stamp-btn{
+    font-family:'Special Elite', monospace; font-size:11px; text-transform:uppercase; letter-spacing:.04em;
+    border:2px solid var(--rule); border-radius:3px 8px 4px 9px/9px 4px 8px 3px;
+    background:transparent; color:var(--ink-soft); padding:5px 12px; cursor:pointer; transform:rotate(-1deg);
+  }
+  .stamp-btn.progreso{ color:var(--mustard); border-color:var(--mustard); background:var(--mustard-soft); }
+  .stamp-btn.listo{ color:var(--stamp-red); border-color:var(--stamp-red); background:var(--stamp-red-soft); box-shadow:0 0 0 1px rgba(164,56,44,.15) inset; }
+  .sec-galeria .stamp-btn.listo{ color:var(--stamp-green); border-color:var(--stamp-green); background:var(--stamp-green-soft); box-shadow:0 0 0 1px rgba(46,106,79,.15) inset; }
+
+  select.mini, input.mini, textarea.mini{
+    font-family:'Lora', serif; font-size:13px; padding:5px 7px; border:1px solid var(--rule);
+    border-radius:3px; background:var(--paper); color:var(--ink);
+  }
+  textarea.mini{ resize:vertical; min-height:32px; width:100%; font-size:12.5px; }
+  .note-input{ width:100%; }
+  .flag-row{ display:flex; gap:12px; align-items:center; flex-wrap:wrap; font-size:12.5px; }
+  .flag-row label{ display:flex; align-items:center; gap:5px; }
+
+  .footer-panel{ max-width:900px; margin:26px auto 0; padding:14px 18px; border-top:2px double var(--ink); }
+  .footer-panel h2{ font-family:'Special Elite', monospace; font-size:14px; margin:0 0 10px; text-transform:uppercase; }
+  .stats-bars{ display:flex; flex-direction:column; gap:6px; max-width:400px; }
+  .stat-row{ display:flex; align-items:center; gap:8px; font-family:'JetBrains Mono', monospace; font-size:11px; }
+  .stat-row .name{ width:90px; text-transform:capitalize; }
+  .stat-row .bar-bg{ flex:1; height:10px; background:var(--paper-darker); border-radius:2px; overflow:hidden; }
+  .stat-row .bar-fg{ height:100%; background:var(--stamp-red); }
+  .stat-row .count{ width:26px; text-align:right; }
+
+  #toast{
+    position:fixed; bottom:18px; right:18px; font-family:'JetBrains Mono', monospace; font-size:12px;
+    background:var(--ink); color:var(--paper); padding:8px 14px; border-radius:3px;
+    opacity:0; transform:translateY(8px); transition:opacity .25s, transform .25s; pointer-events:none; z-index:50;
+    max-width:320px;
+  }
+  #toast.show{ opacity:1; transform:translateY(0); }
+
+  .empty-note{ text-align:center; color:var(--ink-soft); font-size:13px; padding:30px 0; }
+
+  .modal-overlay{
+    position:fixed; inset:0; background:rgba(36,31,24,0.55); z-index:100;
+    display:flex; align-items:center; justify-content:center; padding:20px;
+  }
+  .modal-overlay[hidden]{ display:none; }
+  .modal{
+    background:var(--paper); border:2px solid var(--ink); border-radius:6px;
+    max-width:440px; width:100%; padding:22px 24px; max-height:88vh; overflow:auto;
+  }
+  .modal h2{ font-family:'Special Elite', monospace; font-size:18px; margin:0 0 10px; }
+  .modal-note{ font-size:12.5px; color:var(--ink-soft); margin:0 0 16px; line-height:1.5; }
+  .modal-note code{ background:var(--paper-dark); padding:1px 4px; border-radius:2px; }
+  .modal-actions{ display:flex; gap:8px; margin-top:6px; flex-wrap:wrap; }
+  .modal-msg{ font-size:12px; margin-top:10px; min-height:16px; }
+  .modal-msg.ok{ color:var(--stamp-green); }
+  .modal-msg.err{ color:var(--stamp-red); }
+
+  @media (max-width:520px){
+    .item-label{ flex-basis:100%; padding-top:0; }
+    .controls{ justify-content:flex-start; }
+  }
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; } }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="kicker">Uso interno — no es para publicar</div>
+  <h1>El Heraldo de Goma</h1>
+  <div class="sub">Panel de control de redacción · Heraldo Principal &amp; Galería de Goma</div>
+</header>
+
+<div class="conn-status" id="connStatus">
+  <span class="dot" id="connDot"></span>
+  <span id="connText">Sin configurar</span>
+  <button id="connEditBtn">⚙ Configuración</button>
+</div>
+
+<div class="buffer-wrap">
+  <div class="buffer-stamp" id="bufferStamp">
+    <span class="num" id="bufferNum">—</span>
+    <span class="lbl">días de colchón listo</span>
+  </div>
+</div>
+
+<div class="controls">
+  <div class="filter-group" role="group" aria-label="Filtro de publicación">
+    <button class="btn active" data-filter="all">Todo</button>
+    <button class="btn" data-filter="heraldo">Heraldo</button>
+    <button class="btn" data-filter="galeria">Galería</button>
+  </div>
+  <div class="nav-group" role="group" aria-label="Navegación de fechas">
+    <button class="btn" id="prevWeek">◂ Semana</button>
+    <button class="btn" id="todayBtn">Hoy</button>
+    <button class="btn" id="nextWeek">Semana ▸</button>
+  </div>
+  <input type="date" class="btn" id="jumpDate" aria-label="Saltar a fecha">
+</div>
+
+<div class="chips" id="chips"></div>
+
+<div class="panel" id="editionPanel">
+  <h2>Ciclo de la Galería de Goma</h2>
+  <div class="row" id="editionSummary">Cargando…</div>
+  <div class="edit-form" id="editionForm">
+    <div class="field-mini" style="flex:1 1 160px;">
+      <label for="edType">Tipo</label>
+      <select id="edType" class="mini">
+        <option value="estandar">Estándar (2 semanas)</option>
+        <option value="tematica">Temática</option>
+      </select>
+    </div>
+    <div class="field-mini" style="flex:1 1 160px;">
+      <label for="edStart">Inicio del ciclo</label>
+      <input type="date" id="edStart" class="mini">
+    </div>
+    <div class="field-mini" id="edThemeWrap" style="flex:1 1 200px;">
+      <label for="edTheme">Nombre del tema</label>
+      <input type="text" id="edTheme" class="mini" placeholder="p. ej. Sillas de autor">
+    </div>
+    <button class="btn" id="edSave">Guardar ciclo</button>
+  </div>
+  <div class="row" style="margin-top:8px;">
+    <button class="btn" id="edToggle">Editar ciclo</button>
+  </div>
+</div>
+
+<main class="day-list" id="dayList">
+  <div class="empty-note">Configurá la conexión con GitHub para empezar.</div>
+</main>
+
+<div class="footer-panel">
+  <h2>Estadísticas del dado (tira cómica)</h2>
+  <div class="stats-bars" id="statsBars"><span class="empty-note" style="padding:6px 0;">Sin datos aún.</span></div>
+</div>
+
+<div id="toast"></div>
+
+<div class="modal-overlay" id="configModal">
+  <div class="modal">
+    <h2>Conexión con GitHub</h2>
+    <p class="modal-note">
+      Los datos se guardan como un archivo <code>data.json</code> dentro de tu propio repositorio.
+      Así podés abrir este panel desde cualquier dispositivo y ver siempre la misma información.
+      El token queda guardado solo en este navegador — nunca se sube al repo.
+    </p>
+    <div class="field-mini"><label for="cfgOwner">Usuario u organización de GitHub</label><input id="cfgOwner" class="mini" placeholder="tu-usuario"></div>
+    <div class="field-mini"><label for="cfgRepo">Repositorio</label><input id="cfgRepo" class="mini" placeholder="heraldo-control"></div>
+    <div class="field-mini"><label for="cfgBranch">Rama</label><input id="cfgBranch" class="mini" value="main"></div>
+    <div class="field-mini"><label for="cfgPath">Archivo de datos</label><input id="cfgPath" class="mini" value="data.json"></div>
+    <div class="field-mini"><label for="cfgToken">Token personal (fine-grained, permiso Contents: Read and write)</label><input id="cfgToken" class="mini" type="password" placeholder="github_pat_…"></div>
+    <div class="modal-actions">
+      <button class="btn" id="cfgTest">Probar conexión</button>
+      <button class="btn active" id="cfgSave">Guardar y continuar</button>
+      <button class="btn" id="cfgCancel">Cancelar</button>
+    </div>
+    <p class="modal-msg" id="cfgMsg"></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ================= Date utilities ================= */
+  const WEEKDAYS_ES = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+  const MONTHS_ES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+
+  function todayISO(){
+    const d = new Date();
+    return isoFromParts(d.getFullYear(), d.getMonth()+1, d.getDate());
+  }
+  function isoFromParts(y,m,d){
+    return `${y.toString().padStart(4,'0')}-${m.toString().padStart(2,'0')}-${d.toString().padStart(2,'0')}`;
+  }
+  function partsFromISO(iso){
+    const [y,m,d] = iso.split('-').map(Number);
+    return {y,m,d};
+  }
+  function weekdayIndex(iso){
+    const {y,m,d} = partsFromISO(iso);
+    return new Date(Date.UTC(y,m-1,d)).getUTCDay();
+  }
+  function addDaysISO(iso,n){
+    const {y,m,d} = partsFromISO(iso);
+    const dt = new Date(Date.UTC(y,m-1,d));
+    dt.setUTCDate(dt.getUTCDate()+n);
+    return isoFromParts(dt.getUTCFullYear(), dt.getUTCMonth()+1, dt.getUTCDate());
+  }
+  function diffDaysISO(a,b){
+    const pa = partsFromISO(a), pb = partsFromISO(b);
+    return Math.round((Date.UTC(pb.y,pb.m-1,pb.d) - Date.UTC(pa.y,pa.m-1,pa.d)) / 86400000);
+  }
+  function longLabel(iso){
+    const {y,m,d} = partsFromISO(iso);
+    return `${WEEKDAYS_ES[weekdayIndex(iso)]} ${d} de ${MONTHS_ES[m-1]}`;
+  }
+  function shortChip(iso){
+    const {d} = partsFromISO(iso);
+    return `${WEEKDAYS_ES[weekdayIndex(iso)].slice(0,3)} ${d}`;
+  }
+
+  /* ================= Content config ================= */
+  const SECUNDARIA_CONFIG = {
+    1: [{key:'martin', label:'Editorial de Opinión — Martín'}, {key:'matilde', label:'Editorial de Opinión — Matilde'}],
+    5: [{key:'martin', label:'Editorial de Opinión — Martín'}, {key:'matilde', label:'Editorial de Opinión — Matilde'}],
+    2: [{key:'noticias', label:'Noticias del Mundo'}],
+    4: [{key:'noticias', label:'Noticias del Mundo'}],
+    3: [{key:'donde_estoy', label:'El Dónde Estoy'}],
+    6: [{key:'animales', label:'Publicación de Animales (Angela)'}],
+    0: [{key:'fonoteca', label:'Fonoteca'}],
+  };
+  const COMICS = [
+    {id:'mafalda', label:'Mafalda'},
+    {id:'gaturro', label:'Gaturro'},
+    {id:'garfield', label:'Garfield'},
+    {id:'charlie', label:'Charlie Brown'},
+  ];
+  const STATUS_ORDER = ['pendiente','progreso','listo'];
+  const STATUS_LABEL = {pendiente:'Pendiente', progreso:'En curso', listo:'Listo'};
+
+  function nextStatus(s){
+    const i = STATUS_ORDER.indexOf(s);
+    return STATUS_ORDER[(i+1) % STATUS_ORDER.length];
+  }
+
+  function defaultDayData(iso){
+    const wd = weekdayIndex(iso);
+    const secundaria = {};
+    (SECUNDARIA_CONFIG[wd] || []).forEach(item=>{
+      secundaria[item.key] = {status:'pendiente', notes:''};
+    });
+    return {
+      skip:false,
+      efemerides:{status:'pendiente', notes:''},
+      secundaria,
+      tira:{comic:'', status:'pendiente', notes:''},
+      galeria:{status:'pendiente', title:'', artist:'', flagBirth:false, flagDeath:false, flagName:'', notes:''},
+    };
+  }
+
+  function isFullyReady(data){
+    if(!data) return false;
+    if(data.skip) return true;
+    if(data.efemerides.status!=='listo') return false;
+    for(const k in data.secundaria){
+      if(data.secundaria[k].status!=='listo') return false;
+    }
+    if(data.tira.status!=='listo') return false;
+    if(data.galeria.status!=='listo') return false;
+    return true;
+  }
+
+  function statusSummaryDot(data){
+    if(data.skip) return 'skip';
+    const all = [data.efemerides.status, ...Object.values(data.secundaria).map(s=>s.status), data.tira.status, data.galeria.status];
+    if(all.every(s=>s==='listo')) return 'listo';
+    if(all.some(s=>s==='listo' || s==='progreso')) return 'progreso';
+    return 'pendiente';
+  }
+
+  /* ================= GitHub-backed storage ================= */
+  const GH_API = 'https://api.github.com';
+  const CFG_KEY = 'heraldo-gh-config';
+
+  function loadConfig(){
+    try{
+      const raw = localStorage.getItem(CFG_KEY);
+      return raw ? JSON.parse(raw) : null;
+    }catch(e){ return null; }
+  }
+  function saveConfig(cfg){
+    localStorage.setItem(CFG_KEY, JSON.stringify(cfg));
+  }
+
+  function b64DecodeUnicode(str){
+    const binary = atob(str);
+    const bytes = new Uint8Array(binary.length);
+    for(let i=0;i<binary.length;i++) bytes[i] = binary.charCodeAt(i);
+    return new TextDecoder('utf-8').decode(bytes);
+  }
+  function utf8ToB64(str){
+    const bytes = new TextEncoder().encode(str);
+    let binary = '';
+    bytes.forEach(b=> binary += String.fromCharCode(b));
+    return btoa(binary);
+  }
+
+  function ghHeaders(token){
+    return {
+      'Authorization': 'Bearer ' + token,
+      'Accept': 'application/vnd.github+json',
+      'X-GitHub-Api-Version': '2022-11-28',
+      'Content-Type': 'application/json',
+    };
+  }
+
+  async function ghGetFile(cfg){
+    const url = `${GH_API}/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/${encodeURIComponent(cfg.path)}?ref=${encodeURIComponent(cfg.branch)}`;
+    const res = await fetch(url, {headers: ghHeaders(cfg.token)});
+    if(res.status===404) return {exists:false};
+    if(!res.ok){
+      const t = await res.text().catch(()=> '');
+      throw new Error(`GET ${res.status}: ${t.slice(0,200)}`);
+    }
+    const json = await res.json();
+    const text = b64DecodeUnicode(json.content.replace(/\n/g,''));
+    return {exists:true, sha:json.sha, data: JSON.parse(text)};
+  }
+
+  async function ghPutFile(cfg, dataObj, sha){
+    const url = `${GH_API}/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/${encodeURIComponent(cfg.path)}`;
+    const body = {
+      message: 'Actualiza control de redacción — ' + new Date().toISOString(),
+      content: utf8ToB64(JSON.stringify(dataObj, null, 2)),
+      branch: cfg.branch,
+    };
+    if(sha) body.sha = sha;
+    const res = await fetch(url, {method:'PUT', headers: ghHeaders(cfg.token), body: JSON.stringify(body)});
+    if(!res.ok){
+      const t = await res.text().catch(()=> '');
+      const err = new Error(`PUT ${res.status}: ${t.slice(0,200)}`);
+      err.status = res.status;
+      throw err;
+    }
+    const json = await res.json();
+    return json.content.sha;
+  }
+
+  /* ================= App state ================= */
+  const state = {
+    viewStart: todayISO(),
+    filter: 'all',
+    config: loadConfig(),
+    sha: null,
+    fileExists: false,
+    appData: {days:{}, editionSettings:{type:'estandar', startDate: todayISO(), themeName:''}},
+    ready: false,
+  };
+
+  function getDay(iso){
+    if(!state.appData.days[iso]) state.appData.days[iso] = defaultDayData(iso);
+    else{
+      const wd = weekdayIndex(iso);
+      (SECUNDARIA_CONFIG[wd]||[]).forEach(item=>{
+        if(!state.appData.days[iso].secundaria[item.key]) state.appData.days[iso].secundaria[item.key] = {status:'pendiente', notes:''};
+      });
+    }
+    return state.appData.days[iso];
+  }
+
+  /* ================= Save queue ================= */
+  let saveChain = Promise.resolve();
+  let pendingSaves = 0;
+
+  function queueSave(){
+    pendingSaves++;
+    setConnStatus('saving');
+    saveChain = saveChain.then(doSave).catch(()=>{});
+    return saveChain;
+  }
+
+  async function doSave(){
+    const cfg = state.config;
+    if(!cfg) return;
+    try{
+      const newSha = await ghPutFile(cfg, state.appData, state.fileExists ? state.sha : undefined);
+      state.sha = newSha;
+      state.fileExists = true;
+      pendingSaves = Math.max(0, pendingSaves-1);
+      if(pendingSaves===0){ showToast('Guardado en GitHub ✓'); setConnStatus('ok'); }
+    }catch(e){
+      pendingSaves = Math.max(0, pendingSaves-1);
+      if(e.status===409){
+        showToast('Conflicto con otra sesión: se recargaron los datos remotos');
+        await loadRemoteData();
+        renderAll();
+      }else{
+        showToast('Error al guardar en GitHub');
+        setConnStatus('err');
+      }
+    }
+  }
+
+  function setConnStatus(kind){
+    const dot = document.getElementById('connDot');
+    const text = document.getElementById('connText');
+    dot.className = 'dot';
+    if(!state.config){ text.textContent = 'Sin configurar'; return; }
+    const base = `${state.config.owner}/${state.config.repo}`;
+    if(kind==='saving'){ dot.classList.add('ok'); text.textContent = `Guardando… (${base})`; }
+    else if(kind==='ok'){ dot.classList.add('ok'); text.textContent = `Conectado a ${base}`; }
+    else if(kind==='err'){ dot.classList.add('err'); text.textContent = `Error de conexión con ${base}`; }
+    else { text.textContent = `Conectado a ${base}`; dot.classList.add('ok'); }
+  }
+
+  /* ================= Toast ================= */
+  let toastTimer = null;
+  function showToast(msg){
+    const el = document.getElementById('toast');
+    el.textContent = msg;
+    el.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(()=> el.classList.remove('show'), 1800);
+  }
+
+  /* ================= Edition cycle helpers ================= */
+  function editionInfoForDate(iso, settings){
+    if(!settings) return {label:'Cargando…'};
+    const diff = diffDaysISO(settings.startDate, iso);
+    if(settings.type === 'tematica'){
+      if(diff < 0) return {label:'Estándar (ciclo previo)'};
+      return {label:`Temática: ${settings.themeName || 'sin nombre'}`};
+    }
+    if(diff < 0) return {label:'Ciclo previo'};
+    if(diff <= 13) return {label:`Estándar (día ${diff+1}/14)`};
+    return {label:'Sin definir — ciclo vencido', warn:true};
+  }
+
+  function renderEditionPanel(){
+    const s = state.appData.editionSettings;
+    const summary = document.getElementById('editionSummary');
+    if(!s){ summary.textContent = 'Cargando…'; return; }
+    const today = todayISO();
+    const info = editionInfoForDate(today, s);
+    const endDate = s.type==='estandar' ? addDaysISO(s.startDate,13) : null;
+    let html = `<span><strong>${s.type==='estandar'?'Edición estándar':'Edición temática'}</strong></span>`;
+    html += `<span>desde ${longLabel(s.startDate)}</span>`;
+    if(endDate) html += `<span>hasta ${longLabel(endDate)}</span>`;
+    if(s.type==='tematica' && s.themeName) html += `<span>tema: <em>${escapeHtml(s.themeName)}</em></span>`;
+    if(info.warn) html += `<span class="warn">⚠ ${info.label}</span>`;
+    summary.innerHTML = html;
+
+    document.getElementById('edType').value = s.type;
+    document.getElementById('edStart').value = s.startDate;
+    document.getElementById('edTheme').value = s.themeName || '';
+    document.getElementById('edThemeWrap').style.display = s.type==='tematica' ? '' : 'none';
+  }
+
+  /* ================= Buffer ================= */
+  function computeBuffer(){
+    let count = 0;
+    let iso = todayISO();
+    for(let i=0;i<60;i++){
+      const data = getDay(iso);
+      if(isFullyReady(data)){ count++; iso = addDaysISO(iso,1); }
+      else break;
+    }
+    return count;
+  }
+  function refreshBuffer(){
+    const n = computeBuffer();
+    const stampEl = document.getElementById('bufferStamp');
+    document.getElementById('bufferNum').textContent = n;
+    stampEl.classList.toggle('zero', n===0);
+  }
+
+  /* ================= Rendering: chips ================= */
+  function renderChips(){
+    const chips = document.getElementById('chips');
+    chips.innerHTML = '';
+    const today = todayISO();
+    let iso = state.viewStart;
+    for(let i=0;i<14;i++){
+      const data = getDay(iso);
+      const dot = statusSummaryDot(data);
+      const chip = document.createElement('div');
+      chip.className = 'chip' + (iso===today ? ' is-today':'');
+      chip.dataset.date = iso;
+      chip.innerHTML = `${shortChip(iso)}<div class="dot ${dot}"></div>`;
+      chip.addEventListener('click', ()=>{
+        const card = document.getElementById('card-'+iso);
+        if(card) card.scrollIntoView({behavior:'smooth', block:'center'});
+      });
+      chips.appendChild(chip);
+      iso = addDaysISO(iso,1);
+    }
+  }
+
+  /* ================= Rendering: day card ================= */
+  function escapeHtml(str){
+    return String(str||'').replace(/[&<>"']/g, ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+  }
+  function statusButtonHtml(section, sub, status){
+    return `<button type="button" class="stamp-btn ${status}" data-action="cycle-status" data-section="${section}" data-sub="${sub||''}">${STATUS_LABEL[status]}</button>`;
+  }
+
+  function renderCard(iso, data){
+    const wd = weekdayIndex(iso);
+    const secItems = SECUNDARIA_CONFIG[wd] || [];
+    const ready = isFullyReady(data);
+
+    let heraldoRows = '';
+    heraldoRows += `
+      <div class="item-row">
+        <div class="item-label">Efemérides del día</div>
+        <div class="item-controls">
+          <div class="item-controls-row">${statusButtonHtml('efemerides','', data.efemerides.status)}</div>
+          <textarea class="mini note-input" data-action="note" data-section="efemerides" data-sub="" placeholder="Notas…">${escapeHtml(data.efemerides.notes)}</textarea>
+        </div>
+      </div>`;
+
+    secItems.forEach(item=>{
+      const sd = data.secundaria[item.key] || {status:'pendiente', notes:''};
+      heraldoRows += `
+      <div class="item-row">
+        <div class="item-label">${escapeHtml(item.label)}</div>
+        <div class="item-controls">
+          <div class="item-controls-row">${statusButtonHtml('secundaria', item.key, sd.status)}</div>
+          <textarea class="mini note-input" data-action="note" data-section="secundaria" data-sub="${item.key}" placeholder="Notas…">${escapeHtml(sd.notes)}</textarea>
+        </div>
+      </div>`;
+    });
+
+    const comicOptions = ['<option value="">— tirar dado —</option>']
+      .concat(COMICS.map(c=>`<option value="${c.id}" ${data.tira.comic===c.id?'selected':''}>${c.label}</option>`)).join('');
+    heraldoRows += `
+      <div class="item-row">
+        <div class="item-label">Tira cómica (dado)</div>
+        <div class="item-controls">
+          <div class="item-controls-row">
+            <select class="mini" data-action="comic" data-section="tira">${comicOptions}</select>
+            ${statusButtonHtml('tira','', data.tira.status)}
+          </div>
+          <textarea class="mini note-input" data-action="note" data-section="tira" data-sub="" placeholder="Notas…">${escapeHtml(data.tira.notes)}</textarea>
+        </div>
+      </div>`;
+
+    const editionInfo = editionInfoForDate(iso, state.appData.editionSettings);
+    let galeriaBlock = `
+      <div class="item-row">
+        <div class="item-label">Edición del día<br><span style="font-size:11px;color:var(--ink-soft);">${escapeHtml(editionInfo.label||'')}</span></div>
+        <div class="item-controls">
+          <div class="item-controls-row">
+            <input type="text" class="mini" style="width:46%;min-width:120px;" data-action="text" data-section="galeria" data-field="artist" placeholder="Artista" value="${escapeHtml(data.galeria.artist)}">
+            <input type="text" class="mini" style="width:46%;min-width:120px;" data-action="text" data-section="galeria" data-field="title" placeholder="Obra" value="${escapeHtml(data.galeria.title)}">
+          </div>
+          <div class="flag-row">
+            <label><input type="checkbox" data-action="check" data-section="galeria" data-field="flagBirth" ${data.galeria.flagBirth?'checked':''}> Cumpleaños de artista</label>
+            <label><input type="checkbox" data-action="check" data-section="galeria" data-field="flagDeath" ${data.galeria.flagDeath?'checked':''}> Defunción de artista</label>
+          </div>
+          ${(data.galeria.flagBirth||data.galeria.flagDeath) ? `<input type="text" class="mini" data-action="text" data-section="galeria" data-field="flagName" placeholder="Nombre del artista" value="${escapeHtml(data.galeria.flagName)}">` : ''}
+          <div class="item-controls-row">${statusButtonHtml('galeria','', data.galeria.status)}</div>
+          <textarea class="mini note-input" data-action="note" data-section="galeria" data-sub="" placeholder="Notas…">${escapeHtml(data.galeria.notes)}</textarea>
+        </div>
+      </div>`;
+
+    return `
+      <article class="card ${data.skip?'is-skip':''}" id="card-${iso}" data-date="${iso}">
+        <div class="card-head">
+          <div><span class="date-label">${longLabel(iso)}</span><span class="date-iso">${iso}</span></div>
+          <div class="card-badges">
+            ${data.skip ? '<span class="badge skip-badge">Pausa</span>' : (ready ? '<span class="badge ready">Listo ✓</span>' : '')}
+            <button class="skip-toggle" data-action="toggle-skip">${data.skip? 'Reactivar día' : 'Marcar sin publicación'}</button>
+          </div>
+        </div>
+        <div class="section-block sec-heraldo">
+          <p class="section-title">Heraldo de Goma Principal</p>
+          ${heraldoRows}
+        </div>
+        <div class="section-block sec-galeria">
+          <p class="section-title">Galería de Goma</p>
+          ${galeriaBlock}
+        </div>
+      </article>`;
+  }
+
+  function renderDayList(){
+    const container = document.getElementById('dayList');
+    if(!state.config){
+      container.innerHTML = '<div class="empty-note">Configurá la conexión con GitHub para empezar.</div>';
+      return;
+    }
+    let iso = state.viewStart;
+    const isos = [];
+    for(let i=0;i<14;i++){ isos.push(iso); iso = addDaysISO(iso,1); }
+    container.innerHTML = isos.map(d=>renderCard(d, getDay(d))).join('');
+    renderChips();
+  }
+
+  function refreshCard(iso){
+    const data = getDay(iso);
+    const el = document.getElementById('card-'+iso);
+    if(el) el.outerHTML = renderCard(iso, data);
+    renderChips();
+    refreshBuffer();
+    renderStats();
+  }
+
+  function renderAll(){
+    renderEditionPanel();
+    renderDayList();
+    refreshBuffer();
+    renderStats();
+  }
+
+  /* ================= Event delegation ================= */
+  document.getElementById('dayList').addEventListener('click', (e)=>{
+    const btn = e.target.closest('[data-action]');
+    if(!btn) return;
+    const card = e.target.closest('.card');
+    if(!card) return;
+    const iso = card.dataset.date;
+    const action = btn.dataset.action;
+
+    if(action==='cycle-status'){
+      const data = getDay(iso);
+      const section = btn.dataset.section;
+      const sub = btn.dataset.sub;
+      const target = sub ? data.secundaria[sub] : data[section];
+      target.status = nextStatus(target.status);
+      queueSave();
+      refreshCard(iso);
+    }
+    if(action==='toggle-skip'){
+      const data = getDay(iso);
+      data.skip = !data.skip;
+      queueSave();
+      refreshCard(iso);
+    }
+  });
+
+  document.getElementById('dayList').addEventListener('change', (e)=>{
+    const el = e.target.closest('[data-action]');
+    if(!el) return;
+    const card = e.target.closest('.card');
+    if(!card) return;
+    const iso = card.dataset.date;
+    const action = el.dataset.action;
+    const data = getDay(iso);
+
+    if(action==='comic'){
+      data.tira.comic = el.value;
+      queueSave();
+      renderChips();
+      renderStats();
+    }
+    if(action==='check'){
+      data.galeria[el.dataset.field] = el.checked;
+      queueSave();
+      refreshCard(iso);
+    }
+    if(action==='text'){
+      data.galeria[el.dataset.field] = el.value;
+      queueSave();
+    }
+  });
+
+  document.getElementById('dayList').addEventListener('blur', (e)=>{
+    const el = e.target.closest('[data-action="note"]');
+    if(!el) return;
+    const card = e.target.closest('.card');
+    if(!card) return;
+    const iso = card.dataset.date;
+    const data = getDay(iso);
+    const section = el.dataset.section;
+    const sub = el.dataset.sub;
+    const target = sub ? data.secundaria[sub] : data[section];
+    target.notes = el.value;
+    queueSave();
+  }, true);
+
+  /* ================= Controls ================= */
+  document.querySelectorAll('.filter-group .btn').forEach(b=>{
+    b.addEventListener('click', ()=>{
+      document.querySelectorAll('.filter-group .btn').forEach(x=>x.classList.remove('active'));
+      b.classList.add('active');
+      state.filter = b.dataset.filter;
+      document.body.classList.remove('filter-heraldo','filter-galeria');
+      if(state.filter==='heraldo') document.body.classList.add('filter-heraldo');
+      if(state.filter==='galeria') document.body.classList.add('filter-galeria');
+    });
+  });
+
+  document.getElementById('prevWeek').addEventListener('click', ()=>{ state.viewStart = addDaysISO(state.viewStart, -7); renderDayList(); });
+  document.getElementById('nextWeek').addEventListener('click', ()=>{ state.viewStart = addDaysISO(state.viewStart, 7); renderDayList(); });
+  document.getElementById('todayBtn').addEventListener('click', ()=>{ state.viewStart = todayISO(); renderDayList(); });
+  document.getElementById('jumpDate').addEventListener('change', (e)=>{
+    if(e.target.value){ state.viewStart = e.target.value; renderDayList(); }
+  });
+
+  /* ================= Edition panel controls ================= */
+  document.getElementById('edToggle').addEventListener('click', ()=>{
+    document.getElementById('editionForm').classList.toggle('open');
+  });
+  document.getElementById('edType').addEventListener('change', (e)=>{
+    document.getElementById('edThemeWrap').style.display = e.target.value==='tematica' ? '' : 'none';
+  });
+  document.getElementById('edSave').addEventListener('click', ()=>{
+    state.appData.editionSettings = {
+      type: document.getElementById('edType').value,
+      startDate: document.getElementById('edStart').value || todayISO(),
+      themeName: document.getElementById('edTheme').value.trim(),
+    };
+    queueSave();
+    renderEditionPanel();
+    document.getElementById('editionForm').classList.remove('open');
+    renderDayList();
+  });
+
+  /* ================= Comic stats (computed from local data, no extra calls) ================= */
+  function computeComicStats(){
+    const stats = {mafalda:0, gaturro:0, garfield:0, charlie:0};
+    Object.values(state.appData.days).forEach(d=>{
+      if(d.tira && d.tira.comic && stats.hasOwnProperty(d.tira.comic)) stats[d.tira.comic]++;
+    });
+    return stats;
+  }
+  function renderStats(){
+    const stats = computeComicStats();
+    const wrap = document.getElementById('statsBars');
+    const total = COMICS.reduce((s,c)=> s + (stats[c.id]||0), 0);
+    if(total===0){
+      wrap.innerHTML = '<span class="empty-note" style="padding:6px 0;">Sin datos aún.</span>';
+      return;
+    }
+    const max = Math.max(...COMICS.map(c=>stats[c.id]||0), 1);
+    wrap.innerHTML = COMICS.map(c=>{
+      const n = stats[c.id]||0;
+      const pct = Math.round((n/max)*100);
+      return `<div class="stat-row"><span class="name">${c.label}</span><span class="bar-bg"><span class="bar-fg" style="width:${pct}%"></span></span><span class="count">${n}</span></div>`;
+    }).join('');
+  }
+
+  /* ================= Config modal ================= */
+  const modal = document.getElementById('configModal');
+  function openModal(){
+    const c = state.config || {};
+    document.getElementById('cfgOwner').value = c.owner || '';
+    document.getElementById('cfgRepo').value = c.repo || '';
+    document.getElementById('cfgBranch').value = c.branch || 'main';
+    document.getElementById('cfgPath').value = c.path || 'data.json';
+    document.getElementById('cfgToken').value = c.token || '';
+    document.getElementById('cfgMsg').textContent = '';
+    document.getElementById('cfgMsg').className = 'modal-msg';
+    modal.hidden = false;
+  }
+  function closeModal(){ modal.hidden = true; }
+
+  document.getElementById('connEditBtn').addEventListener('click', openModal);
+  document.getElementById('cfgCancel').addEventListener('click', ()=>{
+    if(state.config) closeModal();
+  });
+
+  function readModalConfig(){
+    return {
+      owner: document.getElementById('cfgOwner').value.trim(),
+      repo: document.getElementById('cfgRepo').value.trim(),
+      branch: document.getElementById('cfgBranch').value.trim() || 'main',
+      path: document.getElementById('cfgPath').value.trim() || 'data.json',
+      token: document.getElementById('cfgToken').value.trim(),
+    };
+  }
+
+  document.getElementById('cfgTest').addEventListener('click', async ()=>{
+    const msg = document.getElementById('cfgMsg');
+    const cfg = readModalConfig();
+    if(!cfg.owner || !cfg.repo || !cfg.token){
+      msg.textContent = 'Completá usuario, repositorio y token.';
+      msg.className = 'modal-msg err';
+      return;
+    }
+    msg.textContent = 'Probando…';
+    msg.className = 'modal-msg';
+    try{
+      const res = await ghGetFile(cfg);
+      msg.textContent = res.exists
+        ? 'Conexión OK — se encontró el archivo de datos existente.'
+        : 'Conexión OK — el archivo se creará con el primer guardado.';
+      msg.className = 'modal-msg ok';
+    }catch(e){
+      msg.textContent = 'No se pudo conectar: ' + e.message;
+      msg.className = 'modal-msg err';
+    }
+  });
+
+  document.getElementById('cfgSave').addEventListener('click', async ()=>{
+    const msg = document.getElementById('cfgMsg');
+    const cfg = readModalConfig();
+    if(!cfg.owner || !cfg.repo || !cfg.token){
+      msg.textContent = 'Completá usuario, repositorio y token.';
+      msg.className = 'modal-msg err';
+      return;
+    }
+    state.config = cfg;
+    saveConfig(cfg);
+    closeModal();
+    setConnStatus('saving');
+    await loadRemoteData();
+    renderAll();
+  });
+
+  /* ================= Load remote data ================= */
+  async function loadRemoteData(){
+    if(!state.config) return;
+    try{
+      const res = await ghGetFile(state.config);
+      if(res.exists){
+        state.appData = Object.assign({days:{}, editionSettings:{type:'estandar', startDate: todayISO(), themeName:''}}, res.data);
+        if(!state.appData.days) state.appData.days = {};
+        if(!state.appData.editionSettings) state.appData.editionSettings = {type:'estandar', startDate: todayISO(), themeName:''};
+        state.sha = res.sha;
+        state.fileExists = true;
+      }else{
+        state.appData = {days:{}, editionSettings:{type:'estandar', startDate: todayISO(), themeName:''}};
+        state.fileExists = false;
+        state.sha = null;
+      }
+      setConnStatus('ok');
+    }catch(e){
+      showToast('No se pudo cargar desde GitHub: ' + e.message);
+      setConnStatus('err');
+    }
+  }
+
+  /* ================= Init ================= */
+  async function init(){
+    document.getElementById('jumpDate').value = todayISO();
+    if(!state.config){
+      setConnStatus();
+      openModal();
+      return;
+    }
+    setConnStatus('saving');
+    await loadRemoteData();
+    renderAll();
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>
