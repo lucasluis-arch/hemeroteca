@@ -202,6 +202,41 @@
 
   .footer-panel{ max-width:900px; margin:26px auto 0; padding:14px 18px; border-top:2px double var(--ink); }
   .footer-panel h2{ font-family:'Special Elite', monospace; font-size:14px; margin:0 0 10px; text-transform:uppercase; }
+  .pano-block{ margin:20px 0 26px; }
+  .pano-block:first-of-type{ margin-top:6px; }
+  .pano-block h3{
+    font-family:'JetBrains Mono', monospace; font-size:11px; text-transform:uppercase;
+    letter-spacing:.08em; color:var(--ink-soft); margin:0 0 6px;
+  }
+  .pano-note{ font-size:12px; color:var(--ink-soft); margin:0 0 8px; }
+
+  .heatmap-wrap{ overflow-x:auto; padding-bottom:4px; }
+  .heatmap-wrap svg rect{ cursor:default; }
+  .hm-empty{ fill:var(--paper-darker); opacity:.5; }
+  .hm-pendiente{ fill:transparent; stroke:var(--rule); stroke-width:1.5; }
+  .hm-progreso{ fill:var(--mustard); }
+  .hm-listo{ fill:var(--stamp-red); }
+  .hm-skip{ fill:var(--paper); stroke:var(--ink-soft); stroke-dasharray:2,1.5; stroke-width:1; opacity:.6; }
+  .hm-today{ stroke:var(--ink) !important; stroke-width:2 !important; }
+  .hm-legend{ display:flex; flex-wrap:wrap; gap:12px; margin-top:8px; font-family:'JetBrains Mono', monospace; font-size:10.5px; color:var(--ink-soft); }
+  .hm-legend span{ display:flex; align-items:center; gap:5px; }
+  .hm-swatch{ display:inline-block; width:11px; height:11px; border-radius:2px; }
+  .hm-swatch.hm-listo{ background:var(--stamp-red); }
+  .hm-swatch.hm-progreso{ background:var(--mustard); }
+  .hm-swatch.hm-pendiente{ background:transparent; border:1.5px solid var(--rule); }
+  .hm-swatch.hm-skip{ background:var(--paper); border:1px dashed var(--ink-soft); opacity:.7; }
+  .hm-swatch.hm-empty{ background:var(--paper-darker); opacity:.5; }
+
+  .section-stats{ display:flex; flex-direction:column; gap:9px; }
+  .sec-stat-row{ display:flex; align-items:center; gap:10px; font-size:12.5px; }
+  .sec-stat-row .sec-name{ flex:0 0 160px; font-family:'JetBrains Mono', monospace; font-size:11px; }
+  .stack-bar{ flex:1; display:flex; height:12px; border-radius:2px; overflow:hidden; background:var(--paper-darker); min-width:120px; }
+  .stack-seg.pendiente{ background:var(--paper-darker); }
+  .stack-seg.progreso{ background:var(--mustard); }
+  .stack-seg.listo{ background:var(--stamp-red); }
+  .sec-stat-row.is-galeria .stack-seg.listo{ background:var(--stamp-green); }
+  .sec-stat-count{ flex:0 0 50px; text-align:right; font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--ink-soft); }
+  .pano-row{ display:flex; flex-wrap:wrap; gap:14px; font-size:13px; }
   .stats-bars{ display:flex; flex-direction:column; gap:6px; max-width:400px; }
   .stat-row{ display:flex; align-items:center; gap:8px; font-family:'JetBrains Mono', monospace; font-size:11px; }
   .stat-row .name{ width:90px; text-transform:capitalize; }
@@ -312,8 +347,35 @@
 </main>
 
 <div class="footer-panel">
-  <h2>Estadísticas del dado (tira cómica)</h2>
-  <div class="stats-bars" id="statsBars"><span class="empty-note" style="padding:6px 0;">Sin datos aún.</span></div>
+  <h2>Panorama general</h2>
+
+  <div class="pano-block">
+    <h3>Mapa de publicaciones</h3>
+    <p class="pano-note">Cada casillero es un día. Pasá el mouse para ver la fecha y el estado.</p>
+    <div id="heatmapWrap" class="heatmap-wrap"></div>
+    <div class="hm-legend">
+      <span><i class="hm-swatch hm-listo"></i>Listo</span>
+      <span><i class="hm-swatch hm-progreso"></i>En curso</span>
+      <span><i class="hm-swatch hm-pendiente"></i>Pendiente</span>
+      <span><i class="hm-swatch hm-skip"></i>Sin publicación</span>
+      <span><i class="hm-swatch hm-empty"></i>Sin datos</span>
+    </div>
+  </div>
+
+  <div class="pano-block">
+    <h3>Cumplimiento por sección</h3>
+    <div id="sectionStats" class="section-stats"></div>
+  </div>
+
+  <div class="pano-block">
+    <h3>Tira cómica (dado)</h3>
+    <div class="stats-bars" id="statsBars"><span class="empty-note" style="padding:6px 0;">Sin datos aún.</span></div>
+  </div>
+
+  <div class="pano-block">
+    <h3>Galería de Goma — efemérides de artistas</h3>
+    <div id="galeriaSummary" class="pano-row"></div>
+  </div>
 </div>
 
 <div id="toast"></div>
@@ -787,14 +849,14 @@
     if(el) el.outerHTML = renderCard(iso, data);
     renderChips();
     refreshBuffer();
-    renderStats();
+    renderPanorama();
   }
 
   function renderAll(){
     renderEditionPanel();
     renderDayList();
     refreshBuffer();
-    renderStats();
+    renderPanorama();
   }
 
   /* ================= Event delegation ================= */
@@ -836,7 +898,7 @@
       data.tira.comic = el.value;
       queueSave();
       renderChips();
-      renderStats();
+      renderPanorama();
     }
     if(action==='check'){
       data.galeria[el.dataset.field] = el.checked;
@@ -923,6 +985,123 @@
       const pct = Math.round((n/max)*100);
       return `<div class="stat-row"><span class="name">${c.label}</span><span class="bar-bg"><span class="bar-fg" style="width:${pct}%"></span></span><span class="count">${n}</span></div>`;
     }).join('');
+  }
+
+  /* ================= Heatmap: full history at a glance ================= */
+  const DOT_LABEL = {listo:'Listo', progreso:'En curso', pendiente:'Pendiente', skip:'Sin publicación'};
+
+  function renderHeatmap(){
+    const wrap = document.getElementById('heatmapWrap');
+    const dates = Object.keys(state.appData.days).sort();
+    if(dates.length===0){
+      wrap.innerHTML = '<span class="empty-note" style="padding:6px 0;">Todavía no hay días registrados.</span>';
+      return;
+    }
+    let gridStart = dates[0];
+    let gridEnd = dates[dates.length-1];
+    while(weekdayIndex(gridStart)!==0) gridStart = addDaysISO(gridStart,-1);
+    while(weekdayIndex(gridEnd)!==6) gridEnd = addDaysISO(gridEnd,1);
+    const totalDays = diffDaysISO(gridStart,gridEnd)+1;
+    const weeks = Math.ceil(totalDays/7);
+    const cell=12, gap=3;
+    const width = weeks*(cell+gap)+gap;
+    const height = 7*(cell+gap)+gap;
+    const today = todayISO();
+    let rects = '';
+    for(let col=0; col<weeks; col++){
+      for(let row=0; row<7; row++){
+        const iso = addDaysISO(gridStart, col*7+row);
+        if(diffDaysISO(iso, gridEnd) > 0) continue;
+        const x = gap + col*(cell+gap);
+        const y = gap + row*(cell+gap);
+        const data = state.appData.days[iso];
+        const dot = data ? statusSummaryDot(data) : 'empty';
+        const cls = 'hm-' + dot + (iso===today ? ' hm-today' : '');
+        const label = data ? DOT_LABEL[dot] : 'sin datos';
+        rects += `<rect x="${x}" y="${y}" width="${cell}" height="${cell}" rx="2" class="${cls}"><title>${iso} — ${label}</title></rect>`;
+      }
+    }
+    wrap.innerHTML = `<svg viewBox="0 0 ${width} ${height}" width="100%" style="max-width:${width}px; height:${height}px;">${rects}</svg>`;
+  }
+
+  /* ================= Section completion breakdown ================= */
+  function computeSectionStats(){
+    const types = [
+      {label:'Efemérides', galeria:false, get:d=>d.efemerides},
+      {label:'Editorial — Matilde (lun)', galeria:false, get:d=>d.secundaria.matilde},
+      {label:'Editorial — Martín (vie)', galeria:false, get:d=>d.secundaria.martin},
+      {label:'Noticias del Mundo', galeria:false, get:d=>d.secundaria.noticias},
+      {label:'El Dónde Estoy', galeria:false, get:d=>d.secundaria.donde_estoy},
+      {label:'Animales (Angela)', galeria:false, get:d=>d.secundaria.animales},
+      {label:'Fonoteca', galeria:false, get:d=>d.secundaria.fonoteca},
+      {label:'Tira cómica', galeria:false, get:d=>d.tira},
+      {label:'Galería de Goma', galeria:true, get:d=>d.galeria},
+    ];
+    return types.map(t=>{
+      let pendiente=0, progreso=0, listo=0;
+      Object.values(state.appData.days).forEach(d=>{
+        if(d.skip) return;
+        const item = t.get(d);
+        if(!item) return;
+        if(item.status==='listo') listo++;
+        else if(item.status==='progreso') progreso++;
+        else pendiente++;
+      });
+      const total = pendiente+progreso+listo;
+      return {label:t.label, galeria:t.galeria, pendiente, progreso, listo, total};
+    }).filter(r=>r.total>0);
+  }
+
+  function renderSectionStats(){
+    const wrap = document.getElementById('sectionStats');
+    const rows = computeSectionStats();
+    if(rows.length===0){
+      wrap.innerHTML = '<span class="empty-note" style="padding:6px 0;">Todavía no hay días registrados.</span>';
+      return;
+    }
+    wrap.innerHTML = rows.map(r=>{
+      const pctPend = Math.round((r.pendiente/r.total)*100);
+      const pctProg = Math.round((r.progreso/r.total)*100);
+      const pctListo = 100 - pctPend - pctProg;
+      return `
+        <div class="sec-stat-row ${r.galeria?'is-galeria':''}">
+          <span class="sec-name">${escapeHtml(r.label)}</span>
+          <span class="stack-bar" title="${r.listo} listo · ${r.progreso} en curso · ${r.pendiente} pendiente">
+            <span class="stack-seg listo" style="width:${pctListo}%"></span>
+            <span class="stack-seg progreso" style="width:${pctProg}%"></span>
+            <span class="stack-seg pendiente" style="width:${pctPend}%"></span>
+          </span>
+          <span class="sec-stat-count">${r.listo}/${r.total}</span>
+        </div>`;
+    }).join('');
+  }
+
+  /* ================= Gallery artist-anniversary summary ================= */
+  function renderGaleriaSummary(){
+    const wrap = document.getElementById('galeriaSummary');
+    let births=0, deaths=0, withArtist=0, tracked=0;
+    Object.values(state.appData.days).forEach(d=>{
+      if(d.skip) return;
+      tracked++;
+      if(d.galeria.flagBirth) births++;
+      if(d.galeria.flagDeath) deaths++;
+      if(d.galeria.artist && d.galeria.artist.trim()) withArtist++;
+    });
+    if(tracked===0){
+      wrap.innerHTML = '<span class="empty-note" style="padding:6px 0;">Todavía no hay días registrados.</span>';
+      return;
+    }
+    wrap.innerHTML = `
+      <span>🎂 ${births} cumpleaños de artista marcados</span>
+      <span>⚱ ${deaths} defunciones marcadas</span>
+      <span>🖼 ${withArtist} obras con artista cargado</span>`;
+  }
+
+  function renderPanorama(){
+    renderHeatmap();
+    renderSectionStats();
+    renderStats();
+    renderGaleriaSummary();
   }
 
   /* ================= Config modal ================= */
