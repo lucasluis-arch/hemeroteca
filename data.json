@@ -1,16 +1,12 @@
 {
   "days": {
     "2026-08-24": {
-      "skip": false,
+      "skip": true,
       "efemerides": {
         "status": "progreso",
         "notes": ""
       },
       "secundaria": {
-        "martin": {
-          "status": "pendiente",
-          "notes": ""
-        },
         "matilde": {
           "status": "progreso",
           "notes": ""
@@ -122,10 +118,6 @@
         "martin": {
           "status": "pendiente",
           "notes": ""
-        },
-        "matilde": {
-          "status": "pendiente",
-          "notes": ""
         }
       },
       "tira": {
@@ -204,10 +196,6 @@
         "notes": ""
       },
       "secundaria": {
-        "martin": {
-          "status": "pendiente",
-          "notes": ""
-        },
         "matilde": {
           "status": "pendiente",
           "notes": ""
@@ -317,10 +305,6 @@
       },
       "secundaria": {
         "martin": {
-          "status": "pendiente",
-          "notes": ""
-        },
-        "matilde": {
           "status": "pendiente",
           "notes": ""
         }
