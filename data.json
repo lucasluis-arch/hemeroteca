@@ -28,7 +28,7 @@
       }
     },
     "2026-08-25": {
-      "skip": false,
+      "skip": true,
       "efemerides": {
         "status": "progreso",
         "notes": ""
