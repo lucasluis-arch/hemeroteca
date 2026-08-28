@@ -18,9 +18,11 @@
     --stamp-red:#a4382c;
     --stamp-red-soft:rgba(164,56,44,0.09);
     --stamp-green:#2e6a4f;
-    --stamp-green-soft:rgba(46,106,79,0.09);
+    --stamp-green-soft:rgba(46,106,79,0.12);
+    --stamp-purple:#5b4a8f;
+    --stamp-purple-soft:rgba(91,74,143,0.12);
     --mustard:#b57e1f;
-    --mustard-soft:rgba(181,126,31,0.10);
+    --mustard-soft:rgba(181,126,31,0.14);
   }
   *{box-sizing:border-box;}
   body{
@@ -40,37 +42,21 @@
     border-bottom:4px double var(--ink);
     padding:22px 24px 14px;
     text-align:center;
-    position:relative;
   }
   header.masthead .kicker{
-    font-family:'JetBrains Mono', monospace;
-    font-size:11px;
-    letter-spacing:.18em;
-    text-transform:uppercase;
-    color:var(--ink-soft);
+    font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--ink-soft);
   }
   header.masthead h1{
-    font-family:'Special Elite', monospace;
-    font-size:clamp(28px,5vw,44px);
-    margin:6px 0 4px;
-    letter-spacing:.02em;
+    font-family:'Special Elite', monospace; font-size:clamp(28px,5vw,44px);
+    margin:6px 0 4px; letter-spacing:.02em;
   }
-  header.masthead .sub{
-    font-size:13px;
-    color:var(--ink-soft);
-    font-style:italic;
-  }
+  header.masthead .sub{ font-size:13px; color:var(--ink-soft); font-style:italic; }
+
   .conn-status{
-    max-width:900px;
-    margin:10px auto 0;
-    padding:0 20px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:10px;
-    font-family:'JetBrains Mono', monospace;
-    font-size:11px;
-    color:var(--ink-soft);
+    max-width:1000px; margin:10px auto 0; padding:0 20px;
+    display:flex; justify-content:center; align-items:center; gap:10px;
+    font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--ink-soft);
   }
   .conn-status .dot{ width:7px;height:7px;border-radius:50%; background:var(--rule); display:inline-block; }
   .conn-status .dot.ok{ background:var(--stamp-green); }
@@ -80,25 +66,26 @@
     border:1px solid var(--rule); background:transparent; border-radius:10px; padding:2px 8px; cursor:pointer; color:var(--ink-soft);
   }
 
-  .buffer-wrap{ display:flex; justify-content:center; margin:22px 0 8px; }
-  .buffer-stamp{
-    font-family:'Special Elite', monospace;
-    border:3px solid var(--stamp-red);
-    border-radius:6px 16px 8px 18px / 18px 8px 16px 6px;
-    color:var(--stamp-red);
-    padding:14px 30px;
-    text-align:center;
-    transform:rotate(-2deg);
-    background:var(--stamp-red-soft);
-    box-shadow: 0 0 0 1.5px rgba(164,56,44,0.18) inset;
-    min-width:220px;
+  /* ---------- Stats cards ---------- */
+  .stats-wrap{ max-width:1000px; margin:20px auto 0; padding:0 20px; }
+  .stats-primary{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:10px; }
+  .stat-card{
+    background:var(--paper-dark); border:1px solid var(--rule); border-radius:6px;
+    padding:12px 14px; text-align:center;
   }
-  .buffer-stamp .num{ font-size:40px; display:block; line-height:1; }
-  .buffer-stamp .lbl{ font-size:11px; letter-spacing:.12em; text-transform:uppercase; display:block; margin-top:4px; }
-  .buffer-stamp.zero{ color:var(--ink-soft); border-color:var(--rule); background:transparent; box-shadow:none; }
+  .stat-card .stat-label{
+    font-family:'JetBrains Mono', monospace; font-size:10.5px; text-transform:uppercase;
+    letter-spacing:.06em; color:var(--ink-soft); margin-bottom:4px;
+  }
+  .stat-card .stat-num{ font-family:'Special Elite', monospace; font-size:30px; color:var(--stamp-red); }
+  .stats-secondary{
+    display:flex; gap:22px; justify-content:center; margin-top:10px; flex-wrap:wrap;
+    font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--ink-soft);
+  }
+  .stats-secondary b{ color:var(--ink); font-weight:700; }
 
   .controls{
-    max-width:900px; margin:18px auto 0; padding:0 20px;
+    max-width:1000px; margin:18px auto 0; padding:0 20px;
     display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:center;
   }
   .btn{
@@ -108,29 +95,14 @@
   }
   .btn:hover{ background:var(--paper-dark); }
   .btn.active{ background:var(--ink); color:var(--paper); }
-  .btn:focus-visible, .stamp-btn:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-visible{
+  .btn:focus-visible, .stamp-btn:focus-visible, select:focus-visible, input:focus-visible{
     outline:2px solid var(--stamp-red); outline-offset:2px;
   }
   input[type="date"].btn{ cursor:pointer; }
-  .filter-group, .nav-group{ display:flex; gap:6px; border:1px dashed var(--rule); padding:4px; border-radius:4px; }
-
-  .chips{
-    max-width:900px; margin:16px auto 0; padding:0 20px;
-    display:flex; gap:6px; overflow-x:auto; scrollbar-width:thin;
-  }
-  .chip{
-    flex:0 0 auto; font-family:'JetBrains Mono', monospace; font-size:11px; text-align:center;
-    border:1px solid var(--rule); border-radius:3px; padding:6px 8px; cursor:pointer;
-    background:var(--paper-dark); min-width:44px;
-  }
-  .chip .dot{ width:8px;height:8px;border-radius:50%; margin:3px auto 0; background:var(--rule); border:1px solid var(--ink-soft); }
-  .chip .dot.progreso{ background:var(--mustard); border-color:var(--mustard); }
-  .chip .dot.listo{ background:var(--stamp-red); border-color:var(--stamp-red); }
-  .chip .dot.skip{ background:var(--paper); border-color:var(--rule); opacity:.5; }
-  .chip.is-today{ border-color:var(--ink); font-weight:600; }
+  .filter-group{ display:flex; gap:6px; border:1px dashed var(--rule); padding:4px; border-radius:4px; }
 
   .panel{
-    max-width:900px; margin:22px auto 0; padding:14px 18px;
+    max-width:1000px; margin:22px auto 0; padding:14px 18px;
     border:1.5px solid var(--stamp-green); background:var(--stamp-green-soft); border-radius:4px;
   }
   .panel h2{
@@ -147,60 +119,67 @@
   }
   .warn{ color:var(--stamp-red); font-weight:600; }
 
-  .day-list{ max-width:900px; margin:22px auto 0; padding:0 20px; display:flex; flex-direction:column; gap:18px; }
-  .card{ background:var(--paper-dark); border:1px solid var(--rule); border-radius:4px; position:relative; overflow:hidden; }
-  .card.is-skip{ opacity:.55; }
-  .card-head{
-    display:flex; justify-content:space-between; align-items:center; padding:10px 16px;
-    border-bottom:1px dashed var(--rule); flex-wrap:wrap; gap:8px;
+  /* ---------- Grid ---------- */
+  .grid-section{ max-width:1000px; margin:24px auto 0; padding:0 20px; }
+  .grid-wrap{ overflow-x:auto; border:1px solid var(--rule); border-radius:4px; background:var(--paper-dark); }
+  table.grid{ border-collapse:collapse; table-layout:fixed; }
+  table.grid th, table.grid td{ border-bottom:1px dashed var(--rule); padding:0; }
+  .row-label{
+    width:126px; min-width:126px; padding:8px 10px !important; text-align:left;
+    font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--ink-soft);
+    position:sticky; left:0; background:var(--paper-dark); border-right:1px solid var(--rule); z-index:2;
+    text-transform:uppercase; letter-spacing:.04em;
   }
-  .card-head .date-label{ font-family:'Special Elite', monospace; font-size:16px; }
-  .card-head .date-iso{ font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--ink-soft); margin-left:6px; }
-  .card-badges{ display:flex; gap:6px; align-items:center; }
-  .badge{ font-family:'JetBrains Mono', monospace; font-size:10px; padding:3px 7px; border-radius:10px; border:1px solid var(--rule); text-transform:uppercase; }
-  .badge.ready{ border-color:var(--stamp-red); color:var(--stamp-red); }
-  .badge.skip-badge{ border-color:var(--ink-soft); color:var(--ink-soft); }
-  .skip-toggle{
-    font-family:'JetBrains Mono', monospace; font-size:10px; background:transparent;
-    border:1px solid var(--rule); border-radius:10px; padding:3px 8px; cursor:pointer; color:var(--ink-soft);
+  .col-day{ width:64px; min-width:64px; }
+  .th-month{
+    text-align:center; font-family:'Special Elite', monospace; font-size:12px;
+    padding:6px 0 !important; color:var(--ink); border-left:1px solid var(--rule);
   }
-
-  .section-block{ padding:12px 16px; border-bottom:1px dashed var(--rule); }
-  .section-block:last-child{ border-bottom:none; }
-  .section-block.sec-heraldo{ border-left:4px solid var(--stamp-red); }
-  .section-block.sec-galeria{ border-left:4px solid var(--stamp-green); }
-  body.filter-heraldo .sec-galeria{ display:none; }
-  body.filter-galeria .sec-heraldo{ display:none; }
-
-  .section-title{
-    font-family:'JetBrains Mono', monospace; font-size:10.5px; text-transform:uppercase;
-    letter-spacing:.1em; color:var(--ink-soft); margin:0 0 8px;
-  }
-  .item-row{ display:flex; gap:10px; align-items:flex-start; flex-wrap:wrap; margin-bottom:10px; }
-  .item-row:last-child{ margin-bottom:0; }
-  .item-label{ flex:0 0 180px; font-size:13.5px; padding-top:6px; }
-  .item-controls{ flex:1 1 260px; display:flex; flex-direction:column; gap:6px; min-width:220px; }
-  .item-controls-row{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+  .th-day{ text-align:center; padding:6px 2px !important; }
+  .th-day .wd{ font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--ink-soft); }
+  .th-day .dn{ font-family:'JetBrains Mono', monospace; font-size:13px; font-weight:700; }
+  .th-day.is-today{ background:var(--stamp-red-soft); }
+  .th-day.is-today .wd, .th-day.is-today .dn{ color:var(--stamp-red); }
+  td.cell{ text-align:center; padding:5px 3px !important; vertical-align:middle; }
+  td.cell.is-today-col{ background:rgba(164,56,44,0.05); }
+  .cell-sub{ font-size:9.5px; color:var(--ink-soft); margin-bottom:2px; line-height:1.1; }
 
   .stamp-btn{
-    font-family:'Special Elite', monospace; font-size:11px; text-transform:uppercase; letter-spacing:.04em;
-    border:2px solid var(--rule); border-radius:3px 8px 4px 9px/9px 4px 8px 3px;
-    background:transparent; color:var(--ink-soft); padding:5px 12px; cursor:pointer; transform:rotate(-1deg);
+    font-family:'Special Elite', monospace; font-size:10px; text-transform:uppercase; letter-spacing:.02em;
+    border:1.5px solid var(--rule); border-radius:3px 7px 4px 8px/8px 4px 7px 3px;
+    background:transparent; color:var(--ink-soft); padding:3px 7px; cursor:pointer; width:100%;
   }
   .stamp-btn.progreso{ color:var(--mustard); border-color:var(--mustard); background:var(--mustard-soft); }
-  .stamp-btn.listo{ color:var(--stamp-red); border-color:var(--stamp-red); background:var(--stamp-red-soft); box-shadow:0 0 0 1px rgba(164,56,44,.15) inset; }
-  .sec-galeria .stamp-btn.listo{ color:var(--stamp-green); border-color:var(--stamp-green); background:var(--stamp-green-soft); box-shadow:0 0 0 1px rgba(46,106,79,.15) inset; }
+  .stamp-btn.listo{ color:var(--stamp-red); border-color:var(--stamp-red); background:var(--stamp-red-soft); }
+  .row-galeria .stamp-btn.listo{ color:var(--stamp-green); border-color:var(--stamp-green); background:var(--stamp-green-soft); }
 
-  select.mini, input.mini, textarea.mini{
-    font-family:'Lora', serif; font-size:13px; padding:5px 7px; border:1px solid var(--rule);
-    border-radius:3px; background:var(--paper); color:var(--ink);
+  select.comic-select{
+    font-family:'Lora', serif; font-size:10.5px; padding:2px 3px; border:1px solid var(--rule);
+    border-radius:3px; background:var(--paper); color:var(--ink-soft); width:100%; margin-bottom:3px; cursor:pointer;
   }
-  textarea.mini{ resize:vertical; min-height:32px; width:100%; font-size:12.5px; }
-  .note-input{ width:100%; }
-  .flag-row{ display:flex; gap:12px; align-items:center; flex-wrap:wrap; font-size:12.5px; }
-  .flag-row label{ display:flex; align-items:center; gap:5px; }
 
-  .footer-panel{ max-width:900px; margin:26px auto 0; padding:14px 18px; border-top:2px double var(--ink); }
+  td.band{
+    text-align:center; font-family:'JetBrains Mono', monospace; font-size:11px; font-weight:700;
+    padding:5px 4px !important; border-left:1px solid var(--rule); border-right:1px solid var(--rule);
+  }
+  .band-estandar{ background:var(--stamp-green-soft); color:var(--stamp-green); }
+  .band-tematica{ background:var(--stamp-purple-soft); color:var(--stamp-purple); }
+  .band-previo{ background:transparent; color:var(--ink-soft); font-weight:400; }
+  .band-vencido{ background:var(--mustard-soft); color:var(--mustard); }
+  td.cell.cat-estandar{ background:var(--stamp-green-soft); }
+  td.cell.cat-tematica{ background:var(--stamp-purple-soft); }
+  td.cell.cat-vencido{ background:var(--mustard-soft); }
+
+  .gal-icons{ display:flex; gap:3px; justify-content:center; margin-top:2px; font-size:12px; }
+  .gal-edit-btn{
+    display:block; margin:2px auto 0; width:16px; height:16px; line-height:14px; border-radius:50%;
+    border:1px solid var(--rule); background:var(--paper); color:var(--ink-soft); font-size:10px; cursor:pointer; padding:0;
+  }
+
+  body.filter-heraldo .row-band, body.filter-heraldo .row-galeria{ display:none; }
+  body.filter-galeria .row-efemerides, body.filter-galeria .row-secundaria, body.filter-galeria .row-tira{ display:none; }
+
+  .footer-panel{ max-width:1000px; margin:26px auto 0; padding:14px 18px; border-top:2px double var(--ink); }
   .footer-panel h2{ font-family:'Special Elite', monospace; font-size:14px; margin:0 0 10px; text-transform:uppercase; }
   .pano-block{ margin:20px 0 26px; }
   .pano-block:first-of-type{ margin-top:6px; }
@@ -208,25 +187,6 @@
     font-family:'JetBrains Mono', monospace; font-size:11px; text-transform:uppercase;
     letter-spacing:.08em; color:var(--ink-soft); margin:0 0 6px;
   }
-  .pano-note{ font-size:12px; color:var(--ink-soft); margin:0 0 8px; }
-
-  .heatmap-wrap{ overflow-x:auto; padding-bottom:4px; }
-  .heatmap-wrap svg rect{ cursor:default; }
-  .hm-empty{ fill:var(--paper-darker); opacity:.5; }
-  .hm-pendiente{ fill:transparent; stroke:var(--rule); stroke-width:1.5; }
-  .hm-progreso{ fill:var(--mustard); }
-  .hm-listo{ fill:var(--stamp-red); }
-  .hm-skip{ fill:var(--paper); stroke:var(--ink-soft); stroke-dasharray:2,1.5; stroke-width:1; opacity:.6; }
-  .hm-today{ stroke:var(--ink) !important; stroke-width:2 !important; }
-  .hm-legend{ display:flex; flex-wrap:wrap; gap:12px; margin-top:8px; font-family:'JetBrains Mono', monospace; font-size:10.5px; color:var(--ink-soft); }
-  .hm-legend span{ display:flex; align-items:center; gap:5px; }
-  .hm-swatch{ display:inline-block; width:11px; height:11px; border-radius:2px; }
-  .hm-swatch.hm-listo{ background:var(--stamp-red); }
-  .hm-swatch.hm-progreso{ background:var(--mustard); }
-  .hm-swatch.hm-pendiente{ background:transparent; border:1.5px solid var(--rule); }
-  .hm-swatch.hm-skip{ background:var(--paper); border:1px dashed var(--ink-soft); opacity:.7; }
-  .hm-swatch.hm-empty{ background:var(--paper-darker); opacity:.5; }
-
   .section-stats{ display:flex; flex-direction:column; gap:9px; }
   .sec-stat-row{ display:flex; align-items:center; gap:10px; font-size:12.5px; }
   .sec-stat-row .sec-name{ flex:0 0 160px; font-family:'JetBrains Mono', monospace; font-size:11px; }
@@ -243,6 +203,7 @@
   .stat-row .bar-bg{ flex:1; height:10px; background:var(--paper-darker); border-radius:2px; overflow:hidden; }
   .stat-row .bar-fg{ height:100%; background:var(--stamp-red); }
   .stat-row .count{ width:26px; text-align:right; }
+  .empty-note{ text-align:center; color:var(--ink-soft); font-size:13px; padding:16px 0; }
 
   #toast{
     position:fixed; bottom:18px; right:18px; font-family:'JetBrains Mono', monospace; font-size:12px;
@@ -252,17 +213,9 @@
   }
   #toast.show{ opacity:1; transform:translateY(0); }
 
-  .empty-note{ text-align:center; color:var(--ink-soft); font-size:13px; padding:30px 0; }
-
-  .modal-overlay{
-    position:fixed; inset:0; background:rgba(36,31,24,0.55); z-index:100;
-    display:flex; align-items:center; justify-content:center; padding:20px;
-  }
+  .modal-overlay{ position:fixed; inset:0; background:rgba(36,31,24,0.55); z-index:100; display:flex; align-items:center; justify-content:center; padding:20px; }
   .modal-overlay[hidden]{ display:none; }
-  .modal{
-    background:var(--paper); border:2px solid var(--ink); border-radius:6px;
-    max-width:440px; width:100%; padding:22px 24px; max-height:88vh; overflow:auto;
-  }
+  .modal{ background:var(--paper); border:2px solid var(--ink); border-radius:6px; max-width:440px; width:100%; padding:22px 24px; max-height:88vh; overflow:auto; }
   .modal h2{ font-family:'Special Elite', monospace; font-size:18px; margin:0 0 10px; }
   .modal-note{ font-size:12.5px; color:var(--ink-soft); margin:0 0 16px; line-height:1.5; }
   .modal-note code{ background:var(--paper-dark); padding:1px 4px; border-radius:2px; }
@@ -271,10 +224,19 @@
   .modal-msg.ok{ color:var(--stamp-green); }
   .modal-msg.err{ color:var(--stamp-red); }
 
-  @media (max-width:520px){
-    .item-label{ flex-basis:100%; padding-top:0; }
-    .controls{ justify-content:flex-start; }
+  .gal-popover{
+    position:fixed; z-index:200; background:var(--paper); border:1.5px solid var(--ink); border-radius:6px;
+    padding:14px; width:230px; box-shadow:0 4px 14px rgba(36,31,24,0.3);
   }
+  .gal-popover[hidden]{ display:none; }
+  .gal-popover label{ display:block; font-size:11.5px; margin-bottom:8px; color:var(--ink-soft); }
+  .gal-popover input[type="text"]{
+    width:100%; font-family:'Lora', serif; font-size:13px; padding:5px 7px; border:1px solid var(--rule);
+    border-radius:3px; background:var(--paper); color:var(--ink); margin-top:3px;
+  }
+  .gal-popover .chk-row{ display:flex; align-items:center; gap:6px; margin-bottom:8px; font-size:12px; }
+  .gal-popover .chk-row input{ margin:0; }
+
   @media (prefers-reduced-motion: reduce){ *{ transition:none !important; } }
 </style>
 </head>
@@ -292,13 +254,17 @@
   <button id="connEditBtn">⚙ Configuración</button>
 </div>
 
-<div class="buffer-wrap">
-  <div class="buffer-stamp" id="bufferStamp">
-    <span class="num" id="bufferNum">—</span>
-    <span class="lbl">días de colchón listo</span>
+<div class="stats-wrap">
+  <div class="stats-primary">
+    <div class="stat-card"><div class="stat-label">Días preparados</div><div class="stat-num" id="statPreparados">—</div></div>
+    <div class="stat-card"><div class="stat-label">Días activos</div><div class="stat-num" id="statActivos">—</div></div>
+    <div class="stat-card"><div class="stat-label">Días consecutivos</div><div class="stat-num" id="statConsecutivos">—</div></div>
+  </div>
+  <div class="stats-secondary">
+    <span>Heraldos listos: <b id="statHeraldos">—</b></span>
+    <span>Galerías listas: <b id="statGalerias">—</b></span>
   </div>
 </div>
-<div class="buffer-note" id="bufferNote" style="text-align:center;font-family:'JetBrains Mono', monospace;font-size:11px;color:var(--ink-soft);margin-top:2px;"></div>
 
 <div class="controls">
   <div class="filter-group" role="group" aria-label="Filtro de publicación">
@@ -306,15 +272,8 @@
     <button class="btn" data-filter="heraldo">Heraldo</button>
     <button class="btn" data-filter="galeria">Galería</button>
   </div>
-  <div class="nav-group" role="group" aria-label="Navegación de fechas">
-    <button class="btn" id="prevWeek">◂ Semana</button>
-    <button class="btn" id="todayBtn">Hoy</button>
-    <button class="btn" id="nextWeek">Semana ▸</button>
-  </div>
-  <input type="date" class="btn" id="jumpDate" aria-label="Saltar a fecha">
+  <button class="btn" id="todayBtn">Ir a hoy</button>
 </div>
-
-<div class="chips" id="chips"></div>
 
 <div class="panel" id="editionPanel">
   <h2>Ciclo de la Galería de Goma</h2>
@@ -342,25 +301,14 @@
   </div>
 </div>
 
-<main class="day-list" id="dayList">
-  <div class="empty-note">Configurá la conexión con GitHub para empezar.</div>
-</main>
+<div class="grid-section">
+  <div class="grid-wrap" id="gridWrap">
+    <div class="empty-note">Configurá la conexión con GitHub para empezar.</div>
+  </div>
+</div>
 
 <div class="footer-panel">
   <h2>Panorama general</h2>
-
-  <div class="pano-block">
-    <h3>Mapa de publicaciones</h3>
-    <p class="pano-note">Cada casillero es un día. Pasá el mouse para ver la fecha y el estado.</p>
-    <div id="heatmapWrap" class="heatmap-wrap"></div>
-    <div class="hm-legend">
-      <span><i class="hm-swatch hm-listo"></i>Listo</span>
-      <span><i class="hm-swatch hm-progreso"></i>En curso</span>
-      <span><i class="hm-swatch hm-pendiente"></i>Pendiente</span>
-      <span><i class="hm-swatch hm-skip"></i>Sin publicación</span>
-      <span><i class="hm-swatch hm-empty"></i>Sin datos</span>
-    </div>
-  </div>
 
   <div class="pano-block">
     <h3>Cumplimiento por sección</h3>
@@ -379,6 +327,15 @@
 </div>
 
 <div id="toast"></div>
+
+<div class="gal-popover" id="galPopover" hidden>
+  <label>Artista<input type="text" id="gpArtist"></label>
+  <label>Obra<input type="text" id="gpTitle"></label>
+  <div class="chk-row"><input type="checkbox" id="gpBirth"><label style="margin:0;" for="gpBirth">Cumpleaños de artista</label></div>
+  <div class="chk-row"><input type="checkbox" id="gpDeath"><label style="margin:0;" for="gpDeath">Defunción de artista</label></div>
+  <label id="gpFlagNameWrap" style="display:none;">Nombre del artista<input type="text" id="gpFlagName"></label>
+  <div class="modal-actions"><button class="btn" id="gpClose">Cerrar</button></div>
+</div>
 
 <div class="modal-overlay" id="configModal">
   <div class="modal">
@@ -408,27 +365,11 @@
 
   /* ================= Date utilities ================= */
   const WEEKDAYS_ES = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+  const WEEKDAYS_SHORT = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
   const MONTHS_ES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
 
-  // Uruguay is fixed at UTC-3 year-round (no DST since 2015), independent of the device's own timezone.
-  function montevideoNow(){
-    const shifted = new Date(Date.now() - 3*60*60*1000);
-    return {
-      iso: isoFromParts(shifted.getUTCFullYear(), shifted.getUTCMonth()+1, shifted.getUTCDate()),
-      hour: shifted.getUTCHours(),
-    };
-  }
-  function todayISO(){
-    return montevideoNow().iso;
-  }
-  // The day's edition is considered published once it's past noon in Montevideo,
-  // so from then on "today" no longer counts toward the readiness buffer.
-  function publishCutoffISO(){
-    const mv = montevideoNow();
-    return mv.hour >= 12 ? addDaysISO(mv.iso, 1) : mv.iso;
-  }
   function isoFromParts(y,m,d){
-    return `${y.toString().padStart(4,'0')}-${m.toString().padStart(2,'0')}-${d.toString().padStart(2,'0')}`;
+    return `${String(y).padStart(4,'0')}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
   }
   function partsFromISO(iso){
     const [y,m,d] = iso.split('-').map(Number);
@@ -448,13 +389,20 @@
     const pa = partsFromISO(a), pb = partsFromISO(b);
     return Math.round((Date.UTC(pb.y,pb.m-1,pb.d) - Date.UTC(pa.y,pa.m-1,pa.d)) / 86400000);
   }
-  function longLabel(iso){
-    const {y,m,d} = partsFromISO(iso);
-    return `${WEEKDAYS_ES[weekdayIndex(iso)]} ${d} de ${MONTHS_ES[m-1]}`;
+  function lastDayOfMonth(y,m){ return new Date(Date.UTC(y,m,0)).getUTCDate(); }
+
+  // Uruguay is fixed at UTC-3 year-round (no DST since 2015).
+  function montevideoNow(){
+    const shifted = new Date(Date.now() - 3*60*60*1000);
+    return {
+      iso: isoFromParts(shifted.getUTCFullYear(), shifted.getUTCMonth()+1, shifted.getUTCDate()),
+      hour: shifted.getUTCHours(),
+    };
   }
-  function shortChip(iso){
-    const {d} = partsFromISO(iso);
-    return `${WEEKDAYS_ES[weekdayIndex(iso)].slice(0,3)} ${d}`;
+  function todayISO(){ return montevideoNow().iso; }
+  function publishCutoffISO(){
+    const mv = montevideoNow();
+    return mv.hour >= 12 ? addDaysISO(mv.iso, 1) : mv.iso;
   }
 
   /* ================= Content config ================= */
@@ -474,7 +422,7 @@
     {id:'charlie', label:'Charlie Brown'},
   ];
   const STATUS_ORDER = ['pendiente','progreso','listo'];
-  const STATUS_LABEL = {pendiente:'Pendiente', progreso:'En curso', listo:'Listo'};
+  const STATUS_LABEL = {pendiente:'Pendiente', progreso:'Curso', listo:'Listo'};
 
   function nextStatus(s){
     const i = STATUS_ORDER.indexOf(s);
@@ -485,35 +433,14 @@
     const wd = weekdayIndex(iso);
     const secundaria = {};
     (SECUNDARIA_CONFIG[wd] || []).forEach(item=>{
-      secundaria[item.key] = {status:'pendiente', notes:''};
+      secundaria[item.key] = {status:'pendiente'};
     });
     return {
-      skip:false,
-      efemerides:{status:'pendiente', notes:''},
+      efemerides:{status:'pendiente'},
       secundaria,
-      tira:{comic:'', status:'pendiente', notes:''},
-      galeria:{status:'pendiente', title:'', artist:'', flagBirth:false, flagDeath:false, flagName:'', notes:''},
+      tira:{comic:'', status:'pendiente'},
+      galeria:{status:'pendiente', title:'', artist:'', flagBirth:false, flagDeath:false, flagName:''},
     };
-  }
-
-  function isFullyReady(data){
-    if(!data) return false;
-    if(data.skip) return true;
-    if(data.efemerides.status!=='listo') return false;
-    for(const k in data.secundaria){
-      if(data.secundaria[k].status!=='listo') return false;
-    }
-    if(data.tira.status!=='listo') return false;
-    if(data.galeria.status!=='listo') return false;
-    return true;
-  }
-
-  function statusSummaryDot(data){
-    if(data.skip) return 'skip';
-    const all = [data.efemerides.status, ...Object.values(data.secundaria).map(s=>s.status), data.tira.status, data.galeria.status];
-    if(all.every(s=>s==='listo')) return 'listo';
-    if(all.some(s=>s==='listo' || s==='progreso')) return 'progreso';
-    return 'pendiente';
   }
 
   /* ================= GitHub-backed storage ================= */
@@ -521,14 +448,9 @@
   const CFG_KEY = 'heraldo-gh-config';
 
   function loadConfig(){
-    try{
-      const raw = localStorage.getItem(CFG_KEY);
-      return raw ? JSON.parse(raw) : null;
-    }catch(e){ return null; }
+    try{ const raw = localStorage.getItem(CFG_KEY); return raw ? JSON.parse(raw) : null; }catch(e){ return null; }
   }
-  function saveConfig(cfg){
-    localStorage.setItem(CFG_KEY, JSON.stringify(cfg));
-  }
+  function saveConfig(cfg){ localStorage.setItem(CFG_KEY, JSON.stringify(cfg)); }
 
   function b64DecodeUnicode(str){
     const binary = atob(str);
@@ -542,7 +464,6 @@
     bytes.forEach(b=> binary += String.fromCharCode(b));
     return btoa(binary);
   }
-
   function ghHeaders(token){
     return {
       'Authorization': 'Bearer ' + token,
@@ -551,20 +472,15 @@
       'Content-Type': 'application/json',
     };
   }
-
   async function ghGetFile(cfg){
     const url = `${GH_API}/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/${encodeURIComponent(cfg.path)}?ref=${encodeURIComponent(cfg.branch)}`;
     const res = await fetch(url, {headers: ghHeaders(cfg.token)});
     if(res.status===404) return {exists:false};
-    if(!res.ok){
-      const t = await res.text().catch(()=> '');
-      throw new Error(`GET ${res.status}: ${t.slice(0,200)}`);
-    }
+    if(!res.ok){ const t = await res.text().catch(()=> ''); throw new Error(`GET ${res.status}: ${t.slice(0,200)}`); }
     const json = await res.json();
     const text = b64DecodeUnicode(json.content.replace(/\n/g,''));
     return {exists:true, sha:json.sha, data: JSON.parse(text)};
   }
-
   async function ghPutFile(cfg, dataObj, sha){
     const url = `${GH_API}/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/${encodeURIComponent(cfg.path)}`;
     const body = {
@@ -586,13 +502,11 @@
 
   /* ================= App state ================= */
   const state = {
-    viewStart: todayISO(),
     filter: 'all',
     config: loadConfig(),
     sha: null,
     fileExists: false,
     appData: {days:{}, editionSettings:{type:'estandar', startDate: todayISO(), themeName:''}},
-    ready: false,
   };
 
   function getDay(iso){
@@ -600,26 +514,21 @@
     const day = state.appData.days[iso];
     const wd = weekdayIndex(iso);
     const expectedKeys = (SECUNDARIA_CONFIG[wd]||[]).map(item=>item.key);
-    expectedKeys.forEach(k=>{
-      if(!day.secundaria[k]) day.secundaria[k] = {status:'pendiente', notes:''};
-    });
-    Object.keys(day.secundaria).forEach(k=>{
-      if(!expectedKeys.includes(k)) delete day.secundaria[k];
-    });
+    expectedKeys.forEach(k=>{ if(!day.secundaria[k]) day.secundaria[k] = {status:'pendiente'}; });
+    Object.keys(day.secundaria).forEach(k=>{ if(!expectedKeys.includes(k)) delete day.secundaria[k]; });
     return day;
   }
+  function peekDay(iso){ return state.appData.days[iso] || null; }
 
   /* ================= Save queue ================= */
   let saveChain = Promise.resolve();
   let pendingSaves = 0;
-
   function queueSave(){
     pendingSaves++;
     setConnStatus('saving');
     saveChain = saveChain.then(doSave).catch(()=>{});
     return saveChain;
   }
-
   async function doSave(){
     const cfg = state.config;
     if(!cfg) return;
@@ -641,7 +550,6 @@
       }
     }
   }
-
   function setConnStatus(kind){
     const dot = document.getElementById('connDot');
     const text = document.getElementById('connText');
@@ -654,7 +562,6 @@
     else { text.textContent = `Conectado a ${base}`; dot.classList.add('ok'); }
   }
 
-  /* ================= Toast ================= */
   let toastTimer = null;
   function showToast(msg){
     const el = document.getElementById('toast');
@@ -665,30 +572,28 @@
   }
 
   /* ================= Edition cycle helpers ================= */
-  function editionInfoForDate(iso, settings){
-    if(!settings) return {label:'Cargando…'};
+  function editionCategory(iso, settings){
     const diff = diffDaysISO(settings.startDate, iso);
     if(settings.type === 'tematica'){
-      if(diff < 0) return {label:'Estándar (ciclo previo)'};
-      return {label:`Temática: ${settings.themeName || 'sin nombre'}`};
+      if(diff < 0) return {cat:'previo', label:'Ciclo anterior'};
+      return {cat:'tematica', label:'Temática' + (settings.themeName ? ' — ' + settings.themeName : '')};
     }
-    if(diff < 0) return {label:'Ciclo previo'};
-    if(diff <= 13) return {label:`Estándar (día ${diff+1}/14)`};
-    return {label:'Sin definir — ciclo vencido', warn:true};
+    if(diff < 0) return {cat:'previo', label:'Ciclo anterior'};
+    if(diff <= 13) return {cat:'estandar', label:'Estándar'};
+    return {cat:'vencido', label:'Sin definir — ciclo vencido'};
   }
 
   function renderEditionPanel(){
     const s = state.appData.editionSettings;
     const summary = document.getElementById('editionSummary');
     if(!s){ summary.textContent = 'Cargando…'; return; }
-    const today = todayISO();
-    const info = editionInfoForDate(today, s);
     const endDate = s.type==='estandar' ? addDaysISO(s.startDate,13) : null;
     let html = `<span><strong>${s.type==='estandar'?'Edición estándar':'Edición temática'}</strong></span>`;
-    html += `<span>desde ${longLabel(s.startDate)}</span>`;
-    if(endDate) html += `<span>hasta ${longLabel(endDate)}</span>`;
+    html += `<span>desde ${s.startDate}</span>`;
+    if(endDate) html += `<span>hasta ${endDate}</span>`;
     if(s.type==='tematica' && s.themeName) html += `<span>tema: <em>${escapeHtml(s.themeName)}</em></span>`;
-    if(info.warn) html += `<span class="warn">⚠ ${info.label}</span>`;
+    const info = editionCategory(todayISO(), s);
+    if(info.cat==='vencido') html += `<span class="warn">⚠ ${info.label}</span>`;
     summary.innerHTML = html;
 
     document.getElementById('edType').value = s.type;
@@ -697,233 +602,246 @@
     document.getElementById('edThemeWrap').style.display = s.type==='tematica' ? '' : 'none';
   }
 
-  /* ================= Buffer ================= */
-  function computeBuffer(){
-    let count = 0;
-    let iso = publishCutoffISO();
-    for(let i=0;i<60;i++){
-      const data = getDay(iso);
-      if(isFullyReady(data)){ count++; iso = addDaysISO(iso,1); }
-      else break;
-    }
-    return count;
-  }
-  function refreshBuffer(){
-    const n = computeBuffer();
-    const stampEl = document.getElementById('bufferStamp');
-    document.getElementById('bufferNum').textContent = n;
-    stampEl.classList.toggle('zero', n===0);
-    const mv = montevideoNow();
-    const note = document.getElementById('bufferNote');
-    note.textContent = mv.hour >= 12
-      ? `hoy (${todayISO()}) ya se considera publicado — cuenta desde mañana`
-      : `cuenta desde hoy (${todayISO()}) — corte a las 12:00 hora Uruguay`;
-  }
-
-  /* ================= Rendering: chips ================= */
-  function renderChips(){
-    const chips = document.getElementById('chips');
-    chips.innerHTML = '';
-    const today = todayISO();
-    let iso = state.viewStart;
-    for(let i=0;i<14;i++){
-      const data = getDay(iso);
-      const dot = statusSummaryDot(data);
-      const chip = document.createElement('div');
-      chip.className = 'chip' + (iso===today ? ' is-today':'');
-      chip.dataset.date = iso;
-      chip.innerHTML = `${shortChip(iso)}<div class="dot ${dot}"></div>`;
-      chip.addEventListener('click', ()=>{
-        const card = document.getElementById('card-'+iso);
-        if(card) card.scrollIntoView({behavior:'smooth', block:'center'});
-      });
-      chips.appendChild(chip);
+  /* ================= Stats ================= */
+  function computeStats(){
+    const cutoff = publishCutoffISO();
+    let preparados=0, activos=0, consecutivos=0, heraldosListos=0, galeriasListas=0;
+    let streakBroken = false;
+    let iso = cutoff;
+    for(let i=0;i<90;i++){
+      const day = peekDay(iso);
+      const wd = weekdayIndex(iso);
+      const secItems = SECUNDARIA_CONFIG[wd] || [];
+      const efe = day ? day.efemerides.status : 'pendiente';
+      const secAllListo = secItems.every(item => day && day.secundaria[item.key] && day.secundaria[item.key].status==='listo');
+      const tira = day ? day.tira.status : 'pendiente';
+      const gal = day ? day.galeria.status : 'pendiente';
+      const fullyReady = efe==='listo' && secAllListo && tira==='listo' && gal==='listo';
+      if(fullyReady) preparados++;
+      else if(efe==='listo' && gal==='listo' && (tira!=='listo' || !secAllListo)) activos++;
+      if(efe==='listo') heraldosListos++;
+      if(gal==='listo') galeriasListas++;
+      if(!streakBroken){
+        if(fullyReady) consecutivos++;
+        else streakBroken = true;
+      }
       iso = addDaysISO(iso,1);
     }
+    return {preparados, activos, consecutivos, heraldosListos, galeriasListas};
+  }
+  function refreshStats(){
+    const s = computeStats();
+    document.getElementById('statPreparados').textContent = s.preparados;
+    document.getElementById('statActivos').textContent = s.activos;
+    document.getElementById('statConsecutivos').textContent = s.consecutivos;
+    document.getElementById('statHeraldos').textContent = s.heraldosListos;
+    document.getElementById('statGalerias').textContent = s.galeriasListas;
   }
 
-  /* ================= Rendering: day card ================= */
+  /* ================= Grid range: current month + next month ================= */
+  function getVisibleRange(){
+    const {y,m} = partsFromISO(todayISO());
+    const startIso = isoFromParts(y,m,1);
+    let ny=y, nm=m+1; if(nm>12){ nm=1; ny=y+1; }
+    const endIso = isoFromParts(ny, nm, lastDayOfMonth(ny,nm));
+    return {startIso, endIso};
+  }
+  function buildColumns(){
+    const {startIso, endIso} = getVisibleRange();
+    const cols = [];
+    let iso = startIso;
+    while(diffDaysISO(iso, endIso) >= 0){ cols.push(iso); iso = addDaysISO(iso,1); }
+    return cols;
+  }
+
   function escapeHtml(str){
     return String(str||'').replace(/[&<>"']/g, ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
   }
-  function statusButtonHtml(section, sub, status){
-    return `<button type="button" class="stamp-btn ${status}" data-action="cycle-status" data-section="${section}" data-sub="${sub||''}">${STATUS_LABEL[status]}</button>`;
+
+  function statusButtonHtml(section, sub, status, iso){
+    return `<button type="button" class="stamp-btn ${status}" data-action="cycle" data-iso="${iso}" data-section="${section}" data-sub="${sub||''}">${STATUS_LABEL[status]}</button>`;
   }
 
-  function renderCard(iso, data){
-    const wd = weekdayIndex(iso);
-    const secItems = SECUNDARIA_CONFIG[wd] || [];
-    const ready = isFullyReady(data);
-
-    let heraldoRows = '';
-    heraldoRows += `
-      <div class="item-row">
-        <div class="item-label">Efemérides del día</div>
-        <div class="item-controls">
-          <div class="item-controls-row">${statusButtonHtml('efemerides','', data.efemerides.status)}</div>
-          <textarea class="mini note-input" data-action="note" data-section="efemerides" data-sub="" placeholder="Notas…">${escapeHtml(data.efemerides.notes)}</textarea>
-        </div>
-      </div>`;
-
-    secItems.forEach(item=>{
-      const sd = data.secundaria[item.key] || {status:'pendiente', notes:''};
-      heraldoRows += `
-      <div class="item-row">
-        <div class="item-label">${escapeHtml(item.label)}</div>
-        <div class="item-controls">
-          <div class="item-controls-row">${statusButtonHtml('secundaria', item.key, sd.status)}</div>
-          <textarea class="mini note-input" data-action="note" data-section="secundaria" data-sub="${item.key}" placeholder="Notas…">${escapeHtml(sd.notes)}</textarea>
-        </div>
-      </div>`;
-    });
-
-    const comicOptions = ['<option value="">— tirar dado —</option>']
-      .concat(COMICS.map(c=>`<option value="${c.id}" ${data.tira.comic===c.id?'selected':''}>${c.label}</option>`)).join('');
-    heraldoRows += `
-      <div class="item-row">
-        <div class="item-label">Tira cómica (dado)</div>
-        <div class="item-controls">
-          <div class="item-controls-row">
-            <select class="mini" data-action="comic" data-section="tira">${comicOptions}</select>
-            ${statusButtonHtml('tira','', data.tira.status)}
-          </div>
-          <textarea class="mini note-input" data-action="note" data-section="tira" data-sub="" placeholder="Notas…">${escapeHtml(data.tira.notes)}</textarea>
-        </div>
-      </div>`;
-
-    const editionInfo = editionInfoForDate(iso, state.appData.editionSettings);
-    let galeriaBlock = `
-      <div class="item-row">
-        <div class="item-label">Edición del día<br><span style="font-size:11px;color:var(--ink-soft);">${escapeHtml(editionInfo.label||'')}</span></div>
-        <div class="item-controls">
-          <div class="item-controls-row">
-            <input type="text" class="mini" style="width:46%;min-width:120px;" data-action="text" data-section="galeria" data-field="artist" placeholder="Artista" value="${escapeHtml(data.galeria.artist)}">
-            <input type="text" class="mini" style="width:46%;min-width:120px;" data-action="text" data-section="galeria" data-field="title" placeholder="Obra" value="${escapeHtml(data.galeria.title)}">
-          </div>
-          <div class="flag-row">
-            <label><input type="checkbox" data-action="check" data-section="galeria" data-field="flagBirth" ${data.galeria.flagBirth?'checked':''}> Cumpleaños de artista</label>
-            <label><input type="checkbox" data-action="check" data-section="galeria" data-field="flagDeath" ${data.galeria.flagDeath?'checked':''}> Defunción de artista</label>
-          </div>
-          ${(data.galeria.flagBirth||data.galeria.flagDeath) ? `<input type="text" class="mini" data-action="text" data-section="galeria" data-field="flagName" placeholder="Nombre del artista" value="${escapeHtml(data.galeria.flagName)}">` : ''}
-          <div class="item-controls-row">${statusButtonHtml('galeria','', data.galeria.status)}</div>
-          <textarea class="mini note-input" data-action="note" data-section="galeria" data-sub="" placeholder="Notas…">${escapeHtml(data.galeria.notes)}</textarea>
-        </div>
-      </div>`;
-
-    return `
-      <article class="card ${data.skip?'is-skip':''}" id="card-${iso}" data-date="${iso}">
-        <div class="card-head">
-          <div><span class="date-label">${longLabel(iso)}</span><span class="date-iso">${iso}</span></div>
-          <div class="card-badges">
-            ${data.skip ? '<span class="badge skip-badge">Pausa</span>' : (ready ? '<span class="badge ready">Listo ✓</span>' : '')}
-            <button class="skip-toggle" data-action="toggle-skip">${data.skip? 'Reactivar día' : 'Marcar sin publicación'}</button>
-          </div>
-        </div>
-        <div class="section-block sec-heraldo">
-          <p class="section-title">Heraldo de Goma Principal</p>
-          ${heraldoRows}
-        </div>
-        <div class="section-block sec-galeria">
-          <p class="section-title">Galería de Goma</p>
-          ${galeriaBlock}
-        </div>
-      </article>`;
-  }
-
-  function renderDayList(){
-    const container = document.getElementById('dayList');
+  function renderGrid(){
+    const wrap = document.getElementById('gridWrap');
     if(!state.config){
-      container.innerHTML = '<div class="empty-note">Configurá la conexión con GitHub para empezar.</div>';
+      wrap.innerHTML = '<div class="empty-note">Configurá la conexión con GitHub para empezar.</div>';
       return;
     }
-    let iso = state.viewStart;
-    const isos = [];
-    for(let i=0;i<14;i++){ isos.push(iso); iso = addDaysISO(iso,1); }
-    container.innerHTML = isos.map(d=>renderCard(d, getDay(d))).join('');
-    renderChips();
+    const cols = buildColumns();
+    const today = todayISO();
+    const settings = state.appData.editionSettings;
+
+    // Month header groups
+    const monthGroups = [];
+    cols.forEach(iso=>{
+      const {y,m} = partsFromISO(iso);
+      const key = y+'-'+m;
+      const last = monthGroups[monthGroups.length-1];
+      if(last && last.key===key) last.count++;
+      else monthGroups.push({key, y, m, count:1});
+    });
+    let monthRow = '<tr><td class="row-label"></td>' + monthGroups.map(g=>
+      `<td class="th-month" colspan="${g.count}">${MONTHS_ES[g.m-1]} ${g.y}</td>`
+    ).join('') + '</tr>';
+
+    let dayRow = '<tr><td class="row-label"></td>' + cols.map(iso=>{
+      const {d} = partsFromISO(iso);
+      const wd = weekdayIndex(iso);
+      const isToday = iso===today ? ' is-today' : '';
+      return `<th class="th-day col-day${isToday}"><div class="wd">${WEEKDAYS_SHORT[wd]}</div><div class="dn">${d}</div></th>`;
+    }).join('') + '</tr>';
+
+    let efeRow = '<tr class="row-efemerides"><td class="row-label">Efemérides</td>' + cols.map(iso=>{
+      const day = getDay(iso);
+      const isToday = iso===today ? ' is-today-col' : '';
+      return `<td class="cell${isToday}">${statusButtonHtml('efemerides','', day.efemerides.status, iso)}</td>`;
+    }).join('') + '</tr>';
+
+    let secRow = '<tr class="row-secundaria"><td class="row-label">Secundaria</td>' + cols.map(iso=>{
+      const day = getDay(iso);
+      const wd = weekdayIndex(iso);
+      const items = SECUNDARIA_CONFIG[wd] || [];
+      const isToday = iso===today ? ' is-today-col' : '';
+      if(items.length===0) return `<td class="cell${isToday}"></td>`;
+      const item = items[0];
+      const sd = day.secundaria[item.key];
+      const shortLabel = item.label.split('—').pop().trim();
+      return `<td class="cell${isToday}"><div class="cell-sub">${escapeHtml(shortLabel)}</div>${statusButtonHtml('secundaria', item.key, sd.status, iso)}</td>`;
+    }).join('') + '</tr>';
+
+    let tiraRow = '<tr class="row-tira"><td class="row-label">Tira cómica</td>' + cols.map(iso=>{
+      const day = getDay(iso);
+      const isToday = iso===today ? ' is-today-col' : '';
+      const options = ['<option value="">Elegir</option>'].concat(
+        COMICS.map(c=>`<option value="${c.id}" ${day.tira.comic===c.id?'selected':''}>${c.label}</option>`)
+      ).join('');
+      return `<td class="cell${isToday}"><select class="comic-select" data-iso="${iso}" data-action="comic">${options}</select>${statusButtonHtml('tira','', day.tira.status, iso)}</td>`;
+    }).join('') + '</tr>';
+
+    // Edition band row: group contiguous columns sharing the same category+label
+    const bandGroups = [];
+    cols.forEach(iso=>{
+      const info = editionCategory(iso, settings);
+      const last = bandGroups[bandGroups.length-1];
+      if(last && last.cat===info.cat && last.label===info.label) last.count++;
+      else bandGroups.push({cat:info.cat, label:info.label, count:1});
+    });
+    let bandRow = '<tr class="row-band"><td class="row-label">Edición Galería</td>' + bandGroups.map(g=>
+      `<td class="band band-${g.cat}" colspan="${g.count}">${escapeHtml(g.label)}</td>`
+    ).join('') + '</tr>';
+
+    let galRow = '<tr class="row-galeria"><td class="row-label">Galería de Goma</td>' + cols.map(iso=>{
+      const day = getDay(iso);
+      const info = editionCategory(iso, settings);
+      const isToday = iso===today ? ' is-today-col' : '';
+      let icons = '';
+      if(day.galeria.flagBirth) icons += '🎂';
+      if(day.galeria.flagDeath) icons += '⚱';
+      return `<td class="cell cat-${info.cat}${isToday}">
+        ${statusButtonHtml('galeria','', day.galeria.status, iso)}
+        ${icons ? `<div class="gal-icons">${icons}</div>` : ''}
+        <button type="button" class="gal-edit-btn" data-action="gal-edit" data-iso="${iso}" title="Artista / obra / efemérides">✎</button>
+      </td>`;
+    }).join('') + '</tr>';
+
+    wrap.innerHTML = `<table class="grid">${monthRow}${dayRow}${efeRow}${secRow}${tiraRow}${bandRow}${galRow}</table>`;
   }
 
-  function refreshCard(iso){
-    const data = getDay(iso);
-    const el = document.getElementById('card-'+iso);
-    if(el) el.outerHTML = renderCard(iso, data);
-    renderChips();
-    refreshBuffer();
-    renderPanorama();
+  function scrollToToday(){
+    const wrap = document.getElementById('gridWrap');
+    const el = wrap.querySelector('.th-day.is-today');
+    if(el) el.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
   }
 
   function renderAll(){
     renderEditionPanel();
-    renderDayList();
-    refreshBuffer();
+    renderGrid();
+    refreshStats();
     renderPanorama();
   }
 
-  /* ================= Event delegation ================= */
-  document.getElementById('dayList').addEventListener('click', (e)=>{
-    const btn = e.target.closest('[data-action]');
-    if(!btn) return;
-    const card = e.target.closest('.card');
-    if(!card) return;
-    const iso = card.dataset.date;
-    const action = btn.dataset.action;
-
-    if(action==='cycle-status'){
-      const data = getDay(iso);
+  /* ================= Grid interactions ================= */
+  document.getElementById('gridWrap').addEventListener('click', (e)=>{
+    const btn = e.target.closest('[data-action="cycle"]');
+    if(btn){
+      const iso = btn.dataset.iso;
+      const day = getDay(iso);
       const section = btn.dataset.section;
       const sub = btn.dataset.sub;
-      const target = sub ? data.secundaria[sub] : data[section];
+      const target = sub ? day.secundaria[sub] : day[section];
       target.status = nextStatus(target.status);
       queueSave();
-      refreshCard(iso);
+      renderGrid();
+      refreshStats();
+      renderPanorama();
+      return;
     }
-    if(action==='toggle-skip'){
-      const data = getDay(iso);
-      data.skip = !data.skip;
-      queueSave();
-      refreshCard(iso);
+    const galBtn = e.target.closest('[data-action="gal-edit"]');
+    if(galBtn){
+      openGalPopover(galBtn.dataset.iso, galBtn);
     }
   });
 
-  document.getElementById('dayList').addEventListener('change', (e)=>{
-    const el = e.target.closest('[data-action]');
+  document.getElementById('gridWrap').addEventListener('change', (e)=>{
+    const el = e.target.closest('[data-action="comic"]');
     if(!el) return;
-    const card = e.target.closest('.card');
-    if(!card) return;
-    const iso = card.dataset.date;
-    const action = el.dataset.action;
-    const data = getDay(iso);
+    const iso = el.dataset.iso;
+    const day = getDay(iso);
+    day.tira.comic = el.value;
+    queueSave();
+    renderPanorama();
+  });
 
-    if(action==='comic'){
-      data.tira.comic = el.value;
+  /* ================= Galería popover ================= */
+  let popoverIso = null;
+  const galPopoverEl = document.getElementById('galPopover');
+
+  function openGalPopover(iso, anchorEl){
+    popoverIso = iso;
+    const day = getDay(iso);
+    document.getElementById('gpArtist').value = day.galeria.artist || '';
+    document.getElementById('gpTitle').value = day.galeria.title || '';
+    document.getElementById('gpBirth').checked = !!day.galeria.flagBirth;
+    document.getElementById('gpDeath').checked = !!day.galeria.flagDeath;
+    document.getElementById('gpFlagName').value = day.galeria.flagName || '';
+    document.getElementById('gpFlagNameWrap').style.display = (day.galeria.flagBirth || day.galeria.flagDeath) ? '' : 'none';
+
+    const rect = anchorEl.getBoundingClientRect();
+    galPopoverEl.hidden = false;
+    const top = Math.min(rect.bottom + 6, window.innerHeight - 260);
+    const left = Math.min(rect.left, window.innerWidth - 250);
+    galPopoverEl.style.top = Math.max(8, top) + 'px';
+    galPopoverEl.style.left = Math.max(8, left) + 'px';
+  }
+  function closeGalPopover(save){
+    if(popoverIso && save!==false){
+      const day = getDay(popoverIso);
+      day.galeria.artist = document.getElementById('gpArtist').value;
+      day.galeria.title = document.getElementById('gpTitle').value;
+      day.galeria.flagBirth = document.getElementById('gpBirth').checked;
+      day.galeria.flagDeath = document.getElementById('gpDeath').checked;
+      day.galeria.flagName = document.getElementById('gpFlagName').value;
       queueSave();
-      renderChips();
+      renderGrid();
       renderPanorama();
     }
-    if(action==='check'){
-      data.galeria[el.dataset.field] = el.checked;
-      queueSave();
-      refreshCard(iso);
-    }
-    if(action==='text'){
-      data.galeria[el.dataset.field] = el.value;
-      queueSave();
-    }
+    galPopoverEl.hidden = true;
+    popoverIso = null;
+  }
+  document.getElementById('gpClose').addEventListener('click', ()=> closeGalPopover(true));
+  document.getElementById('gpBirth').addEventListener('change', updateFlagNameVisibility);
+  document.getElementById('gpDeath').addEventListener('change', updateFlagNameVisibility);
+  function updateFlagNameVisibility(){
+    const show = document.getElementById('gpBirth').checked || document.getElementById('gpDeath').checked;
+    document.getElementById('gpFlagNameWrap').style.display = show ? '' : 'none';
+  }
+  document.addEventListener('click', (e)=>{
+    if(galPopoverEl.hidden) return;
+    if(galPopoverEl.contains(e.target)) return;
+    if(e.target.closest('[data-action="gal-edit"]')) return;
+    closeGalPopover(true);
   });
-
-  document.getElementById('dayList').addEventListener('blur', (e)=>{
-    const el = e.target.closest('[data-action="note"]');
-    if(!el) return;
-    const card = e.target.closest('.card');
-    if(!card) return;
-    const iso = card.dataset.date;
-    const data = getDay(iso);
-    const section = el.dataset.section;
-    const sub = el.dataset.sub;
-    const target = sub ? data.secundaria[sub] : data[section];
-    target.notes = el.value;
-    queueSave();
-  }, true);
 
   /* ================= Controls ================= */
   document.querySelectorAll('.filter-group .btn').forEach(b=>{
@@ -936,13 +854,7 @@
       if(state.filter==='galeria') document.body.classList.add('filter-galeria');
     });
   });
-
-  document.getElementById('prevWeek').addEventListener('click', ()=>{ state.viewStart = addDaysISO(state.viewStart, -7); renderDayList(); });
-  document.getElementById('nextWeek').addEventListener('click', ()=>{ state.viewStart = addDaysISO(state.viewStart, 7); renderDayList(); });
-  document.getElementById('todayBtn').addEventListener('click', ()=>{ state.viewStart = todayISO(); renderDayList(); });
-  document.getElementById('jumpDate').addEventListener('change', (e)=>{
-    if(e.target.value){ state.viewStart = e.target.value; renderDayList(); }
-  });
+  document.getElementById('todayBtn').addEventListener('click', scrollToToday);
 
   /* ================= Edition panel controls ================= */
   document.getElementById('edToggle').addEventListener('click', ()=>{
@@ -960,71 +872,10 @@
     queueSave();
     renderEditionPanel();
     document.getElementById('editionForm').classList.remove('open');
-    renderDayList();
+    renderGrid();
   });
 
-  /* ================= Comic stats (computed from local data, no extra calls) ================= */
-  function computeComicStats(){
-    const stats = {mafalda:0, gaturro:0, garfield:0, charlie:0};
-    Object.values(state.appData.days).forEach(d=>{
-      if(d.tira && d.tira.comic && stats.hasOwnProperty(d.tira.comic)) stats[d.tira.comic]++;
-    });
-    return stats;
-  }
-  function renderStats(){
-    const stats = computeComicStats();
-    const wrap = document.getElementById('statsBars');
-    const total = COMICS.reduce((s,c)=> s + (stats[c.id]||0), 0);
-    if(total===0){
-      wrap.innerHTML = '<span class="empty-note" style="padding:6px 0;">Sin datos aún.</span>';
-      return;
-    }
-    const max = Math.max(...COMICS.map(c=>stats[c.id]||0), 1);
-    wrap.innerHTML = COMICS.map(c=>{
-      const n = stats[c.id]||0;
-      const pct = Math.round((n/max)*100);
-      return `<div class="stat-row"><span class="name">${c.label}</span><span class="bar-bg"><span class="bar-fg" style="width:${pct}%"></span></span><span class="count">${n}</span></div>`;
-    }).join('');
-  }
-
-  /* ================= Heatmap: full history at a glance ================= */
-  const DOT_LABEL = {listo:'Listo', progreso:'En curso', pendiente:'Pendiente', skip:'Sin publicación'};
-
-  function renderHeatmap(){
-    const wrap = document.getElementById('heatmapWrap');
-    const dates = Object.keys(state.appData.days).sort();
-    if(dates.length===0){
-      wrap.innerHTML = '<span class="empty-note" style="padding:6px 0;">Todavía no hay días registrados.</span>';
-      return;
-    }
-    let gridStart = dates[0];
-    let gridEnd = dates[dates.length-1];
-    while(weekdayIndex(gridStart)!==0) gridStart = addDaysISO(gridStart,-1);
-    while(weekdayIndex(gridEnd)!==6) gridEnd = addDaysISO(gridEnd,1);
-    const totalDays = diffDaysISO(gridStart,gridEnd)+1;
-    const weeks = Math.ceil(totalDays/7);
-    const cell=12, gap=3;
-    const width = weeks*(cell+gap)+gap;
-    const height = 7*(cell+gap)+gap;
-    const today = todayISO();
-    let rects = '';
-    for(let col=0; col<weeks; col++){
-      for(let row=0; row<7; row++){
-        const iso = addDaysISO(gridStart, col*7+row);
-        if(diffDaysISO(iso, gridEnd) > 0) continue;
-        const x = gap + col*(cell+gap);
-        const y = gap + row*(cell+gap);
-        const data = state.appData.days[iso];
-        const dot = data ? statusSummaryDot(data) : 'empty';
-        const cls = 'hm-' + dot + (iso===today ? ' hm-today' : '');
-        const label = data ? DOT_LABEL[dot] : 'sin datos';
-        rects += `<rect x="${x}" y="${y}" width="${cell}" height="${cell}" rx="2" class="${cls}"><title>${iso} — ${label}</title></rect>`;
-      }
-    }
-    wrap.innerHTML = `<svg viewBox="0 0 ${width} ${height}" width="100%" style="max-width:${width}px; height:${height}px;">${rects}</svg>`;
-  }
-
-  /* ================= Section completion breakdown ================= */
+  /* ================= Panorama: section completion, dice stats, gallery summary ================= */
   function computeSectionStats(){
     const types = [
       {label:'Efemérides', galeria:false, get:d=>d.efemerides},
@@ -1040,7 +891,6 @@
     return types.map(t=>{
       let pendiente=0, progreso=0, listo=0;
       Object.values(state.appData.days).forEach(d=>{
-        if(d.skip) return;
         const item = t.get(d);
         if(!item) return;
         if(item.status==='listo') listo++;
@@ -1051,7 +901,6 @@
       return {label:t.label, galeria:t.galeria, pendiente, progreso, listo, total};
     }).filter(r=>r.total>0);
   }
-
   function renderSectionStats(){
     const wrap = document.getElementById('sectionStats');
     const rows = computeSectionStats();
@@ -1075,13 +924,32 @@
         </div>`;
     }).join('');
   }
-
-  /* ================= Gallery artist-anniversary summary ================= */
+  function computeComicStats(){
+    const stats = {mafalda:0, gaturro:0, garfield:0, charlie:0};
+    Object.values(state.appData.days).forEach(d=>{
+      if(d.tira && d.tira.comic && stats.hasOwnProperty(d.tira.comic)) stats[d.tira.comic]++;
+    });
+    return stats;
+  }
+  function renderStats(){
+    const stats = computeComicStats();
+    const wrap = document.getElementById('statsBars');
+    const total = COMICS.reduce((s,c)=> s + (stats[c.id]||0), 0);
+    if(total===0){
+      wrap.innerHTML = '<span class="empty-note" style="padding:6px 0;">Sin datos aún.</span>';
+      return;
+    }
+    const max = Math.max(...COMICS.map(c=>stats[c.id]||0), 1);
+    wrap.innerHTML = COMICS.map(c=>{
+      const n = stats[c.id]||0;
+      const pct = Math.round((n/max)*100);
+      return `<div class="stat-row"><span class="name">${c.label}</span><span class="bar-bg"><span class="bar-fg" style="width:${pct}%"></span></span><span class="count">${n}</span></div>`;
+    }).join('');
+  }
   function renderGaleriaSummary(){
     const wrap = document.getElementById('galeriaSummary');
     let births=0, deaths=0, withArtist=0, tracked=0;
     Object.values(state.appData.days).forEach(d=>{
-      if(d.skip) return;
       tracked++;
       if(d.galeria.flagBirth) births++;
       if(d.galeria.flagDeath) deaths++;
@@ -1096,9 +964,7 @@
       <span>⚱ ${deaths} defunciones marcadas</span>
       <span>🖼 ${withArtist} obras con artista cargado</span>`;
   }
-
   function renderPanorama(){
-    renderHeatmap();
     renderSectionStats();
     renderStats();
     renderGaleriaSummary();
@@ -1118,11 +984,8 @@
     modal.hidden = false;
   }
   function closeModal(){ modal.hidden = true; }
-
   document.getElementById('connEditBtn').addEventListener('click', openModal);
-  document.getElementById('cfgCancel').addEventListener('click', ()=>{
-    if(state.config) closeModal();
-  });
+  document.getElementById('cfgCancel').addEventListener('click', ()=>{ if(state.config) closeModal(); });
 
   function readModalConfig(){
     return {
@@ -1133,7 +996,6 @@
       token: document.getElementById('cfgToken').value.trim(),
     };
   }
-
   document.getElementById('cfgTest').addEventListener('click', async ()=>{
     const msg = document.getElementById('cfgMsg');
     const cfg = readModalConfig();
@@ -1146,16 +1008,13 @@
     msg.className = 'modal-msg';
     try{
       const res = await ghGetFile(cfg);
-      msg.textContent = res.exists
-        ? 'Conexión OK — se encontró el archivo de datos existente.'
-        : 'Conexión OK — el archivo se creará con el primer guardado.';
+      msg.textContent = res.exists ? 'Conexión OK — se encontró el archivo de datos existente.' : 'Conexión OK — el archivo se creará con el primer guardado.';
       msg.className = 'modal-msg ok';
     }catch(e){
       msg.textContent = 'No se pudo conectar: ' + e.message;
       msg.className = 'modal-msg err';
     }
   });
-
   document.getElementById('cfgSave').addEventListener('click', async ()=>{
     const msg = document.getElementById('cfgMsg');
     const cfg = readModalConfig();
@@ -1170,6 +1029,7 @@
     setConnStatus('saving');
     await loadRemoteData();
     renderAll();
+    scrollToToday();
   });
 
   /* ================= Load remote data ================= */
@@ -1197,15 +1057,11 @@
 
   /* ================= Init ================= */
   async function init(){
-    document.getElementById('jumpDate').value = todayISO();
-    if(!state.config){
-      setConnStatus();
-      openModal();
-      return;
-    }
+    if(!state.config){ setConnStatus(); openModal(); return; }
     setConnStatus('saving');
     await loadRemoteData();
     renderAll();
+    setTimeout(scrollToToday, 50);
   }
 
   init();
