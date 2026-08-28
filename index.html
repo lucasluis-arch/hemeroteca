@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>El Heraldo de Goma — Control de Redacción</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23f1ead9'/%3E%3Ccircle cx='32' cy='32' r='26' fill='none' stroke='%23a4382c' stroke-width='3'/%3E%3Ccircle cx='32' cy='32' r='19' fill='none' stroke='%23a4382c' stroke-width='1.4'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' font-weight='700' fill='%23241f18' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -54,7 +55,7 @@
   header.masthead .sub{ font-size:13px; color:var(--ink-soft); font-style:italic; }
 
   .conn-status{
-    max-width:1000px; margin:10px auto 0; padding:0 20px;
+    max-width:1500px; margin:10px auto 0; padding:0 20px;
     display:flex; justify-content:center; align-items:center; gap:10px;
     font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--ink-soft);
   }
@@ -67,7 +68,7 @@
   }
 
   /* ---------- Stats cards ---------- */
-  .stats-wrap{ max-width:1000px; margin:20px auto 0; padding:0 20px; }
+  .stats-wrap{ max-width:1500px; margin:20px auto 0; padding:0 20px; }
   .stats-primary{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:10px; }
   .stat-card{
     background:var(--paper-dark); border:1px solid var(--rule); border-radius:6px;
@@ -85,7 +86,7 @@
   .stats-secondary b{ color:var(--ink); font-weight:700; }
 
   .controls{
-    max-width:1000px; margin:18px auto 0; padding:0 20px;
+    max-width:1500px; margin:18px auto 0; padding:0 20px;
     display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:center;
   }
   .btn{
@@ -102,7 +103,7 @@
   .filter-group{ display:flex; gap:6px; border:1px dashed var(--rule); padding:4px; border-radius:4px; }
 
   .panel{
-    max-width:1000px; margin:22px auto 0; padding:14px 18px;
+    max-width:1500px; margin:22px auto 0; padding:14px 18px;
     border:1.5px solid var(--stamp-green); background:var(--stamp-green-soft); border-radius:4px;
   }
   .panel h2{
@@ -120,7 +121,7 @@
   .warn{ color:var(--stamp-red); font-weight:600; }
 
   /* ---------- Grid ---------- */
-  .grid-section{ max-width:1000px; margin:24px auto 0; padding:0 20px; }
+  .grid-section{ max-width:1500px; margin:24px auto 0; padding:0 20px; }
   .grid-wrap{ overflow-x:auto; border:1px solid var(--rule); border-radius:4px; background:var(--paper-dark); }
   table.grid{ border-collapse:collapse; table-layout:fixed; }
   table.grid th, table.grid td{ border-bottom:1px dashed var(--rule); padding:0; }
@@ -179,7 +180,7 @@
   body.filter-heraldo .row-band, body.filter-heraldo .row-galeria{ display:none; }
   body.filter-galeria .row-efemerides, body.filter-galeria .row-secundaria, body.filter-galeria .row-tira{ display:none; }
 
-  .footer-panel{ max-width:1000px; margin:26px auto 0; padding:14px 18px; border-top:2px double var(--ink); }
+  .footer-panel{ max-width:1500px; margin:26px auto 0; padding:14px 18px; border-top:2px double var(--ink); }
   .footer-panel h2{ font-family:'Special Elite', monospace; font-size:14px; margin:0 0 10px; text-transform:uppercase; }
   .pano-block{ margin:20px 0 26px; }
   .pano-block:first-of-type{ margin-top:6px; }
@@ -337,7 +338,7 @@
   <div class="modal-actions"><button class="btn" id="gpClose">Cerrar</button></div>
 </div>
 
-<div class="modal-overlay" id="configModal">
+<div class="modal-overlay" id="configModal" hidden>
   <div class="modal">
     <h2>Conexión con GitHub</h2>
     <p class="modal-note">
