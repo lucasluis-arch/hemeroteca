@@ -49,7 +49,7 @@
         "title": "Los Discípulos de Emaús",
         "artist": "Giovanni Battista Piazzetta",
         "flagBirth": false,
-        "flagDeath": true,
+        "flagDeath": false,
         "flagName": "",
         "notes": ""
       }
