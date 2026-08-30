@@ -1,11 +1,9 @@
 name: Chequeo matutino del Heraldo
 
 on:
-  schedule:
-    # 06:17 UTC = 03:17 hora Uruguay (UTC-3 fijo, sin horario de verano).
-    # Horario de madrugada y minuto suelto a propósito: fuera de los horarios
-    # "en punto" más pedidos de GitHub, donde a veces se saltea la ejecución.
-    - cron: '17 6 * * *'
+  # El disparador "schedule" nativo de GitHub no tiene horario garantizado y
+  # puede demorarse horas, así que este workflow se dispara desde afuera
+  # (un cron externo que llama a la API de GitHub) en vez de usar schedule.
   workflow_dispatch: {}
 
 jobs:
