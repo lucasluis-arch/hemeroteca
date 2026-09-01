@@ -224,7 +224,7 @@
       },
       "secundaria": {
         "noticias": {
-          "status": "pendiente",
+          "status": "progreso",
           "notes": ""
         }
       },
@@ -1466,6 +1466,688 @@
       },
       "secundaria": {
         "donde_estoy": {
+          "status": "pendiente"
+        }
+      },
+      "tira": {
+        "comic": "",
+        "status": "pendiente"
+      },
+      "galeria": {
+        "status": "pendiente",
+        "title": "",
+        "artist": "",
+        "flagBirth": false,
+        "flagDeath": false,
+        "flagName": ""
+      }
+    },
+    "2026-10-01": {
+      "efemerides": {
+        "status": "pendiente"
+      },
+      "secundaria": {
+        "noticias": {
+          "status": "pendiente"
+        }
+      },
+      "tira": {
+        "comic": "",
+        "status": "pendiente"
+      },
+      "galeria": {
+        "status": "pendiente",
+        "title": "",
+        "artist": "",
+        "flagBirth": false,
+        "flagDeath": false,
+        "flagName": ""
+      }
+    },
+    "2026-10-02": {
+      "efemerides": {
+        "status": "pendiente"
+      },
+      "secundaria": {
+        "martin": {
+          "status": "pendiente"
+        }
+      },
+      "tira": {
+        "comic": "",
+        "status": "pendiente"
+      },
+      "galeria": {
+        "status": "pendiente",
+        "title": "",
+        "artist": "",
+        "flagBirth": false,
+        "flagDeath": false,
+        "flagName": ""
+      }
+    },
+    "2026-10-03": {
+      "efemerides": {
+        "status": "pendiente"
+      },
+      "secundaria": {
+        "animales": {
+          "status": "pendiente"
+        }
+      },
+      "tira": {
+        "comic": "",
+        "status": "pendiente"
+      },
+      "galeria": {
+        "status": "pendiente",
+        "title": "",
+        "artist": "",
+        "flagBirth": false,
+        "flagDeath": false,
+        "flagName": ""
+      }
+    },
+    "2026-10-04": {
+      "efemerides": {
+        "status": "pendiente"
+      },
+      "secundaria": {
+        "fonoteca": {
+          "status": "pendiente"
+        }
+      },
+      "tira": {
+        "comic": "",
+        "status": "pendiente"
+      },
+      "galeria": {
+        "status": "pendiente",
+        "title": "",
+        "artist": "",
+        "flagBirth": false,
+        "flagDeath": false,
+        "flagName": ""
+      }
+    },
+    "2026-10-05": {
+      "efemerides": {
+        "status": "pendiente"
+      },
+      "secundaria": {
+        "matilde": {
+          "status": "pendiente"
+        }
+      },
+      "tira": {
+        "comic": "",
+        "status": "pendiente"
+      },
+      "galeria": {
+        "status": "pendiente",
+        "title": "",
+        "artist": "",
+        "flagBirth": false,
+        "flagDeath": false,
+        "flagName": ""
+      }
+    },
+    "2026-10-06": {
+      "efemerides": {
+        "status": "pendiente"
+      },
+      "secundaria": {
+        "noticias": {
+          "status": "pendiente"
+        }
+      },
+      "tira": {
+        "comic": "",
+        "status": "pendiente"
+      },
+      "galeria": {
+        "status": "pendiente",
+        "title": "",
+        "artist": "",
+        "flagBirth": false,
+        "flagDeath": false,
+        "flagName": ""
+      }
+    },
+    "2026-10-07": {
+      "efemerides": {
+        "status": "pendiente"
+      },
+      "secundaria": {
+        "donde_estoy": {
+          "status": "pendiente"
+        }
+      },
+      "tira": {
+        "comic": "",
+        "status": "pendiente"
+      },
+      "galeria": {
+        "status": "pendiente",
+        "title": "",
+        "artist": "",
+        "flagBirth": false,
+        "flagDeath": false,
+        "flagName": ""
+      }
+    },
+    "2026-10-08": {
+      "efemerides": {
+        "status": "pendiente"
+      },
+      "secundaria": {
+        "noticias": {
+          "status": "pendiente"
+        }
+      },
+      "tira": {
+        "comic": "",
+        "status": "pendiente"
+      },
+      "galeria": {
+        "status": "pendiente",
+        "title": "",
+        "artist": "",
+        "flagBirth": false,
+        "flagDeath": false,
+        "flagName": ""
+      }
+    },
+    "2026-10-09": {
+      "efemerides": {
+        "status": "pendiente"
+      },
+      "secundaria": {
+        "martin": {
+          "status": "pendiente"
+        }
+      },
+      "tira": {
+        "comic": "",
+        "status": "pendiente"
+      },
+      "galeria": {
+        "status": "pendiente",
+        "title": "",
+        "artist": "",
+        "flagBirth": false,
+        "flagDeath": false,
+        "flagName": ""
+      }
+    },
+    "2026-10-10": {
+      "efemerides": {
+        "status": "pendiente"
+      },
+      "secundaria": {
+        "animales": {
+          "status": "pendiente"
+        }
+      },
+      "tira": {
+        "comic": "",
+        "status": "pendiente"
+      },
+      "galeria": {
+        "status": "pendiente",
+        "title": "",
+        "artist": "",
+        "flagBirth": false,
+        "flagDeath": false,
+        "flagName": ""
+      }
+    },
+    "2026-10-11": {
+      "efemerides": {
+        "status": "pendiente"
+      },
+      "secundaria": {
+        "fonoteca": {
+          "status": "pendiente"
+        }
+      },
+      "tira": {
+        "comic": "",
+        "status": "pendiente"
+      },
+      "galeria": {
+        "status": "pendiente",
+        "title": "",
+        "artist": "",
+        "flagBirth": false,
+        "flagDeath": false,
+        "flagName": ""
+      }
+    },
+    "2026-10-12": {
+      "efemerides": {
+        "status": "pendiente"
+      },
+      "secundaria": {
+        "matilde": {
+          "status": "pendiente"
+        }
+      },
+      "tira": {
+        "comic": "",
+        "status": "pendiente"
+      },
+      "galeria": {
+        "status": "pendiente",
+        "title": "",
+        "artist": "",
+        "flagBirth": false,
+        "flagDeath": false,
+        "flagName": ""
+      }
+    },
+    "2026-10-13": {
+      "efemerides": {
+        "status": "pendiente"
+      },
+      "secundaria": {
+        "noticias": {
+          "status": "pendiente"
+        }
+      },
+      "tira": {
+        "comic": "",
+        "status": "pendiente"
+      },
+      "galeria": {
+        "status": "pendiente",
+        "title": "",
+        "artist": "",
+        "flagBirth": false,
+        "flagDeath": false,
+        "flagName": ""
+      }
+    },
+    "2026-10-14": {
+      "efemerides": {
+        "status": "pendiente"
+      },
+      "secundaria": {
+        "donde_estoy": {
+          "status": "pendiente"
+        }
+      },
+      "tira": {
+        "comic": "",
+        "status": "pendiente"
+      },
+      "galeria": {
+        "status": "pendiente",
+        "title": "",
+        "artist": "",
+        "flagBirth": false,
+        "flagDeath": false,
+        "flagName": ""
+      }
+    },
+    "2026-10-15": {
+      "efemerides": {
+        "status": "pendiente"
+      },
+      "secundaria": {
+        "noticias": {
+          "status": "pendiente"
+        }
+      },
+      "tira": {
+        "comic": "",
+        "status": "pendiente"
+      },
+      "galeria": {
+        "status": "pendiente",
+        "title": "",
+        "artist": "",
+        "flagBirth": false,
+        "flagDeath": false,
+        "flagName": ""
+      }
+    },
+    "2026-10-16": {
+      "efemerides": {
+        "status": "pendiente"
+      },
+      "secundaria": {
+        "martin": {
+          "status": "pendiente"
+        }
+      },
+      "tira": {
+        "comic": "",
+        "status": "pendiente"
+      },
+      "galeria": {
+        "status": "pendiente",
+        "title": "",
+        "artist": "",
+        "flagBirth": false,
+        "flagDeath": false,
+        "flagName": ""
+      }
+    },
+    "2026-10-17": {
+      "efemerides": {
+        "status": "pendiente"
+      },
+      "secundaria": {
+        "animales": {
+          "status": "pendiente"
+        }
+      },
+      "tira": {
+        "comic": "",
+        "status": "pendiente"
+      },
+      "galeria": {
+        "status": "pendiente",
+        "title": "",
+        "artist": "",
+        "flagBirth": false,
+        "flagDeath": false,
+        "flagName": ""
+      }
+    },
+    "2026-10-18": {
+      "efemerides": {
+        "status": "pendiente"
+      },
+      "secundaria": {
+        "fonoteca": {
+          "status": "pendiente"
+        }
+      },
+      "tira": {
+        "comic": "",
+        "status": "pendiente"
+      },
+      "galeria": {
+        "status": "pendiente",
+        "title": "",
+        "artist": "",
+        "flagBirth": false,
+        "flagDeath": false,
+        "flagName": ""
+      }
+    },
+    "2026-10-19": {
+      "efemerides": {
+        "status": "pendiente"
+      },
+      "secundaria": {
+        "matilde": {
+          "status": "pendiente"
+        }
+      },
+      "tira": {
+        "comic": "",
+        "status": "pendiente"
+      },
+      "galeria": {
+        "status": "pendiente",
+        "title": "",
+        "artist": "",
+        "flagBirth": false,
+        "flagDeath": false,
+        "flagName": ""
+      }
+    },
+    "2026-10-20": {
+      "efemerides": {
+        "status": "pendiente"
+      },
+      "secundaria": {
+        "noticias": {
+          "status": "pendiente"
+        }
+      },
+      "tira": {
+        "comic": "",
+        "status": "pendiente"
+      },
+      "galeria": {
+        "status": "pendiente",
+        "title": "",
+        "artist": "",
+        "flagBirth": false,
+        "flagDeath": false,
+        "flagName": ""
+      }
+    },
+    "2026-10-21": {
+      "efemerides": {
+        "status": "pendiente"
+      },
+      "secundaria": {
+        "donde_estoy": {
+          "status": "pendiente"
+        }
+      },
+      "tira": {
+        "comic": "",
+        "status": "pendiente"
+      },
+      "galeria": {
+        "status": "pendiente",
+        "title": "",
+        "artist": "",
+        "flagBirth": false,
+        "flagDeath": false,
+        "flagName": ""
+      }
+    },
+    "2026-10-22": {
+      "efemerides": {
+        "status": "pendiente"
+      },
+      "secundaria": {
+        "noticias": {
+          "status": "pendiente"
+        }
+      },
+      "tira": {
+        "comic": "",
+        "status": "pendiente"
+      },
+      "galeria": {
+        "status": "pendiente",
+        "title": "",
+        "artist": "",
+        "flagBirth": false,
+        "flagDeath": false,
+        "flagName": ""
+      }
+    },
+    "2026-10-23": {
+      "efemerides": {
+        "status": "pendiente"
+      },
+      "secundaria": {
+        "martin": {
+          "status": "pendiente"
+        }
+      },
+      "tira": {
+        "comic": "",
+        "status": "pendiente"
+      },
+      "galeria": {
+        "status": "pendiente",
+        "title": "",
+        "artist": "",
+        "flagBirth": false,
+        "flagDeath": false,
+        "flagName": ""
+      }
+    },
+    "2026-10-24": {
+      "efemerides": {
+        "status": "pendiente"
+      },
+      "secundaria": {
+        "animales": {
+          "status": "pendiente"
+        }
+      },
+      "tira": {
+        "comic": "",
+        "status": "pendiente"
+      },
+      "galeria": {
+        "status": "pendiente",
+        "title": "",
+        "artist": "",
+        "flagBirth": false,
+        "flagDeath": false,
+        "flagName": ""
+      }
+    },
+    "2026-10-25": {
+      "efemerides": {
+        "status": "pendiente"
+      },
+      "secundaria": {
+        "fonoteca": {
+          "status": "pendiente"
+        }
+      },
+      "tira": {
+        "comic": "",
+        "status": "pendiente"
+      },
+      "galeria": {
+        "status": "pendiente",
+        "title": "",
+        "artist": "",
+        "flagBirth": false,
+        "flagDeath": false,
+        "flagName": ""
+      }
+    },
+    "2026-10-26": {
+      "efemerides": {
+        "status": "pendiente"
+      },
+      "secundaria": {
+        "matilde": {
+          "status": "pendiente"
+        }
+      },
+      "tira": {
+        "comic": "",
+        "status": "pendiente"
+      },
+      "galeria": {
+        "status": "pendiente",
+        "title": "",
+        "artist": "",
+        "flagBirth": false,
+        "flagDeath": false,
+        "flagName": ""
+      }
+    },
+    "2026-10-27": {
+      "efemerides": {
+        "status": "pendiente"
+      },
+      "secundaria": {
+        "noticias": {
+          "status": "pendiente"
+        }
+      },
+      "tira": {
+        "comic": "",
+        "status": "pendiente"
+      },
+      "galeria": {
+        "status": "pendiente",
+        "title": "",
+        "artist": "",
+        "flagBirth": false,
+        "flagDeath": false,
+        "flagName": ""
+      }
+    },
+    "2026-10-28": {
+      "efemerides": {
+        "status": "pendiente"
+      },
+      "secundaria": {
+        "donde_estoy": {
+          "status": "pendiente"
+        }
+      },
+      "tira": {
+        "comic": "",
+        "status": "pendiente"
+      },
+      "galeria": {
+        "status": "pendiente",
+        "title": "",
+        "artist": "",
+        "flagBirth": false,
+        "flagDeath": false,
+        "flagName": ""
+      }
+    },
+    "2026-10-29": {
+      "efemerides": {
+        "status": "pendiente"
+      },
+      "secundaria": {
+        "noticias": {
+          "status": "pendiente"
+        }
+      },
+      "tira": {
+        "comic": "",
+        "status": "pendiente"
+      },
+      "galeria": {
+        "status": "pendiente",
+        "title": "",
+        "artist": "",
+        "flagBirth": false,
+        "flagDeath": false,
+        "flagName": ""
+      }
+    },
+    "2026-10-30": {
+      "efemerides": {
+        "status": "pendiente"
+      },
+      "secundaria": {
+        "martin": {
+          "status": "pendiente"
+        }
+      },
+      "tira": {
+        "comic": "",
+        "status": "pendiente"
+      },
+      "galeria": {
+        "status": "pendiente",
+        "title": "",
+        "artist": "",
+        "flagBirth": false,
+        "flagDeath": false,
+        "flagName": ""
+      }
+    },
+    "2026-10-31": {
+      "efemerides": {
+        "status": "pendiente"
+      },
+      "secundaria": {
+        "animales": {
           "status": "pendiente"
         }
       },
