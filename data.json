@@ -230,7 +230,7 @@
       },
       "tira": {
         "comic": "mafalda",
-        "status": "progreso",
+        "status": "listo",
         "notes": ""
       },
       "galeria": {
@@ -251,7 +251,7 @@
       },
       "secundaria": {
         "donde_estoy": {
-          "status": "progreso",
+          "status": "listo",
           "notes": ""
         }
       },
