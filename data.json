@@ -219,7 +219,7 @@
     "2026-09-01": {
       "skip": false,
       "efemerides": {
-        "status": "pendiente",
+        "status": "progreso",
         "notes": ""
       },
       "secundaria": {
