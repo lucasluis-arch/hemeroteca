@@ -278,7 +278,7 @@
       },
       "secundaria": {
         "noticias": {
-          "status": "progreso",
+          "status": "listo",
           "notes": ""
         }
       },
@@ -305,7 +305,7 @@
       },
       "secundaria": {
         "martin": {
-          "status": "progreso",
+          "status": "listo",
           "notes": ""
         }
       },
