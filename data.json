@@ -2207,6 +2207,13 @@
       "type": "tematica",
       "startDate": "2026-10-19",
       "endDate": "2026-10-25"
+    },
+    {
+      "id": "1788408624632-nenh7",
+      "createdAt": 1788408624632,
+      "type": "estandar",
+      "startDate": "2026-10-26",
+      "endDate": "2026-11-08"
     }
   ]
 }
