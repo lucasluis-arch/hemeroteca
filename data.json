@@ -381,7 +381,7 @@
     "2026-09-07": {
       "skip": false,
       "efemerides": {
-        "status": "progreso",
+        "status": "listo",
         "notes": ""
       },
       "secundaria": {
@@ -396,7 +396,7 @@
         "notes": ""
       },
       "galeria": {
-        "status": "progreso",
+        "status": "listo",
         "title": "",
         "artist": "",
         "flagBirth": false,
