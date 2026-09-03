@@ -2165,5 +2165,13 @@
       }
     }
   },
-  "editionPeriods": []
+  "editionPeriods": [
+    {
+      "id": "1788408572431-0shbk",
+      "createdAt": 1788408572431,
+      "type": "estandar",
+      "startDate": "2026-08-24",
+      "endDate": "2026-09-06"
+    }
+  ]
 }
