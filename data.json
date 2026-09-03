@@ -2165,5 +2165,13 @@
       }
     }
   },
-  "editionPeriods": []
+  "editionPeriods": [
+    {
+      "id": "1788407942095-p1gsp",
+      "createdAt": 1788407942095,
+      "type": "tematica",
+      "startDate": "2026-08-31",
+      "endDate": "2026-09-06"
+    }
+  ]
 }
