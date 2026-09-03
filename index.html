@@ -119,6 +119,12 @@
     font-family:'Lora', serif; font-size:13px; padding:6px 8px; border:1px solid var(--rule); border-radius:3px; background:var(--paper); width:100%;
   }
   .warn{ color:var(--stamp-red); font-weight:600; }
+  .periods-table{ width:100%; border-collapse:collapse; font-size:12.5px; margin-bottom:4px; }
+  .periods-table th{ text-align:left; font-family:'JetBrains Mono', monospace; font-size:10px; text-transform:uppercase; color:var(--ink-soft); padding:3px 6px; border-bottom:1px solid var(--rule); }
+  .periods-table td{ padding:4px 6px; border-bottom:1px dashed var(--rule); }
+  .periods-table .tag-estandar{ color:var(--stamp-green); font-weight:600; }
+  .periods-table .tag-tematica{ color:var(--stamp-purple); font-weight:600; }
+  .period-del{ font-family:'JetBrains Mono', monospace; font-size:10px; text-transform:uppercase; border:1px solid var(--rule); background:transparent; border-radius:10px; padding:2px 8px; cursor:pointer; color:var(--stamp-red); }
 
   /* ---------- Grid ---------- */
   .grid-section{ max-width:1500px; margin:24px auto 0; padding:0 20px; }
@@ -277,30 +283,33 @@
 </div>
 
 <div class="panel" id="editionPanel">
-  <h2>Ciclo de la Galería de Goma</h2>
+  <h2>Tramos de la Galería de Goma</h2>
   <div class="row" id="editionSummary">Cargando…</div>
-  <div class="edit-form" id="editionForm">
-    <div class="field-mini" style="flex:1 1 160px;">
+  <div id="periodsList" style="margin-top:10px;"></div>
+  <div class="edit-form open" id="editionForm">
+    <div class="field-mini" style="flex:1 1 150px;">
       <label for="edType">Tipo</label>
       <select id="edType" class="mini">
-        <option value="estandar">Estándar (2 semanas)</option>
+        <option value="estandar">Estándar</option>
         <option value="tematica">Temática</option>
       </select>
     </div>
-    <div class="field-mini" style="flex:1 1 160px;">
-      <label for="edStart">Inicio del ciclo</label>
+    <div class="field-mini" style="flex:1 1 140px;">
+      <label for="edStart">Desde</label>
       <input type="date" id="edStart" class="mini">
     </div>
-    <div class="field-mini" id="edThemeWrap" style="flex:1 1 200px;">
+    <div class="field-mini" style="flex:1 1 140px;">
+      <label for="edEnd">Hasta</label>
+      <input type="date" id="edEnd" class="mini">
+    </div>
+    <div class="field-mini" id="edThemeWrap" style="flex:1 1 180px;">
       <label for="edTheme">Nombre del tema</label>
       <input type="text" id="edTheme" class="mini" placeholder="p. ej. Sillas de autor">
     </div>
-    <button class="btn" id="edSave">Guardar ciclo</button>
-  </div>
-  <div class="row" style="margin-top:8px;">
-    <button class="btn" id="edToggle">Editar ciclo</button>
+    <button class="btn" id="edSave">Agregar tramo</button>
   </div>
 </div>
+
 
 <div class="grid-section">
   <div class="grid-wrap" id="gridWrap">
@@ -330,8 +339,6 @@
 <div id="toast"></div>
 
 <div class="gal-popover" id="galPopover" hidden>
-  <label>Artista<input type="text" id="gpArtist"></label>
-  <label>Obra<input type="text" id="gpTitle"></label>
   <div class="chk-row"><input type="checkbox" id="gpBirth"><label style="margin:0;" for="gpBirth">Cumpleaños de artista</label></div>
   <div class="chk-row"><input type="checkbox" id="gpDeath"><label style="margin:0;" for="gpDeath">Defunción de artista</label></div>
   <label id="gpFlagNameWrap" style="display:none;">Nombre del artista<input type="text" id="gpFlagName"></label>
@@ -440,7 +447,7 @@
       efemerides:{status:'pendiente'},
       secundaria,
       tira:{comic:'', status:'pendiente'},
-      galeria:{status:'pendiente', title:'', artist:'', flagBirth:false, flagDeath:false, flagName:''},
+      galeria:{status:'pendiente', flagBirth:false, flagDeath:false, flagName:''},
     };
   }
 
@@ -507,7 +514,7 @@
     config: loadConfig(),
     sha: null,
     fileExists: false,
-    appData: {days:{}, editionSettings:{type:'estandar', startDate: todayISO(), themeName:''}},
+    appData: {days:{}, editionPeriods:[]},
   };
 
   function getDay(iso){
@@ -572,36 +579,60 @@
     toastTimer = setTimeout(()=> el.classList.remove('show'), 1800);
   }
 
-  /* ================= Edition cycle helpers ================= */
-  function editionCategory(iso, settings){
-    const diff = diffDaysISO(settings.startDate, iso);
-    if(settings.type === 'tematica'){
-      if(diff < 0) return {cat:'previo', label:'Ciclo anterior'};
-      return {cat:'tematica', label:'Temática' + (settings.themeName ? ' — ' + settings.themeName : '')};
-    }
-    if(diff < 0) return {cat:'previo', label:'Ciclo anterior'};
-    if(diff <= 13) return {cat:'estandar', label:'Estándar'};
-    return {cat:'vencido', label:'Sin definir — ciclo vencido'};
+  /* ================= Edition periods (list, non-destructive) ================= */
+  function findPeriod(iso){
+    // If periods overlap, the first match (array order) wins.
+    return state.appData.editionPeriods.find(p => diffDaysISO(p.startDate, iso) >= 0 && diffDaysISO(iso, p.endDate) >= 0) || null;
+  }
+  function editionCategory(iso){
+    const p = findPeriod(iso);
+    if(!p) return {cat:'previo', label:'Sin definir'};
+    if(p.type === 'tematica') return {cat:'tematica', label:'Temática' + (p.themeName ? ' — ' + p.themeName : '')};
+    return {cat:'estandar', label:'Estándar'};
+  }
+  function sortPeriods(){
+    state.appData.editionPeriods.sort((a,b)=> a.startDate < b.startDate ? -1 : (a.startDate > b.startDate ? 1 : 0));
   }
 
   function renderEditionPanel(){
-    const s = state.appData.editionSettings;
     const summary = document.getElementById('editionSummary');
-    if(!s){ summary.textContent = 'Cargando…'; return; }
-    const endDate = s.type==='estandar' ? addDaysISO(s.startDate,13) : null;
-    let html = `<span><strong>${s.type==='estandar'?'Edición estándar':'Edición temática'}</strong></span>`;
-    html += `<span>desde ${s.startDate}</span>`;
-    if(endDate) html += `<span>hasta ${endDate}</span>`;
-    if(s.type==='tematica' && s.themeName) html += `<span>tema: <em>${escapeHtml(s.themeName)}</em></span>`;
-    const info = editionCategory(todayISO(), s);
-    if(info.cat==='vencido') html += `<span class="warn">⚠ ${info.label}</span>`;
-    summary.innerHTML = html;
+    const today = editionCategory(todayISO());
+    if(today.cat==='previo'){
+      summary.innerHTML = `<span class="warn">⚠ No hay ningún tramo definido para hoy — agregá uno abajo.</span>`;
+    } else {
+      summary.innerHTML = `<span>Hoy: <strong>${escapeHtml(today.label)}</strong></span>`;
+    }
 
-    document.getElementById('edType').value = s.type;
-    document.getElementById('edStart').value = s.startDate;
-    document.getElementById('edTheme').value = s.themeName || '';
-    document.getElementById('edThemeWrap').style.display = s.type==='tematica' ? '' : 'none';
+    const list = document.getElementById('periodsList');
+    const periods = state.appData.editionPeriods;
+    if(periods.length===0){
+      list.innerHTML = '<p class="empty-note" style="padding:6px 0;">Todavía no agregaste ningún tramo.</p>';
+    } else {
+      list.innerHTML = `<table class="periods-table"><tr><th>Tipo</th><th>Desde</th><th>Hasta</th><th>Tema</th><th></th></tr>` +
+        periods.map(p => `
+          <tr>
+            <td class="tag-${p.type}">${p.type==='estandar'?'Estándar':'Temática'}</td>
+            <td>${p.startDate}</td>
+            <td>${p.endDate}</td>
+            <td>${p.type==='tematica' ? escapeHtml(p.themeName||'') : ''}</td>
+            <td><button class="period-del" data-action="del-period" data-id="${p.id}">Eliminar</button></td>
+          </tr>`).join('') + `</table>`;
+    }
+
+    document.getElementById('edType').value = 'estandar';
+    document.getElementById('edTheme').value = '';
+    document.getElementById('edThemeWrap').style.display = 'none';
   }
+
+  document.getElementById('periodsList').addEventListener('click', (e)=>{
+    const btn = e.target.closest('[data-action="del-period"]');
+    if(!btn) return;
+    const id = btn.dataset.id;
+    state.appData.editionPeriods = state.appData.editionPeriods.filter(p => String(p.id) !== id);
+    queueSave();
+    renderEditionPanel();
+    renderGrid();
+  });
 
   /* ================= Stats ================= */
   function computeStats(){
@@ -671,7 +702,6 @@
     }
     const cols = buildColumns();
     const today = todayISO();
-    const settings = state.appData.editionSettings;
 
     // Month header groups
     const monthGroups = [];
@@ -723,7 +753,7 @@
     // Edition band row: group contiguous columns sharing the same category+label
     const bandGroups = [];
     cols.forEach(iso=>{
-      const info = editionCategory(iso, settings);
+      const info = editionCategory(iso);
       const last = bandGroups[bandGroups.length-1];
       if(last && last.cat===info.cat && last.label===info.label) last.count++;
       else bandGroups.push({cat:info.cat, label:info.label, count:1});
@@ -734,7 +764,7 @@
 
     let galRow = '<tr class="row-galeria"><td class="row-label">Galería de Goma</td>' + cols.map(iso=>{
       const day = getDay(iso);
-      const info = editionCategory(iso, settings);
+      const info = editionCategory(iso);
       const isToday = iso===today ? ' is-today-col' : '';
       let icons = '';
       if(day.galeria.flagBirth) icons += '🎂';
@@ -742,7 +772,7 @@
       return `<td class="cell cat-${info.cat}${isToday}">
         ${statusButtonHtml('galeria','', day.galeria.status, iso)}
         ${icons ? `<div class="gal-icons">${icons}</div>` : ''}
-        <button type="button" class="gal-edit-btn" data-action="gal-edit" data-iso="${iso}" title="Artista / obra / efemérides">✎</button>
+        <button type="button" class="gal-edit-btn" data-action="gal-edit" data-iso="${iso}" title="Cumpleaños / defunción de artista">✎</button>
       </td>`;
     }).join('') + '</tr>';
 
@@ -801,8 +831,6 @@
   function openGalPopover(iso, anchorEl){
     popoverIso = iso;
     const day = getDay(iso);
-    document.getElementById('gpArtist').value = day.galeria.artist || '';
-    document.getElementById('gpTitle').value = day.galeria.title || '';
     document.getElementById('gpBirth').checked = !!day.galeria.flagBirth;
     document.getElementById('gpDeath').checked = !!day.galeria.flagDeath;
     document.getElementById('gpFlagName').value = day.galeria.flagName || '';
@@ -818,8 +846,6 @@
   function closeGalPopover(save){
     if(popoverIso && save!==false){
       const day = getDay(popoverIso);
-      day.galeria.artist = document.getElementById('gpArtist').value;
-      day.galeria.title = document.getElementById('gpTitle').value;
       day.galeria.flagBirth = document.getElementById('gpBirth').checked;
       day.galeria.flagDeath = document.getElementById('gpDeath').checked;
       day.galeria.flagName = document.getElementById('gpFlagName').value;
@@ -858,21 +884,32 @@
   document.getElementById('todayBtn').addEventListener('click', scrollToToday);
 
   /* ================= Edition panel controls ================= */
-  document.getElementById('edToggle').addEventListener('click', ()=>{
-    document.getElementById('editionForm').classList.toggle('open');
-  });
   document.getElementById('edType').addEventListener('change', (e)=>{
     document.getElementById('edThemeWrap').style.display = e.target.value==='tematica' ? '' : 'none';
   });
   document.getElementById('edSave').addEventListener('click', ()=>{
-    state.appData.editionSettings = {
-      type: document.getElementById('edType').value,
-      startDate: document.getElementById('edStart').value || todayISO(),
-      themeName: document.getElementById('edTheme').value.trim(),
-    };
+    const type = document.getElementById('edType').value;
+    const startDate = document.getElementById('edStart').value;
+    const endDate = document.getElementById('edEnd').value;
+    const themeName = document.getElementById('edTheme').value.trim();
+    if(!startDate || !endDate){
+      showToast('Completá desde y hasta');
+      return;
+    }
+    if(diffDaysISO(startDate, endDate) < 0){
+      showToast('La fecha "hasta" no puede ser anterior a "desde"');
+      return;
+    }
+    state.appData.editionPeriods.push({
+      id: Date.now() + '-' + Math.random().toString(36).slice(2,7),
+      type, startDate, endDate, themeName,
+    });
+    sortPeriods();
     queueSave();
+    document.getElementById('edStart').value = '';
+    document.getElementById('edEnd').value = '';
+    document.getElementById('edTheme').value = '';
     renderEditionPanel();
-    document.getElementById('editionForm').classList.remove('open');
     renderGrid();
   });
 
@@ -949,12 +986,11 @@
   }
   function renderGaleriaSummary(){
     const wrap = document.getElementById('galeriaSummary');
-    let births=0, deaths=0, withArtist=0, tracked=0;
+    let births=0, deaths=0, tracked=0;
     Object.values(state.appData.days).forEach(d=>{
       tracked++;
       if(d.galeria.flagBirth) births++;
       if(d.galeria.flagDeath) deaths++;
-      if(d.galeria.artist && d.galeria.artist.trim()) withArtist++;
     });
     if(tracked===0){
       wrap.innerHTML = '<span class="empty-note" style="padding:6px 0;">Todavía no hay días registrados.</span>';
@@ -962,8 +998,7 @@
     }
     wrap.innerHTML = `
       <span>🎂 ${births} cumpleaños de artista marcados</span>
-      <span>⚱ ${deaths} defunciones marcadas</span>
-      <span>🖼 ${withArtist} obras con artista cargado</span>`;
+      <span>⚱ ${deaths} defunciones marcadas</span>`;
   }
   function renderPanorama(){
     renderSectionStats();
@@ -1039,13 +1074,26 @@
     try{
       const res = await ghGetFile(state.config);
       if(res.exists){
-        state.appData = Object.assign({days:{}, editionSettings:{type:'estandar', startDate: todayISO(), themeName:''}}, res.data);
+        state.appData = Object.assign({days:{}, editionPeriods:[]}, res.data);
         if(!state.appData.days) state.appData.days = {};
-        if(!state.appData.editionSettings) state.appData.editionSettings = {type:'estandar', startDate: todayISO(), themeName:''};
+        if(!state.appData.editionPeriods) state.appData.editionPeriods = [];
+        // Migration: older versions stored a single mutable editionSettings
+        // object instead of a list of periods. Convert it into one period
+        // so past data isn't lost, then drop the old field.
+        if(state.appData.editionSettings && state.appData.editionPeriods.length===0){
+          const s = state.appData.editionSettings;
+          const fallbackEnd = s.type==='estandar' ? addDaysISO(s.startDate,13) : addDaysISO(s.startDate,13);
+          state.appData.editionPeriods.push({
+            id: 'migrated-' + s.startDate,
+            type: s.type, startDate: s.startDate, endDate: fallbackEnd, themeName: s.themeName || '',
+          });
+        }
+        delete state.appData.editionSettings;
+        sortPeriods();
         state.sha = res.sha;
         state.fileExists = true;
       }else{
-        state.appData = {days:{}, editionSettings:{type:'estandar', startDate: todayISO(), themeName:''}};
+        state.appData = {days:{}, editionPeriods:[]};
         state.fileExists = false;
         state.sha = null;
       }
