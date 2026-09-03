@@ -2167,18 +2167,6 @@
   },
   "editionPeriods": [
     {
-      "id": "1788407461080-wqbss",
-      "type": "estandar",
-      "startDate": "2026-09-14",
-      "endDate": "2026-09-27"
-    },
-    {
-      "id": "1788407466270-e12e6",
-      "type": "tematica",
-      "startDate": "2026-09-28",
-      "endDate": "2026-10-04"
-    },
-    {
       "id": "1788407470873-cpdd4",
       "type": "estandar",
       "startDate": "2026-10-05",
