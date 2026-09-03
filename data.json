@@ -2172,6 +2172,13 @@
       "type": "estandar",
       "startDate": "2026-08-24",
       "endDate": "2026-09-06"
+    },
+    {
+      "id": "1788408575978-2pl4l",
+      "createdAt": 1788408575978,
+      "type": "tematica",
+      "startDate": "2026-09-07",
+      "endDate": "2026-09-13"
     }
   ]
 }
