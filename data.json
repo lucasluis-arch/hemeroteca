@@ -332,7 +332,7 @@
       },
       "secundaria": {
         "animales": {
-          "status": "listo",
+          "status": "pendiente",
           "notes": ""
         }
       },
