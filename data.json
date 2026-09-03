@@ -2165,13 +2165,5 @@
       }
     }
   },
-  "editionPeriods": [
-    {
-      "id": "1788407961969-6vup9",
-      "createdAt": 1788407961969,
-      "type": "tematica",
-      "startDate": "2026-08-31",
-      "endDate": "2026-09-06"
-    }
-  ]
+  "editionPeriods": []
 }
