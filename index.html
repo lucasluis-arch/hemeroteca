@@ -125,6 +125,19 @@
   .periods-table .tag-estandar{ color:var(--stamp-green); font-weight:600; }
   .periods-table .tag-tematica{ color:var(--stamp-purple); font-weight:600; }
   .period-del{ font-family:'JetBrains Mono', monospace; font-size:10px; text-transform:uppercase; border:1px solid var(--rule); background:transparent; border-radius:10px; padding:2px 8px; cursor:pointer; color:var(--stamp-red); }
+  .next-prompt{
+    display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-top:10px;
+    padding:8px 10px; border:1px dashed var(--rule); border-radius:4px; font-size:12.5px;
+  }
+  .next-prompt .np-label{ color:var(--ink-soft); }
+  .btn-mark{
+    font-family:'JetBrains Mono', monospace; font-size:11px; text-transform:uppercase;
+    border-radius:3px; padding:5px 11px; cursor:pointer; background:transparent;
+  }
+  .btn-mark.mark-estandar{ border:1.5px solid var(--stamp-green); color:var(--stamp-green); }
+  .btn-mark.mark-estandar:hover{ background:var(--stamp-green-soft); }
+  .btn-mark.mark-tematica{ border:1.5px solid var(--stamp-purple); color:var(--stamp-purple); }
+  .btn-mark.mark-tematica:hover{ background:var(--stamp-purple-soft); }
 
   /* ---------- Grid ---------- */
   .grid-section{ max-width:1500px; margin:24px auto 0; padding:0 20px; }
@@ -285,30 +298,10 @@
 <div class="panel" id="editionPanel">
   <h2>Tramos de la Galería de Goma</h2>
   <div class="row" id="editionSummary">Cargando…</div>
+  <div id="nextPrompt" class="next-prompt"></div>
   <div id="periodsList" style="margin-top:10px;"></div>
-  <div class="edit-form open" id="editionForm">
-    <div class="field-mini" style="flex:1 1 150px;">
-      <label for="edType">Tipo</label>
-      <select id="edType" class="mini">
-        <option value="estandar">Estándar</option>
-        <option value="tematica">Temática</option>
-      </select>
-    </div>
-    <div class="field-mini" style="flex:1 1 140px;">
-      <label for="edStart">Desde</label>
-      <input type="date" id="edStart" class="mini">
-    </div>
-    <div class="field-mini" style="flex:1 1 140px;">
-      <label for="edEnd">Hasta</label>
-      <input type="date" id="edEnd" class="mini">
-    </div>
-    <div class="field-mini" id="edThemeWrap" style="flex:1 1 180px;">
-      <label for="edTheme">Nombre del tema</label>
-      <input type="text" id="edTheme" class="mini" placeholder="p. ej. Sillas de autor">
-    </div>
-    <button class="btn" id="edSave">Agregar tramo</button>
-  </div>
 </div>
+
 
 
 <div class="grid-section">
@@ -587,42 +580,72 @@
   function editionCategory(iso){
     const p = findPeriod(iso);
     if(!p) return {cat:'previo', label:'Sin definir'};
-    if(p.type === 'tematica') return {cat:'tematica', label:'Temática' + (p.themeName ? ' — ' + p.themeName : '')};
-    return {cat:'estandar', label:'Estándar'};
+    return p.type === 'tematica' ? {cat:'tematica', label:'Temática'} : {cat:'estandar', label:'Estándar'};
   }
   function sortPeriods(){
     state.appData.editionPeriods.sort((a,b)=> a.startDate < b.startDate ? -1 : (a.startDate > b.startDate ? 1 : 0));
+  }
+  function mondayOfWeek(iso){
+    const wd = weekdayIndex(iso);
+    const back = wd===0 ? 6 : wd-1;
+    return addDaysISO(iso, -back);
+  }
+  function findNextUnassignedMonday(){
+    let m = mondayOfWeek(todayISO());
+    for(let i=0;i<520;i++){ // up to ~10 years forward, plenty of headroom
+      if(!findPeriod(m)) return m;
+      m = addDaysISO(m, 7);
+    }
+    return m;
   }
 
   function renderEditionPanel(){
     const summary = document.getElementById('editionSummary');
     const today = editionCategory(todayISO());
     if(today.cat==='previo'){
-      summary.innerHTML = `<span class="warn">⚠ No hay ningún tramo definido para hoy — agregá uno abajo.</span>`;
+      summary.innerHTML = `<span class="warn">⚠ No hay ningún tramo definido para hoy.</span>`;
     } else {
       summary.innerHTML = `<span>Hoy: <strong>${escapeHtml(today.label)}</strong></span>`;
     }
 
+    const nextMonday = findNextUnassignedMonday();
+    const prompt = document.getElementById('nextPrompt');
+    prompt.innerHTML = `
+      <span class="np-label">Semana del ${escapeHtml(nextMonday)} sin asignar:</span>
+      <button class="btn-mark mark-estandar" data-action="mark" data-type="estandar" data-monday="${nextMonday}">Estándar (2 semanas)</button>
+      <button class="btn-mark mark-tematica" data-action="mark" data-type="tematica" data-monday="${nextMonday}">Temática (1 semana)</button>`;
+
     const list = document.getElementById('periodsList');
     const periods = state.appData.editionPeriods;
     if(periods.length===0){
-      list.innerHTML = '<p class="empty-note" style="padding:6px 0;">Todavía no agregaste ningún tramo.</p>';
+      list.innerHTML = '<p class="empty-note" style="padding:6px 0;">Todavía no hay tramos asignados.</p>';
     } else {
-      list.innerHTML = `<table class="periods-table"><tr><th>Tipo</th><th>Desde</th><th>Hasta</th><th>Tema</th><th></th></tr>` +
+      list.innerHTML = `<table class="periods-table"><tr><th>Tipo</th><th>Desde</th><th>Hasta</th><th></th></tr>` +
         periods.map(p => `
           <tr>
             <td class="tag-${p.type}">${p.type==='estandar'?'Estándar':'Temática'}</td>
             <td>${p.startDate}</td>
             <td>${p.endDate}</td>
-            <td>${p.type==='tematica' ? escapeHtml(p.themeName||'') : ''}</td>
             <td><button class="period-del" data-action="del-period" data-id="${p.id}">Eliminar</button></td>
           </tr>`).join('') + `</table>`;
     }
-
-    document.getElementById('edType').value = 'estandar';
-    document.getElementById('edTheme').value = '';
-    document.getElementById('edThemeWrap').style.display = 'none';
   }
+
+  document.getElementById('nextPrompt').addEventListener('click', (e)=>{
+    const btn = e.target.closest('[data-action="mark"]');
+    if(!btn) return;
+    const type = btn.dataset.type;
+    const monday = btn.dataset.monday;
+    const endDate = type==='estandar' ? addDaysISO(monday, 13) : addDaysISO(monday, 6);
+    state.appData.editionPeriods.push({
+      id: Date.now() + '-' + Math.random().toString(36).slice(2,7),
+      type, startDate: monday, endDate,
+    });
+    sortPeriods();
+    queueSave();
+    renderEditionPanel();
+    renderGrid();
+  });
 
   document.getElementById('periodsList').addEventListener('click', (e)=>{
     const btn = e.target.closest('[data-action="del-period"]');
@@ -882,36 +905,6 @@
     });
   });
   document.getElementById('todayBtn').addEventListener('click', scrollToToday);
-
-  /* ================= Edition panel controls ================= */
-  document.getElementById('edType').addEventListener('change', (e)=>{
-    document.getElementById('edThemeWrap').style.display = e.target.value==='tematica' ? '' : 'none';
-  });
-  document.getElementById('edSave').addEventListener('click', ()=>{
-    const type = document.getElementById('edType').value;
-    const startDate = document.getElementById('edStart').value;
-    const endDate = document.getElementById('edEnd').value;
-    const themeName = document.getElementById('edTheme').value.trim();
-    if(!startDate || !endDate){
-      showToast('Completá desde y hasta');
-      return;
-    }
-    if(diffDaysISO(startDate, endDate) < 0){
-      showToast('La fecha "hasta" no puede ser anterior a "desde"');
-      return;
-    }
-    state.appData.editionPeriods.push({
-      id: Date.now() + '-' + Math.random().toString(36).slice(2,7),
-      type, startDate, endDate, themeName,
-    });
-    sortPeriods();
-    queueSave();
-    document.getElementById('edStart').value = '';
-    document.getElementById('edEnd').value = '';
-    document.getElementById('edTheme').value = '';
-    renderEditionPanel();
-    renderGrid();
-  });
 
   /* ================= Panorama: section completion, dice stats, gallery summary ================= */
   function computeSectionStats(){
