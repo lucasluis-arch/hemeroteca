@@ -2203,6 +2203,12 @@
       "type": "tematica",
       "startDate": "2026-10-19",
       "endDate": "2026-10-25"
+    },
+    {
+      "id": "1788407484405-qv26d",
+      "type": "estandar",
+      "startDate": "2026-10-26",
+      "endDate": "2026-11-08"
     }
   ]
 }
