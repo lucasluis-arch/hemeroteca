@@ -103,33 +103,11 @@
   .filter-group{ display:flex; gap:6px; border:1px dashed var(--rule); padding:4px; border-radius:4px; }
 
   .panel{
-    max-width:1500px; margin:22px auto 0; padding:14px 18px;
-    border:1.5px solid var(--stamp-green); background:var(--stamp-green-soft); border-radius:4px;
+    max-width:1500px; margin:16px auto 0; padding:10px 16px;
+    border:1px solid var(--rule); background:var(--paper-dark); border-radius:4px;
   }
-  .panel h2{
-    font-family:'Special Elite', monospace; font-size:15px; margin:0 0 8px;
-    color:var(--stamp-green); text-transform:uppercase; letter-spacing:.05em;
-  }
-  .panel .row{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; font-size:13px; }
-  .panel .edit-form{ display:none; flex-wrap:wrap; gap:10px; margin-top:10px; align-items:center; }
-  .panel .edit-form.open{ display:flex; }
-  .field-mini{ text-align:left; margin-bottom:8px; }
-  .field-mini label{ display:block; font-family:'JetBrains Mono', monospace; font-size:10px; text-transform:uppercase; color:var(--ink-soft); margin-bottom:3px; }
-  .field-mini input, .field-mini select{
-    font-family:'Lora', serif; font-size:13px; padding:6px 8px; border:1px solid var(--rule); border-radius:3px; background:var(--paper); width:100%;
-  }
-  .warn{ color:var(--stamp-red); font-weight:600; }
-  .periods-table{ width:100%; border-collapse:collapse; font-size:12.5px; margin-bottom:4px; }
-  .periods-table th{ text-align:left; font-family:'JetBrains Mono', monospace; font-size:10px; text-transform:uppercase; color:var(--ink-soft); padding:3px 6px; border-bottom:1px solid var(--rule); }
-  .periods-table td{ padding:4px 6px; border-bottom:1px dashed var(--rule); }
-  .periods-table .tag-estandar{ color:var(--stamp-green); font-weight:600; }
-  .periods-table .tag-tematica{ color:var(--stamp-purple); font-weight:600; }
-  .period-del{ font-family:'JetBrains Mono', monospace; font-size:10px; text-transform:uppercase; border:1px solid var(--rule); background:transparent; border-radius:10px; padding:2px 8px; cursor:pointer; color:var(--stamp-red); }
-  .next-prompt{
-    display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-top:10px;
-    padding:8px 10px; border:1px dashed var(--rule); border-radius:4px; font-size:12.5px;
-  }
-  .next-prompt .np-label{ color:var(--ink-soft); }
+  .edition-bar{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  .edition-status{ font-size:12.5px; color:var(--ink-soft); margin-right:4px; }
   .btn-mark{
     font-family:'JetBrains Mono', monospace; font-size:11px; text-transform:uppercase;
     border-radius:3px; padding:5px 11px; cursor:pointer; background:transparent;
@@ -138,6 +116,15 @@
   .btn-mark.mark-estandar:hover{ background:var(--stamp-green-soft); }
   .btn-mark.mark-tematica{ border:1.5px solid var(--stamp-purple); color:var(--stamp-purple); }
   .btn-mark.mark-tematica:hover{ background:var(--stamp-purple-soft); }
+  .btn-mark.mark-undo{ border:1.5px solid var(--rule); color:var(--ink-soft); margin-left:auto; }
+  .btn-mark.mark-undo:hover{ background:var(--paper-darker); }
+  .btn-mark:disabled{ opacity:.4; cursor:default; }
+  .warn{ color:var(--stamp-red); font-weight:600; }
+  .field-mini{ text-align:left; margin-bottom:8px; }
+  .field-mini label{ display:block; font-family:'JetBrains Mono', monospace; font-size:10px; text-transform:uppercase; color:var(--ink-soft); margin-bottom:3px; }
+  .field-mini input, .field-mini select{
+    font-family:'Lora', serif; font-size:13px; padding:6px 8px; border:1px solid var(--rule); border-radius:3px; background:var(--paper); width:100%;
+  }
 
   /* ---------- Grid ---------- */
   .grid-section{ max-width:1500px; margin:24px auto 0; padding:0 20px; }
@@ -295,18 +282,18 @@
   <button class="btn" id="todayBtn">Ir a hoy</button>
 </div>
 
-<div class="panel" id="editionPanel">
-  <h2>Tramos de la Galería de Goma</h2>
-  <div class="row" id="editionSummary">Cargando…</div>
-  <div id="nextPrompt" class="next-prompt"></div>
-  <div id="periodsList" style="margin-top:10px;"></div>
-</div>
-
-
-
 <div class="grid-section">
   <div class="grid-wrap" id="gridWrap">
     <div class="empty-note">Configurá la conexión con GitHub para empezar.</div>
+  </div>
+</div>
+
+<div class="panel" id="editionPanel">
+  <div class="edition-bar">
+    <span id="editionSummary" class="edition-status">Cargando…</span>
+    <button class="btn-mark mark-estandar" id="btnMarkEstandar">Semana estándar</button>
+    <button class="btn-mark mark-tematica" id="btnMarkTematica">Temática</button>
+    <button class="btn-mark mark-undo" id="btnUndoPeriod">Borrar última asignada</button>
   </div>
 </div>
 
@@ -602,56 +589,37 @@
   function renderEditionPanel(){
     const summary = document.getElementById('editionSummary');
     const today = editionCategory(todayISO());
-    if(today.cat==='previo'){
-      summary.innerHTML = `<span class="warn">⚠ No hay ningún tramo definido para hoy.</span>`;
-    } else {
-      summary.innerHTML = `<span>Hoy: <strong>${escapeHtml(today.label)}</strong></span>`;
-    }
-
     const nextMonday = findNextUnassignedMonday();
-    const prompt = document.getElementById('nextPrompt');
-    prompt.innerHTML = `
-      <span class="np-label">Semana del ${escapeHtml(nextMonday)} sin asignar:</span>
-      <button class="btn-mark mark-estandar" data-action="mark" data-type="estandar" data-monday="${nextMonday}">Estándar (2 semanas)</button>
-      <button class="btn-mark mark-tematica" data-action="mark" data-type="tematica" data-monday="${nextMonday}">Temática (1 semana)</button>`;
+    const todayLabel = today.cat==='previo' ? 'sin definir' : today.label.toLowerCase();
+    summary.innerHTML = `Hoy: <strong class="${today.cat==='previo'?'warn':''}">${escapeHtml(todayLabel)}</strong> · próxima semana libre: ${escapeHtml(nextMonday)}`;
 
-    const list = document.getElementById('periodsList');
-    const periods = state.appData.editionPeriods;
-    if(periods.length===0){
-      list.innerHTML = '<p class="empty-note" style="padding:6px 0;">Todavía no hay tramos asignados.</p>';
-    } else {
-      list.innerHTML = `<table class="periods-table"><tr><th>Tipo</th><th>Desde</th><th>Hasta</th><th></th></tr>` +
-        periods.map(p => `
-          <tr>
-            <td class="tag-${p.type}">${p.type==='estandar'?'Estándar':'Temática'}</td>
-            <td>${p.startDate}</td>
-            <td>${p.endDate}</td>
-            <td><button class="period-del" data-action="del-period" data-id="${p.id}">Eliminar</button></td>
-          </tr>`).join('') + `</table>`;
-    }
+    const undoBtn = document.getElementById('btnUndoPeriod');
+    undoBtn.disabled = state.appData.editionPeriods.length === 0;
   }
 
-  document.getElementById('nextPrompt').addEventListener('click', (e)=>{
-    const btn = e.target.closest('[data-action="mark"]');
-    if(!btn) return;
-    const type = btn.dataset.type;
-    const monday = btn.dataset.monday;
+  function markNextWeek(type){
+    const monday = findNextUnassignedMonday();
     const endDate = type==='estandar' ? addDaysISO(monday, 13) : addDaysISO(monday, 6);
     state.appData.editionPeriods.push({
       id: Date.now() + '-' + Math.random().toString(36).slice(2,7),
+      createdAt: Date.now(),
       type, startDate: monday, endDate,
     });
     sortPeriods();
     queueSave();
     renderEditionPanel();
     renderGrid();
-  });
-
-  document.getElementById('periodsList').addEventListener('click', (e)=>{
-    const btn = e.target.closest('[data-action="del-period"]');
-    if(!btn) return;
-    const id = btn.dataset.id;
-    state.appData.editionPeriods = state.appData.editionPeriods.filter(p => String(p.id) !== id);
+  }
+  document.getElementById('btnMarkEstandar').addEventListener('click', ()=> markNextWeek('estandar'));
+  document.getElementById('btnMarkTematica').addEventListener('click', ()=> markNextWeek('tematica'));
+  document.getElementById('btnUndoPeriod').addEventListener('click', ()=>{
+    const periods = state.appData.editionPeriods;
+    if(periods.length===0) return;
+    let lastIdx = 0;
+    for(let i=1;i<periods.length;i++){
+      if((periods[i].createdAt||0) > (periods[lastIdx].createdAt||0)) lastIdx = i;
+    }
+    periods.splice(lastIdx,1);
     queueSave();
     renderEditionPanel();
     renderGrid();
