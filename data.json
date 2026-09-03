@@ -2207,13 +2207,6 @@
       "type": "tematica",
       "startDate": "2026-10-19",
       "endDate": "2026-10-25"
-    },
-    {
-      "id": "1788408602010-2zq1i",
-      "createdAt": 1788408602010,
-      "type": "estandar",
-      "startDate": "2026-10-26",
-      "endDate": "2026-11-08"
     }
   ]
 }
