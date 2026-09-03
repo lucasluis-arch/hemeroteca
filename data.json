@@ -2165,13 +2165,5 @@
       }
     }
   },
-  "editionPeriods": [
-    {
-      "id": "1788407965145-lzlgv",
-      "createdAt": 1788407965145,
-      "type": "estandar",
-      "startDate": "2026-08-31",
-      "endDate": "2026-09-13"
-    }
-  ]
+  "editionPeriods": []
 }
