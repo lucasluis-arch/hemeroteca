@@ -116,9 +116,16 @@
   .btn-mark.mark-estandar:hover{ background:var(--stamp-green-soft); }
   .btn-mark.mark-tematica{ border:1.5px solid var(--stamp-purple); color:var(--stamp-purple); }
   .btn-mark.mark-tematica:hover{ background:var(--stamp-purple-soft); }
-  .btn-mark.mark-undo{ border:1.5px solid var(--rule); color:var(--ink-soft); margin-left:auto; }
+  .btn-mark.mark-undo{ border:1.5px solid var(--rule); color:var(--ink-soft); }
   .btn-mark.mark-undo:hover{ background:var(--paper-darker); }
   .btn-mark:disabled{ opacity:.4; cursor:default; }
+  .btn-mark.mark-manual{ border:1.5px solid var(--rule); color:var(--ink-soft); }
+  .btn-mark.mark-manual:hover{ background:var(--paper-darker); }
+  .manual-form{
+    display:flex; flex-wrap:wrap; gap:10px; align-items:flex-end;
+    margin-top:12px; padding-top:12px; border-top:1px dashed var(--rule);
+  }
+  .manual-form[hidden]{ display:none; }
   .warn{ color:var(--stamp-red); font-weight:600; }
   .field-mini{ text-align:left; margin-bottom:8px; }
   .field-mini label{ display:block; font-family:'JetBrains Mono', monospace; font-size:10px; text-transform:uppercase; color:var(--ink-soft); margin-bottom:3px; }
@@ -294,6 +301,25 @@
     <button class="btn-mark mark-estandar" id="btnMarkEstandar">Semana estándar</button>
     <button class="btn-mark mark-tematica" id="btnMarkTematica">Temática</button>
     <button class="btn-mark mark-undo" id="btnUndoPeriod">Borrar última asignada</button>
+    <button class="btn-mark mark-manual" id="btnManualToggle">Agregar manualmente</button>
+  </div>
+  <div class="manual-form" id="manualForm" hidden>
+    <div class="field-mini" style="flex:1 1 130px;">
+      <label for="manType">Tipo</label>
+      <select id="manType" class="mini">
+        <option value="estandar">Estándar</option>
+        <option value="tematica">Temática</option>
+      </select>
+    </div>
+    <div class="field-mini" style="flex:1 1 130px;">
+      <label for="manStart">Desde</label>
+      <input type="date" id="manStart" class="mini">
+    </div>
+    <div class="field-mini" style="flex:1 1 130px;">
+      <label for="manEnd">Hasta</label>
+      <input type="date" id="manEnd" class="mini">
+    </div>
+    <button class="btn" id="manSave">Guardar tramo</button>
   </div>
 </div>
 
@@ -621,6 +647,38 @@
     }
     periods.splice(lastIdx,1);
     queueSave();
+    renderEditionPanel();
+    renderGrid();
+  });
+
+  document.getElementById('btnManualToggle').addEventListener('click', ()=>{
+    const form = document.getElementById('manualForm');
+    form.hidden = !form.hidden;
+    if(!form.hidden){
+      document.getElementById('manStart').value = findNextUnassignedMonday();
+      document.getElementById('manEnd').value = '';
+    }
+  });
+  document.getElementById('manSave').addEventListener('click', ()=>{
+    const type = document.getElementById('manType').value;
+    const startDate = document.getElementById('manStart').value;
+    const endDate = document.getElementById('manEnd').value;
+    if(!startDate || !endDate){
+      showToast('Completá desde y hasta');
+      return;
+    }
+    if(diffDaysISO(startDate, endDate) < 0){
+      showToast('La fecha "hasta" no puede ser anterior a "desde"');
+      return;
+    }
+    state.appData.editionPeriods.push({
+      id: Date.now() + '-' + Math.random().toString(36).slice(2,7),
+      createdAt: Date.now(),
+      type, startDate, endDate,
+    });
+    sortPeriods();
+    queueSave();
+    document.getElementById('manualForm').hidden = true;
     renderEditionPanel();
     renderGrid();
   });
