@@ -152,6 +152,7 @@
   .th-day{ text-align:center; padding:6px 2px !important; }
   .th-day .wd{ font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--ink-soft); }
   .th-day .dn{ font-family:'JetBrains Mono', monospace; font-size:13px; font-weight:700; }
+  .issue-num{ font-family:'JetBrains Mono', monospace; font-size:9px; color:var(--ink-soft); line-height:1.3; }
   .th-day.is-today{ background:var(--stamp-red-soft); }
   .th-day.is-today .wd, .th-day.is-today .dn{ color:var(--stamp-red); }
   td.cell{ text-align:center; padding:5px 3px !important; vertical-align:middle; }
@@ -287,6 +288,7 @@
     <button class="btn" data-filter="galeria">Galería</button>
   </div>
   <button class="btn" id="todayBtn">Ir a hoy</button>
+  <button class="btn" id="numEditBtn">N° de edición</button>
 </div>
 
 <div class="grid-section">
@@ -349,6 +351,24 @@
   <div class="chk-row"><input type="checkbox" id="gpDeath"><label style="margin:0;" for="gpDeath">Defunción de artista</label></div>
   <label id="gpFlagNameWrap" style="display:none;">Nombre del artista<input type="text" id="gpFlagName"></label>
   <div class="modal-actions"><button class="btn" id="gpClose">Cerrar</button></div>
+</div>
+
+<div class="modal-overlay" id="numberModal" hidden>
+  <div class="modal">
+    <h2>Numeración de ediciones</h2>
+    <p class="modal-note">
+      Fijá el número de una edición en una fecha conocida — el resto de la grilla
+      se calcula solo, sumando o restando un número por cada día de diferencia.
+    </p>
+    <div class="field-mini"><label for="numHeraldoN">N° del Heraldo</label><input type="number" id="numHeraldoN" class="mini"></div>
+    <div class="field-mini"><label for="numHeraldoD">Fecha de ese N°</label><input type="date" id="numHeraldoD" class="mini"></div>
+    <div class="field-mini"><label for="numGaleriaN">N° de la Galería</label><input type="number" id="numGaleriaN" class="mini"></div>
+    <div class="field-mini"><label for="numGaleriaD">Fecha de ese N°</label><input type="date" id="numGaleriaD" class="mini"></div>
+    <div class="modal-actions">
+      <button class="btn active" id="numSave">Guardar</button>
+      <button class="btn" id="numCancel">Cancelar</button>
+    </div>
+  </div>
 </div>
 
 <div class="modal-overlay" id="configModal" hidden>
@@ -421,13 +441,13 @@
 
   /* ================= Content config ================= */
   const SECUNDARIA_CONFIG = {
-    1: [{key:'matilde', label:'Editorial de Opinión — Matilde'}],
-    5: [{key:'martin', label:'Editorial de Opinión — Martín'}],
-    2: [{key:'noticias', label:'Noticias del Mundo'}],
-    4: [{key:'noticias', label:'Noticias del Mundo'}],
-    3: [{key:'donde_estoy', label:'El Dónde Estoy'}],
-    6: [{key:'animales', label:'Publicación de Animales (Angela)'}],
-    0: [{key:'fonoteca', label:'Fonoteca'}],
+    1: [{key:'matilde', label:'Editorial (Matilde)', short:'Matilde'}],
+    5: [{key:'martin', label:'Editorial (Martín)', short:'Martín'}],
+    2: [{key:'noticias', label:'Noticias del Mundo', short:'Noticias'}],
+    4: [{key:'noticias', label:'Noticias del Mundo', short:'Noticias'}],
+    3: [{key:'donde_estoy', label:'Ludo', short:'Ludo'}],
+    6: [{key:'animales', label:'El Rancho de Angela', short:'Rancho'}],
+    0: [{key:'fonoteca', label:'Fonoteca', short:'Fonoteca'}],
   };
   const COMICS = [
     {id:'mafalda', label:'Mafalda'},
@@ -520,7 +540,7 @@
     config: loadConfig(),
     sha: null,
     fileExists: false,
-    appData: {days:{}, editionPeriods:[]},
+    appData: {days:{}, editionPeriods:[], numbering:null},
   };
 
   function getDay(iso){
@@ -598,6 +618,24 @@
   function sortPeriods(){
     state.appData.editionPeriods.sort((a,b)=> a.startDate < b.startDate ? -1 : (a.startDate > b.startDate ? 1 : 0));
   }
+
+  /* ================= Issue numbering ================= */
+  // Publishes daily, so the number for any date is just the anchor number
+  // plus/minus how many days away that date is from the anchor date.
+  function issueNumber(pub, iso){
+    const n = state.appData.numbering && state.appData.numbering[pub];
+    if(!n) return null;
+    return n.anchorNumber + diffDaysISO(n.anchorDate, iso);
+  }
+  // One-time convenience seed: the numbers as given for 2026-09-08. Only
+  // used when nothing has been configured yet; the modal can adjust anytime.
+  function seedNumbering(){
+    return {
+      heraldo: {anchorNumber: 1810, anchorDate: '2026-09-08'},
+      galeria: {anchorNumber: 1690, anchorDate: '2026-09-08'},
+    };
+  }
+
   function mondayOfWeek(iso){
     const wd = weekdayIndex(iso);
     const back = wd===0 ? 6 : wd-1;
@@ -769,7 +807,8 @@
       const {d} = partsFromISO(iso);
       const wd = weekdayIndex(iso);
       const isToday = iso===today ? ' is-today' : '';
-      return `<th class="th-day col-day${isToday}"><div class="wd">${WEEKDAYS_SHORT[wd]}</div><div class="dn">${d}</div></th>`;
+      const hNum = issueNumber('heraldo', iso);
+      return `<th class="th-day col-day${isToday}"><div class="wd">${WEEKDAYS_SHORT[wd]}</div><div class="dn">${d}</div>${hNum!=null?`<div class="issue-num">H° ${hNum}</div>`:''}</th>`;
     }).join('') + '</tr>';
 
     let efeRow = '<tr class="row-efemerides"><td class="row-label">Efemérides</td>' + cols.map(iso=>{
@@ -786,7 +825,7 @@
       if(items.length===0) return `<td class="cell${isToday}"></td>`;
       const item = items[0];
       const sd = day.secundaria[item.key];
-      const shortLabel = item.label.split('—').pop().trim();
+      const shortLabel = item.short || item.label;
       return `<td class="cell${isToday}"><div class="cell-sub">${escapeHtml(shortLabel)}</div>${statusButtonHtml('secundaria', item.key, sd.status, iso)}</td>`;
     }).join('') + '</tr>';
 
@@ -815,10 +854,12 @@
       const day = getDay(iso);
       const info = editionCategory(iso);
       const isToday = iso===today ? ' is-today-col' : '';
+      const gNum = issueNumber('galeria', iso);
       let icons = '';
       if(day.galeria.flagBirth) icons += '🎂';
       if(day.galeria.flagDeath) icons += '⚱';
       return `<td class="cell cat-${info.cat}${isToday}">
+        ${gNum!=null?`<div class="issue-num">G° ${gNum}</div>`:''}
         ${statusButtonHtml('galeria','', day.galeria.status, iso)}
         ${icons ? `<div class="gal-icons">${icons}</div>` : ''}
         <button type="button" class="gal-edit-btn" data-action="gal-edit" data-iso="${iso}" title="Cumpleaños / defunción de artista">✎</button>
@@ -932,15 +973,40 @@
   });
   document.getElementById('todayBtn').addEventListener('click', scrollToToday);
 
+  /* ================= Issue numbering modal ================= */
+  const numberModal = document.getElementById('numberModal');
+  document.getElementById('numEditBtn').addEventListener('click', ()=>{
+    const n = state.appData.numbering;
+    document.getElementById('numHeraldoN').value = n && n.heraldo ? n.heraldo.anchorNumber : '';
+    document.getElementById('numHeraldoD').value = n && n.heraldo ? n.heraldo.anchorDate : todayISO();
+    document.getElementById('numGaleriaN').value = n && n.galeria ? n.galeria.anchorNumber : '';
+    document.getElementById('numGaleriaD').value = n && n.galeria ? n.galeria.anchorDate : todayISO();
+    numberModal.hidden = false;
+  });
+  document.getElementById('numCancel').addEventListener('click', ()=>{ numberModal.hidden = true; });
+  document.getElementById('numSave').addEventListener('click', ()=>{
+    const hN = document.getElementById('numHeraldoN').value;
+    const hD = document.getElementById('numHeraldoD').value;
+    const gN = document.getElementById('numGaleriaN').value;
+    const gD = document.getElementById('numGaleriaD').value;
+    const numbering = {};
+    if(hN !== '' && hD) numbering.heraldo = {anchorNumber: parseInt(hN,10), anchorDate: hD};
+    if(gN !== '' && gD) numbering.galeria = {anchorNumber: parseInt(gN,10), anchorDate: gD};
+    state.appData.numbering = numbering;
+    queueSave();
+    numberModal.hidden = true;
+    renderGrid();
+  });
+
   /* ================= Panorama: section completion, dice stats, gallery summary ================= */
   function computeSectionStats(){
     const types = [
       {label:'Efemérides', galeria:false, get:d=>d.efemerides},
-      {label:'Editorial — Matilde (lun)', galeria:false, get:d=>d.secundaria.matilde},
-      {label:'Editorial — Martín (vie)', galeria:false, get:d=>d.secundaria.martin},
+      {label:'Editorial (Matilde, lun)', galeria:false, get:d=>d.secundaria.matilde},
+      {label:'Editorial (Martín, vie)', galeria:false, get:d=>d.secundaria.martin},
       {label:'Noticias del Mundo', galeria:false, get:d=>d.secundaria.noticias},
-      {label:'El Dónde Estoy', galeria:false, get:d=>d.secundaria.donde_estoy},
-      {label:'Animales (Angela)', galeria:false, get:d=>d.secundaria.animales},
+      {label:'Ludo', galeria:false, get:d=>d.secundaria.donde_estoy},
+      {label:'El Rancho de Angela', galeria:false, get:d=>d.secundaria.animales},
       {label:'Fonoteca', galeria:false, get:d=>d.secundaria.fonoteca},
       {label:'Tira cómica', galeria:false, get:d=>d.tira},
       {label:'Galería de Goma', galeria:true, get:d=>d.galeria},
@@ -1109,10 +1175,11 @@
         }
         delete state.appData.editionSettings;
         sortPeriods();
+        if(!state.appData.numbering) state.appData.numbering = seedNumbering();
         state.sha = res.sha;
         state.fileExists = true;
       }else{
-        state.appData = {days:{}, editionPeriods:[]};
+        state.appData = {days:{}, editionPeriods:[], numbering: seedNumbering()};
         state.fileExists = false;
         state.sha = null;
       }
