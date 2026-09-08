@@ -467,7 +467,7 @@
       },
       "secundaria": {
         "noticias": {
-          "status": "listo",
+          "status": "pendiente",
           "notes": ""
         }
       },
