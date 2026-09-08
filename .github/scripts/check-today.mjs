@@ -12,12 +12,12 @@ const MONTHS_ES = ['enero','febrero','marzo','abril','mayo','junio','julio','ago
 
 // Debe coincidir exactamente con SECUNDARIA_CONFIG del panel (index.html).
 const SECUNDARIA_CONFIG = {
-  1: [{ key: 'matilde', label: 'Editorial de Opinión — Matilde' }],
-  5: [{ key: 'martin', label: 'Editorial de Opinión — Martín' }],
+  1: [{ key: 'matilde', label: 'Editorial (Matilde)' }],
+  5: [{ key: 'martin', label: 'Editorial (Martín)' }],
   2: [{ key: 'noticias', label: 'Noticias del Mundo' }],
   4: [{ key: 'noticias', label: 'Noticias del Mundo' }],
-  3: [{ key: 'donde_estoy', label: 'El Dónde Estoy' }],
-  6: [{ key: 'animales', label: 'Publicación de Animales (Angela)' }],
+  3: [{ key: 'donde_estoy', label: 'Ludo' }],
+  6: [{ key: 'animales', label: 'El Rancho de Angela' }],
   0: [{ key: 'fonoteca', label: 'Fonoteca' }],
 };
 
