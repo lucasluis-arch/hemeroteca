@@ -440,7 +440,7 @@
       },
       "secundaria": {
         "donde_estoy": {
-          "status": "pendiente",
+          "status": "progreso",
           "notes": ""
         }
       },
@@ -467,7 +467,7 @@
       },
       "secundaria": {
         "noticias": {
-          "status": "pendiente",
+          "status": "progreso",
           "notes": ""
         }
       },
