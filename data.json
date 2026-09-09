@@ -489,7 +489,7 @@
     "2026-09-11": {
       "skip": false,
       "efemerides": {
-        "status": "pendiente",
+        "status": "progreso",
         "notes": ""
       },
       "secundaria": {
@@ -516,7 +516,7 @@
     "2026-09-12": {
       "skip": false,
       "efemerides": {
-        "status": "pendiente",
+        "status": "progreso",
         "notes": ""
       },
       "secundaria": {
