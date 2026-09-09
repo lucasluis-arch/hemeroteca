@@ -494,7 +494,7 @@
       },
       "secundaria": {
         "martin": {
-          "status": "progreso",
+          "status": "listo",
           "notes": ""
         }
       },
@@ -521,7 +521,7 @@
       },
       "secundaria": {
         "animales": {
-          "status": "pendiente",
+          "status": "listo",
           "notes": ""
         }
       },
