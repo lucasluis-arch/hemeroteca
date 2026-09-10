@@ -543,7 +543,7 @@
     "2026-09-13": {
       "skip": false,
       "efemerides": {
-        "status": "progreso",
+        "status": "listo",
         "notes": ""
       },
       "secundaria": {
@@ -1110,7 +1110,7 @@
     },
     "2026-09-14": {
       "efemerides": {
-        "status": "listo"
+        "status": "pendiente"
       },
       "secundaria": {
         "matilde": {
