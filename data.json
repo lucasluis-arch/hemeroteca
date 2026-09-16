@@ -1136,7 +1136,7 @@
       },
       "secundaria": {
         "noticias": {
-          "status": "progreso"
+          "status": "listo"
         }
       },
       "tira": {
@@ -1158,7 +1158,7 @@
       },
       "secundaria": {
         "donde_estoy": {
-          "status": "progreso"
+          "status": "listo"
         }
       },
       "tira": {
