@@ -1202,7 +1202,7 @@
       },
       "secundaria": {
         "martin": {
-          "status": "pendiente"
+          "status": "progreso"
         }
       },
       "tira": {
@@ -1210,7 +1210,7 @@
         "status": "listo"
       },
       "galeria": {
-        "status": "pendiente",
+        "status": "progreso",
         "title": "",
         "artist": "",
         "flagBirth": false,
