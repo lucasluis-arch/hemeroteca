@@ -1224,7 +1224,7 @@
       },
       "secundaria": {
         "animales": {
-          "status": "progreso"
+          "status": "listo"
         }
       },
       "tira": {
@@ -1232,7 +1232,7 @@
         "status": "listo"
       },
       "galeria": {
-        "status": "progreso",
+        "status": "listo",
         "title": "",
         "artist": "",
         "flagBirth": false,
