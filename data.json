@@ -1268,12 +1268,12 @@
       },
       "secundaria": {
         "matilde": {
-          "status": "progreso"
+          "status": "listo"
         }
       },
       "tira": {
         "comic": "gaturro",
-        "status": "progreso"
+        "status": "listo"
       },
       "galeria": {
         "status": "progreso",
