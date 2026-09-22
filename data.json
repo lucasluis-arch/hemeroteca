@@ -1280,7 +1280,7 @@
         "title": "",
         "artist": "",
         "flagBirth": false,
-        "flagDeath": false,
+        "flagDeath": true,
         "flagName": ""
       }
     },
