@@ -1308,11 +1308,11 @@
     },
     "2026-09-23": {
       "efemerides": {
-        "status": "progreso"
+        "status": "listo"
       },
       "secundaria": {
         "donde_estoy": {
-          "status": "progreso"
+          "status": "listo"
         }
       },
       "tira": {
