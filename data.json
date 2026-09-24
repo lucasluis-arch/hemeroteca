@@ -1342,7 +1342,7 @@
         "status": "progreso"
       },
       "galeria": {
-        "status": "progreso",
+        "status": "listo",
         "title": "",
         "artist": "",
         "flagBirth": false,
