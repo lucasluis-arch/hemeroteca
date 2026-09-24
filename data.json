@@ -1334,7 +1334,7 @@
       },
       "secundaria": {
         "noticias": {
-          "status": "pendiente"
+          "status": "progreso"
         }
       },
       "tira": {
@@ -1364,7 +1364,7 @@
         "status": "progreso"
       },
       "galeria": {
-        "status": "pendiente",
+        "status": "progreso",
         "title": "",
         "artist": "",
         "flagBirth": false,
