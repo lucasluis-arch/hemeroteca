@@ -1493,7 +1493,7 @@
       },
       "tira": {
         "comic": "charlie",
-        "status": "progreso"
+        "status": "listo"
       },
       "galeria": {
         "status": "progreso",
@@ -1515,7 +1515,7 @@
       },
       "tira": {
         "comic": "mafalda",
-        "status": "progreso"
+        "status": "listo"
       },
       "galeria": {
         "status": "progreso",
@@ -1537,7 +1537,7 @@
       },
       "tira": {
         "comic": "gaturro",
-        "status": "progreso"
+        "status": "listo"
       },
       "galeria": {
         "status": "progreso",
