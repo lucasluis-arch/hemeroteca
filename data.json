@@ -1422,7 +1422,7 @@
       },
       "secundaria": {
         "matilde": {
-          "status": "pendiente"
+          "status": "progreso"
         }
       },
       "tira": {
@@ -1440,11 +1440,11 @@
     },
     "2026-09-29": {
       "efemerides": {
-        "status": "pendiente"
+        "status": "progreso"
       },
       "secundaria": {
         "noticias": {
-          "status": "pendiente"
+          "status": "progreso"
         }
       },
       "tira": {
