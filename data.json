@@ -1484,11 +1484,11 @@
     },
     "2026-10-01": {
       "efemerides": {
-        "status": "pendiente"
+        "status": "progreso"
       },
       "secundaria": {
         "noticias": {
-          "status": "pendiente"
+          "status": "progreso"
         }
       },
       "tira": {
@@ -1510,7 +1510,7 @@
       },
       "secundaria": {
         "martin": {
-          "status": "pendiente"
+          "status": "progreso"
         }
       },
       "tira": {
