@@ -1484,7 +1484,7 @@
     },
     "2026-10-01": {
       "efemerides": {
-        "status": "listo"
+        "status": "pendiente"
       },
       "secundaria": {
         "noticias": {
@@ -1506,7 +1506,7 @@
     },
     "2026-10-02": {
       "efemerides": {
-        "status": "listo"
+        "status": "pendiente"
       },
       "secundaria": {
         "martin": {
@@ -1528,7 +1528,7 @@
     },
     "2026-10-03": {
       "efemerides": {
-        "status": "listo"
+        "status": "pendiente"
       },
       "secundaria": {
         "animales": {
@@ -1550,7 +1550,7 @@
     },
     "2026-10-04": {
       "efemerides": {
-        "status": "listo"
+        "status": "progreso"
       },
       "secundaria": {
         "fonoteca": {
