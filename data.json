@@ -1510,7 +1510,7 @@
       },
       "secundaria": {
         "martin": {
-          "status": "progreso"
+          "status": "listo"
         }
       },
       "tira": {
@@ -1532,7 +1532,7 @@
       },
       "secundaria": {
         "animales": {
-          "status": "progreso"
+          "status": "listo"
         }
       },
       "tira": {
