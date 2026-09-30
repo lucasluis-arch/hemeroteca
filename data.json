@@ -1576,7 +1576,7 @@
       },
       "secundaria": {
         "matilde": {
-          "status": "pendiente"
+          "status": "progreso"
         }
       },
       "tira": {
@@ -1598,7 +1598,7 @@
       },
       "secundaria": {
         "noticias": {
-          "status": "pendiente"
+          "status": "progreso"
         }
       },
       "tira": {
