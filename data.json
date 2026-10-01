@@ -1628,7 +1628,7 @@
         "status": "pendiente"
       },
       "galeria": {
-        "status": "pendiente",
+        "status": "progreso",
         "title": "",
         "artist": "",
         "flagBirth": false,
@@ -1642,7 +1642,7 @@
       },
       "secundaria": {
         "noticias": {
-          "status": "pendiente"
+          "status": "progreso"
         }
       },
       "tira": {
