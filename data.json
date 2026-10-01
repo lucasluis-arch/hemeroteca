@@ -1576,12 +1576,12 @@
       },
       "secundaria": {
         "matilde": {
-          "status": "pendiente"
+          "status": "progreso"
         }
       },
       "tira": {
         "comic": "charlie",
-        "status": "pendiente"
+        "status": "progreso"
       },
       "galeria": {
         "status": "pendiente",
