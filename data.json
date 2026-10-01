@@ -1598,7 +1598,7 @@
       },
       "secundaria": {
         "noticias": {
-          "status": "listo"
+          "status": "pendiente"
         }
       },
       "tira": {
@@ -1620,7 +1620,7 @@
       },
       "secundaria": {
         "donde_estoy": {
-          "status": "listo"
+          "status": "pendiente"
         }
       },
       "tira": {
@@ -1642,7 +1642,7 @@
       },
       "secundaria": {
         "noticias": {
-          "status": "listo"
+          "status": "pendiente"
         }
       },
       "tira": {
