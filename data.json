@@ -1584,7 +1584,7 @@
         "status": "pendiente"
       },
       "galeria": {
-        "status": "listo",
+        "status": "progreso",
         "title": "",
         "artist": "",
         "flagBirth": false,
