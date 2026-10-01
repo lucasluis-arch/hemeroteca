@@ -1572,11 +1572,11 @@
     },
     "2026-10-05": {
       "efemerides": {
-        "status": "listo"
+        "status": "pendiente"
       },
       "secundaria": {
         "matilde": {
-          "status": "listo"
+          "status": "pendiente"
         }
       },
       "tira": {
