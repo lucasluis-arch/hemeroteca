@@ -1620,7 +1620,7 @@
       },
       "secundaria": {
         "donde_estoy": {
-          "status": "pendiente"
+          "status": "progreso"
         }
       },
       "tira": {
@@ -1638,7 +1638,7 @@
     },
     "2026-10-08": {
       "efemerides": {
-        "status": "pendiente"
+        "status": "progreso"
       },
       "secundaria": {
         "noticias": {
