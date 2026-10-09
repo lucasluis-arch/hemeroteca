@@ -2814,6 +2814,13 @@
       "type": "estandar",
       "startDate": "2026-10-26",
       "endDate": "2026-11-08"
+    },
+    {
+      "id": "1791548956264-bs31v",
+      "createdAt": 1791548956264,
+      "type": "tematica",
+      "startDate": "2026-11-09",
+      "endDate": "2026-11-15"
     }
   ],
   "numbering": {
