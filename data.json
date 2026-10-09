@@ -2821,6 +2821,13 @@
       "type": "tematica",
       "startDate": "2026-11-09",
       "endDate": "2026-11-15"
+    },
+    {
+      "id": "1791548958889-5p81f",
+      "createdAt": 1791548958889,
+      "type": "estandar",
+      "startDate": "2026-11-16",
+      "endDate": "2026-11-29"
     }
   ],
   "numbering": {
