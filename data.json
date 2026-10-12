@@ -1752,12 +1752,12 @@
       },
       "secundaria": {
         "noticias": {
-          "status": "pendiente"
+          "status": "progreso"
         }
       },
       "tira": {
         "comic": "garfield",
-        "status": "pendiente"
+        "status": "progreso"
       },
       "galeria": {
         "status": "pendiente",
