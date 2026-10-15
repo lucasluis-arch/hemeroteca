@@ -1804,7 +1804,7 @@
         "status": "progreso"
       },
       "galeria": {
-        "status": "pendiente",
+        "status": "progreso",
         "title": "",
         "artist": "",
         "flagBirth": false,
@@ -1814,19 +1814,19 @@
     },
     "2026-10-16": {
       "efemerides": {
-        "status": "pendiente"
+        "status": "progreso"
       },
       "secundaria": {
         "martin": {
-          "status": "pendiente"
+          "status": "progreso"
         }
       },
       "tira": {
         "comic": "",
-        "status": "pendiente"
+        "status": "progreso"
       },
       "galeria": {
-        "status": "pendiente",
+        "status": "progreso",
         "title": "",
         "artist": "",
         "flagBirth": false,
