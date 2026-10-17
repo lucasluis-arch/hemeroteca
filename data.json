@@ -1840,12 +1840,12 @@
       },
       "secundaria": {
         "animales": {
-          "status": "progreso"
+          "status": "listo"
         }
       },
       "tira": {
         "comic": "mafalda",
-        "status": "progreso"
+        "status": "listo"
       },
       "galeria": {
         "status": "progreso",
