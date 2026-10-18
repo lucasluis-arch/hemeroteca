@@ -1867,10 +1867,10 @@
       },
       "tira": {
         "comic": "charlie",
-        "status": "progreso"
+        "status": "listo"
       },
       "galeria": {
-        "status": "progreso",
+        "status": "listo",
         "title": "",
         "artist": "",
         "flagBirth": false,
