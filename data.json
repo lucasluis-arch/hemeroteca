@@ -1968,11 +1968,11 @@
     },
     "2026-10-23": {
       "efemerides": {
-        "status": "pendiente"
+        "status": "progreso"
       },
       "secundaria": {
         "martin": {
-          "status": "pendiente"
+          "status": "progreso"
         }
       },
       "tira": {
@@ -1994,7 +1994,7 @@
       },
       "secundaria": {
         "animales": {
-          "status": "pendiente"
+          "status": "progreso"
         }
       },
       "tira": {
