@@ -1972,7 +1972,7 @@
       },
       "secundaria": {
         "martin": {
-          "status": "listo"
+          "status": "pendiente"
         }
       },
       "tira": {
@@ -1994,7 +1994,7 @@
       },
       "secundaria": {
         "animales": {
-          "status": "listo"
+          "status": "pendiente"
         }
       },
       "tira": {
