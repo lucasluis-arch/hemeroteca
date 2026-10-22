@@ -2065,7 +2065,7 @@
       },
       "tira": {
         "comic": "",
-        "status": "progreso"
+        "status": "pendiente"
       },
       "galeria": {
         "status": "progreso",
@@ -2087,7 +2087,7 @@
       },
       "tira": {
         "comic": "",
-        "status": "listo"
+        "status": "pendiente"
       },
       "galeria": {
         "status": "progreso",
