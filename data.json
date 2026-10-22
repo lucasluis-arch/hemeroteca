@@ -2021,7 +2021,7 @@
       },
       "tira": {
         "comic": "",
-        "status": "progreso"
+        "status": "pendiente"
       },
       "galeria": {
         "status": "listo",
@@ -2043,7 +2043,7 @@
       },
       "tira": {
         "comic": "",
-        "status": "listo"
+        "status": "pendiente"
       },
       "galeria": {
         "status": "listo",
