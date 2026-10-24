@@ -2087,7 +2087,7 @@
       },
       "tira": {
         "comic": "garfield",
-        "status": "pendiente"
+        "status": "progreso"
       },
       "galeria": {
         "status": "listo",
@@ -2109,7 +2109,7 @@
       },
       "tira": {
         "comic": "charlie",
-        "status": "pendiente"
+        "status": "progreso"
       },
       "galeria": {
         "status": "progreso",
