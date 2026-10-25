@@ -2144,7 +2144,7 @@
     },
     "2026-10-31": {
       "efemerides": {
-        "status": "pendiente"
+        "status": "progreso"
       },
       "secundaria": {
         "animales": {
@@ -2178,7 +2178,7 @@
         "status": "progreso"
       },
       "galeria": {
-        "status": "pendiente",
+        "status": "progreso",
         "flagBirth": false,
         "flagDeath": false,
         "flagName": ""
