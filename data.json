@@ -2226,7 +2226,7 @@
     },
     "2026-11-04": {
       "efemerides": {
-        "status": "progreso"
+        "status": "listo"
       },
       "secundaria": {
         "donde_estoy": {
@@ -2238,7 +2238,7 @@
         "status": "progreso"
       },
       "galeria": {
-        "status": "progreso",
+        "status": "listo",
         "flagBirth": false,
         "flagDeath": false,
         "flagName": ""
