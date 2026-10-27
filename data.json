@@ -2153,7 +2153,7 @@
       },
       "tira": {
         "comic": "gaturro",
-        "status": "pendiente"
+        "status": "progreso"
       },
       "galeria": {
         "status": "listo",
@@ -2175,7 +2175,7 @@
       },
       "tira": {
         "comic": "mafalda",
-        "status": "listo"
+        "status": "pendiente"
       },
       "galeria": {
         "status": "listo",
