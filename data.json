@@ -2198,7 +2198,7 @@
         "status": "progreso"
       },
       "galeria": {
-        "status": "progreso",
+        "status": "listo",
         "flagBirth": false,
         "flagDeath": false,
         "flagName": ""
@@ -2206,7 +2206,7 @@
     },
     "2026-11-03": {
       "efemerides": {
-        "status": "progreso"
+        "status": "listo"
       },
       "secundaria": {
         "noticias": {
