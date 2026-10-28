@@ -2278,7 +2278,7 @@
         "status": "progreso"
       },
       "galeria": {
-        "status": "progreso",
+        "status": "listo",
         "flagBirth": false,
         "flagDeath": false,
         "flagName": ""
