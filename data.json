@@ -2278,7 +2278,7 @@
         "status": "progreso"
       },
       "galeria": {
-        "status": "pendiente",
+        "status": "progreso",
         "flagBirth": false,
         "flagDeath": false,
         "flagName": ""
@@ -2286,7 +2286,7 @@
     },
     "2026-11-07": {
       "efemerides": {
-        "status": "pendiente"
+        "status": "progreso"
       },
       "secundaria": {
         "animales": {
@@ -2298,7 +2298,7 @@
         "status": "progreso"
       },
       "galeria": {
-        "status": "pendiente",
+        "status": "progreso",
         "flagBirth": false,
         "flagDeath": false,
         "flagName": ""
