@@ -2358,7 +2358,7 @@
         "status": "pendiente"
       },
       "galeria": {
-        "status": "progreso",
+        "status": "listo",
         "flagBirth": false,
         "flagDeath": false,
         "flagName": ""
