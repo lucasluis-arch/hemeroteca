@@ -2346,7 +2346,7 @@
     },
     "2026-11-10": {
       "efemerides": {
-        "status": "listo"
+        "status": "pendiente"
       },
       "secundaria": {
         "noticias": {
@@ -2366,7 +2366,7 @@
     },
     "2026-11-11": {
       "efemerides": {
-        "status": "progreso"
+        "status": "pendiente"
       },
       "secundaria": {
         "donde_estoy": {
