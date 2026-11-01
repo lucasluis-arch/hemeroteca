@@ -2426,7 +2426,7 @@
     },
     "2026-11-14": {
       "efemerides": {
-        "status": "progreso"
+        "status": "listo"
       },
       "secundaria": {
         "animales": {
@@ -2446,7 +2446,7 @@
     },
     "2026-11-15": {
       "efemerides": {
-        "status": "progreso"
+        "status": "listo"
       },
       "secundaria": {
         "fonoteca": {
@@ -2458,7 +2458,7 @@
         "status": "pendiente"
       },
       "galeria": {
-        "status": "progreso",
+        "status": "listo",
         "flagBirth": false,
         "flagDeath": false,
         "flagName": ""
