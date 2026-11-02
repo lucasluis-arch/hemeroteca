@@ -2478,7 +2478,7 @@
         "status": "pendiente"
       },
       "galeria": {
-        "status": "pendiente",
+        "status": "progreso",
         "flagBirth": false,
         "flagDeath": false,
         "flagName": ""
@@ -2486,7 +2486,7 @@
     },
     "2026-11-17": {
       "efemerides": {
-        "status": "pendiente"
+        "status": "progreso"
       },
       "secundaria": {
         "noticias": {
@@ -2498,7 +2498,7 @@
         "status": "pendiente"
       },
       "galeria": {
-        "status": "pendiente",
+        "status": "progreso",
         "flagBirth": false,
         "flagDeath": false,
         "flagName": ""
