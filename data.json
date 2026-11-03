@@ -3462,6 +3462,13 @@
       "type": "estandar",
       "startDate": "2026-12-07",
       "endDate": "2026-12-20"
+    },
+    {
+      "id": "1793732995903-446h2",
+      "createdAt": 1793732995903,
+      "type": "tematica",
+      "startDate": "2026-12-21",
+      "endDate": "2026-12-27"
     }
   ],
   "numbering": {
