@@ -2666,7 +2666,7 @@
     },
     "2026-11-26": {
       "efemerides": {
-        "status": "pendiente"
+        "status": "progreso"
       },
       "secundaria": {
         "noticias": {
@@ -2678,7 +2678,7 @@
         "status": "pendiente"
       },
       "galeria": {
-        "status": "pendiente",
+        "status": "progreso",
         "flagBirth": false,
         "flagDeath": false,
         "flagName": ""
@@ -2686,7 +2686,7 @@
     },
     "2026-11-27": {
       "efemerides": {
-        "status": "pendiente"
+        "status": "progreso"
       },
       "secundaria": {
         "martin": {
