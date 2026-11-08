@@ -2718,7 +2718,7 @@
         "status": "pendiente"
       },
       "galeria": {
-        "status": "pendiente",
+        "status": "progreso",
         "flagBirth": false,
         "flagDeath": false,
         "flagName": ""
@@ -2726,7 +2726,7 @@
     },
     "2026-11-29": {
       "efemerides": {
-        "status": "pendiente"
+        "status": "progreso"
       },
       "secundaria": {
         "fonoteca": {
@@ -2738,7 +2738,7 @@
         "status": "pendiente"
       },
       "galeria": {
-        "status": "pendiente",
+        "status": "progreso",
         "flagBirth": false,
         "flagDeath": false,
         "flagName": ""
