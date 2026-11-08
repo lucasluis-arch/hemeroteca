@@ -1418,6 +1418,10 @@
    },
    "galeria": {
     "status": "listo"
+   },
+   "tira": {
+    "status": "pendiente",
+    "comic": "charlie"
    }
   },
   "2026-11-19": {
