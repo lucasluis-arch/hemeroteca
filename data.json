@@ -1382,6 +1382,10 @@
    },
    "galeria": {
     "status": "listo"
+   },
+   "tira": {
+    "status": "pendiente",
+    "comic": "mafalda"
    }
   },
   "2026-11-16": {
