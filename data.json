@@ -1556,6 +1556,10 @@
    },
    "galeria": {
     "status": "listo"
+   },
+   "tira": {
+    "status": "pendiente",
+    "comic": "gaturro"
    }
   },
   "2026-11-30": {
