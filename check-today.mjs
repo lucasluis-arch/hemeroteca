@@ -17,7 +17,7 @@ const DEFAULT_SECTIONS = {
   6: { label: 'El Rancho de Angela' },
   0: { label: 'Fonoteca' },
 };
-const COMICS = { mafalda: 'Mafalda', gaturro: 'Gaturro', garfield: 'Garfield', charlie: 'Charlie Brown' };
+const COMICS = { mafalda: 'Mafalda', gaturro: 'Gaturro', garfield: 'Garfield', charlie: 'Charlie Brown', pingu: 'Pingu' };
 const WEEKDAYS = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
 const MONTHS = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
 
