@@ -3,1203 +3,910 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>El Heraldo de Goma — Control de Redacción</title>
+<title>El Heraldo de Goma · Redacción</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23f1ead9'/%3E%3Ccircle cx='32' cy='32' r='26' fill='none' stroke='%23a4382c' stroke-width='3'/%3E%3Ccircle cx='32' cy='32' r='19' fill='none' stroke='%23a4382c' stroke-width='1.4'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' font-weight='700' fill='%23241f18' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Lora:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#f1ead9;
-    --paper-dark:#e6dcc4;
-    --paper-darker:#d9cdae;
-    --ink:#241f18;
-    --ink-soft:#6b6153;
-    --rule:#c7bb9e;
-    --stamp-red:#a4382c;
-    --stamp-red-soft:rgba(164,56,44,0.09);
-    --stamp-green:#2e6a4f;
-    --stamp-green-soft:rgba(46,106,79,0.12);
-    --stamp-purple:#5b4a8f;
-    --stamp-purple-soft:rgba(91,74,143,0.12);
-    --mustard:#b57e1f;
-    --mustard-soft:rgba(181,126,31,0.14);
+    --paper:#f1ead9; --paper-dark:#e8dfc9; --paper-darker:#d9cdae;
+    --ink:#241f18; --ink-soft:#6b6153; --rule:#c7bb9e;
+    --red:#a4382c; --red-soft:rgba(164,56,44,.10);
+    --green:#2e6a4f; --green-soft:rgba(46,106,79,.13);
+    --purple:#5b4a8f; --purple-soft:rgba(91,74,143,.13);
+    --mustard:#9a6a14; --mustard-soft:rgba(181,126,31,.16);
+    --mono:'JetBrains Mono', ui-monospace, monospace;
+    --type:'Special Elite', 'Courier New', monospace;
+    --col:72px; --label:118px;
   }
-  *{box-sizing:border-box;}
+  *{box-sizing:border-box}
   body{
-    margin:0;
-    background:
-      radial-gradient(circle at 1px 1px, rgba(36,31,24,0.05) 1px, transparent 0) 0 0/14px 14px,
-      var(--paper);
-    color:var(--ink);
-    font-family:'Lora', serif;
-    line-height:1.4;
-    padding-bottom:60px;
+    margin:0; color:var(--ink); font-family:'Lora', Georgia, serif; line-height:1.4;
+    background:radial-gradient(circle at 1px 1px, rgba(36,31,24,.05) 1px, transparent 0) 0 0/14px 14px, var(--paper);
+    padding:0 20px 48px;
   }
-  ::selection{ background: var(--stamp-red); color:var(--paper); }
-  a{color:inherit;}
+  button{font:inherit; color:inherit}
+  :focus-visible{outline:2px solid var(--red); outline-offset:2px}
 
-  header.masthead{
-    border-bottom:4px double var(--ink);
-    padding:22px 24px 14px;
-    text-align:center;
+  /* Top bar */
+  .topbar{
+    display:flex; align-items:center; gap:22px; flex-wrap:wrap;
+    padding:12px 2px 10px; border-bottom:3px double var(--ink);
   }
-  header.masthead .kicker{
-    font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.18em;
-    text-transform:uppercase; color:var(--ink-soft);
+  .topbar h1{font-family:var(--type); font-weight:400; font-size:24px; margin:0; letter-spacing:.01em}
+  .stats{display:flex; gap:18px; align-items:baseline; flex-wrap:wrap}
+  .stat{font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-soft)}
+  .stat b{font-family:var(--type); font-weight:400; font-size:22px; color:var(--red); margin-left:5px; letter-spacing:0; vertical-align:-2px}
+  .stat.minor b{font-family:var(--mono); font-size:13px; color:var(--ink); font-weight:700; vertical-align:0}
+  .topbar .right{margin-left:auto; display:flex; align-items:center; gap:10px}
+  .save{font-family:var(--mono); font-size:11px; color:var(--ink-soft); display:flex; align-items:center; gap:6px}
+  .save i{width:8px; height:8px; border-radius:50%; background:var(--rule); display:inline-block}
+  .save.ok i{background:var(--green)} .save.saving i{background:var(--mustard)}
+  .save.pending i{background:var(--mustard)} .save.err i{background:var(--red)}
+  .icon-btn{
+    border:1px solid var(--rule); background:transparent; border-radius:3px; cursor:pointer;
+    font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.03em; padding:5px 9px; color:var(--ink-soft);
   }
-  header.masthead h1{
-    font-family:'Special Elite', monospace; font-size:clamp(28px,5vw,44px);
-    margin:6px 0 4px; letter-spacing:.02em;
-  }
-  header.masthead .sub{ font-size:13px; color:var(--ink-soft); font-style:italic; }
+  .icon-btn:hover{background:var(--paper-dark); color:var(--ink)}
 
-  .conn-status{
-    max-width:1500px; margin:10px auto 0; padding:0 20px;
-    display:flex; justify-content:center; align-items:center; gap:10px;
-    font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--ink-soft);
-  }
-  .conn-status .dot{ width:7px;height:7px;border-radius:50%; background:var(--rule); display:inline-block; }
-  .conn-status .dot.ok{ background:var(--stamp-green); }
-  .conn-status .dot.err{ background:var(--stamp-red); }
-  .conn-status button{
-    font-family:'JetBrains Mono', monospace; font-size:10px; text-transform:uppercase;
-    border:1px solid var(--rule); background:transparent; border-radius:10px; padding:2px 8px; cursor:pointer; color:var(--ink-soft);
-  }
+  /* Alerts */
+  .alerts{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
+  .alerts:empty{display:none}
+  .alert{font-size:12.5px; padding:5px 11px; border-radius:3px; border:1px solid; display:flex; align-items:center; gap:10px}
+  .alert.warn{border-color:var(--mustard); color:var(--mustard); background:var(--mustard-soft)}
+  .alert.err{border-color:var(--red); color:var(--red); background:var(--red-soft)}
+  .alert button{border:1px solid currentColor; background:transparent; border-radius:3px; padding:1px 8px; font-family:var(--mono); font-size:10.5px; text-transform:uppercase; cursor:pointer; color:inherit}
 
-  /* ---------- Stats cards ---------- */
-  .stats-wrap{ max-width:1500px; margin:20px auto 0; padding:0 20px; }
-  .stats-primary{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:10px; }
-  .stat-card{
-    background:var(--paper-dark); border:1px solid var(--rule); border-radius:6px;
-    padding:12px 14px; text-align:center;
-  }
-  .stat-card .stat-label{
-    font-family:'JetBrains Mono', monospace; font-size:10.5px; text-transform:uppercase;
-    letter-spacing:.06em; color:var(--ink-soft); margin-bottom:4px;
-  }
-  .stat-card .stat-num{ font-family:'Special Elite', monospace; font-size:30px; color:var(--stamp-red); }
-  .stats-secondary{
-    display:flex; gap:22px; justify-content:center; margin-top:10px; flex-wrap:wrap;
-    font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--ink-soft);
-  }
-  .stats-secondary b{ color:var(--ink); font-weight:700; }
+  /* Toolbar */
+  .toolbar{display:flex; align-items:center; gap:10px; margin:14px 0 8px; flex-wrap:wrap}
+  .seg{display:flex; border:1px solid var(--rule); border-radius:3px; overflow:hidden}
+  .seg button{border:0; background:transparent; padding:5px 11px; cursor:pointer; font-family:var(--mono); font-size:11px; text-transform:uppercase; color:var(--ink-soft)}
+  .seg button+button{border-left:1px solid var(--rule)}
+  .seg button.on{background:var(--ink); color:var(--paper)}
+  .toolbar .spacer{flex:1}
 
-  .controls{
-    max-width:1500px; margin:18px auto 0; padding:0 20px;
-    display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:center;
+  /* Grid */
+  .grid-wrap{overflow-x:auto; border:1px solid var(--rule); border-radius:4px; background:var(--paper-dark)}
+  table.grid{border-collapse:collapse; table-layout:fixed}
+  .grid td,.grid th{padding:0; border-bottom:1px dashed var(--rule); font-weight:400}
+  .grid .lbl{
+    width:var(--label); min-width:var(--label); position:sticky; left:0; z-index:2; background:var(--paper-dark);
+    border-right:1px solid var(--rule); text-align:left; padding:6px 10px;
+    font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-soft);
   }
-  .btn{
-    font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:.03em;
-    border:1.5px solid var(--ink); background:transparent; color:var(--ink);
-    padding:7px 12px; border-radius:3px; cursor:pointer; text-transform:uppercase;
-  }
-  .btn:hover{ background:var(--paper-dark); }
-  .btn.active{ background:var(--ink); color:var(--paper); }
-  .btn:focus-visible, .stamp-btn:focus-visible, select:focus-visible, input:focus-visible{
-    outline:2px solid var(--stamp-red); outline-offset:2px;
-  }
-  input[type="date"].btn{ cursor:pointer; }
-  .filter-group{ display:flex; gap:6px; border:1px dashed var(--rule); padding:4px; border-radius:4px; }
+  .grid .month{font-family:var(--type); font-size:13px; text-align:left; padding:6px 0; border-left:1px solid var(--rule)}
+  .stick{position:sticky; left:calc(var(--label) + 10px); display:inline-block; padding:0 10px}
+  .grid .day{width:var(--col); min-width:var(--col); text-align:center; padding:5px 2px; font-family:var(--mono)}
+  .day .wd{font-size:10px; color:var(--ink-soft); text-transform:lowercase}
+  .day .dn{font-size:14px; font-weight:700}
+  .day .no{font-size:9.5px; color:var(--ink-soft)}
+  .day.today{background:var(--red-soft)} .day.today .wd,.day.today .dn{color:var(--red)}
+  .grid .monthstart{border-left:1px solid var(--rule)}
+  .grid td.c{text-align:center; padding:4px 3px; vertical-align:middle}
+  .grid td.c.today{box-shadow:inset 1px 0 0 var(--red), inset -1px 0 0 var(--red)}
+  .past{opacity:.48} .past:hover{opacity:1}
+  .sub{font-size:9.5px; color:var(--ink-soft); line-height:1.15; margin-bottom:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .no-g{font-family:var(--mono); font-size:9.5px; color:var(--ink-soft); margin-bottom:2px}
 
-  .panel{
-    max-width:1500px; margin:16px auto 0; padding:10px 16px;
-    border:1px solid var(--rule); background:var(--paper-dark); border-radius:4px;
+  .st{
+    width:100%; cursor:pointer; padding:3px 1px; background:transparent; white-space:nowrap; overflow:hidden;
+    font-family:var(--type); font-size:10.5px; text-transform:uppercase; letter-spacing:0;
+    border:1.5px solid var(--rule); color:var(--ink-soft); border-radius:3px 7px 4px 8px/8px 4px 7px 3px;
   }
-  .edition-bar{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
-  .edition-status{ font-size:12.5px; color:var(--ink-soft); margin-right:4px; }
-  .btn-mark{
-    font-family:'JetBrains Mono', monospace; font-size:11px; text-transform:uppercase;
-    border-radius:3px; padding:5px 11px; cursor:pointer; background:transparent;
+  .st.progreso{color:var(--mustard); border-color:var(--mustard); background:var(--mustard-soft)}
+  .st.listo{color:var(--red); border-color:var(--red); background:var(--red-soft)}
+  tr.r-gal .st.listo{color:var(--green); border-color:var(--green); background:var(--green-soft)}
+  select.comic{
+    width:100%; margin-bottom:3px; padding:1px 2px; font-family:'Lora', serif; font-size:10.5px;
+    border:1px solid var(--rule); border-radius:3px; background:var(--paper); color:var(--ink-soft); cursor:pointer;
   }
-  .btn-mark.mark-estandar{ border:1.5px solid var(--stamp-green); color:var(--stamp-green); }
-  .btn-mark.mark-estandar:hover{ background:var(--stamp-green-soft); }
-  .btn-mark.mark-tematica{ border:1.5px solid var(--stamp-purple); color:var(--stamp-purple); }
-  .btn-mark.mark-tematica:hover{ background:var(--stamp-purple-soft); }
-  .btn-mark.mark-undo{ border:1.5px solid var(--rule); color:var(--ink-soft); }
-  .btn-mark.mark-undo:hover{ background:var(--paper-darker); }
-  .btn-mark:disabled{ opacity:.4; cursor:default; }
-  .btn-mark.mark-manual{ border:1.5px solid var(--rule); color:var(--ink-soft); }
-  .btn-mark.mark-manual:hover{ background:var(--paper-darker); }
-  .manual-form{
-    display:flex; flex-wrap:wrap; gap:10px; align-items:flex-end;
-    margin-top:12px; padding-top:12px; border-top:1px dashed var(--rule);
-  }
-  .manual-form[hidden]{ display:none; }
-  .warn{ color:var(--stamp-red); font-weight:600; }
-  .field-mini{ text-align:left; margin-bottom:8px; }
-  .field-mini label{ display:block; font-family:'JetBrains Mono', monospace; font-size:10px; text-transform:uppercase; color:var(--ink-soft); margin-bottom:3px; }
-  .field-mini input, .field-mini select{
-    font-family:'Lora', serif; font-size:13px; padding:6px 8px; border:1px solid var(--rule); border-radius:3px; background:var(--paper); width:100%;
-  }
+  td.band{font-family:var(--mono); font-size:10.5px; font-weight:700; text-align:left; padding:4px 0; border-left:1px solid var(--rule); border-right:1px solid var(--rule); text-transform:uppercase; letter-spacing:.05em}
+  .b-estandar{background:var(--green-soft); color:var(--green)}
+  .b-tematica{background:var(--purple-soft); color:var(--purple)}
+  .b-none{color:var(--ink-soft); font-weight:400}
+  td.c.k-estandar{background:var(--green-soft)} td.c.k-tematica{background:var(--purple-soft)}
+  .gal-foot{display:flex; justify-content:center; align-items:center; gap:4px; margin-top:2px; min-height:16px}
+  .flag{font-family:var(--mono); font-size:9.5px; font-weight:700; border-radius:2px; padding:0 3px; color:var(--paper)}
+  .flag.n{background:var(--green)} .flag.m{background:var(--ink)}
+  .pen{width:16px; height:16px; line-height:13px; padding:0; border-radius:50%; border:1px solid var(--rule); background:var(--paper); color:var(--ink-soft); font-size:10px; cursor:pointer}
+  body.f-heraldo tr.r-band, body.f-heraldo tr.r-gal{display:none}
+  body.f-galeria tr.r-efe, body.f-galeria tr.r-sec, body.f-galeria tr.r-tira{display:none}
 
-  /* ---------- Grid ---------- */
-  .grid-section{ max-width:1500px; margin:24px auto 0; padding:0 20px; }
-  .grid-wrap{ overflow-x:auto; border:1px solid var(--rule); border-radius:4px; background:var(--paper-dark); }
-  table.grid{ border-collapse:collapse; table-layout:fixed; }
-  table.grid th, table.grid td{ border-bottom:1px dashed var(--rule); padding:0; }
-  .row-label{
-    width:126px; min-width:126px; padding:8px 10px !important; text-align:left;
-    font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--ink-soft);
-    position:sticky; left:0; background:var(--paper-dark); border-right:1px solid var(--rule); z-index:2;
-    text-transform:uppercase; letter-spacing:.04em;
-  }
-  .col-day{ width:64px; min-width:64px; }
-  .th-month{
-    text-align:center; font-family:'Special Elite', monospace; font-size:12px;
-    padding:6px 0 !important; color:var(--ink); border-left:1px solid var(--rule);
-  }
-  .th-day{ text-align:center; padding:6px 2px !important; }
-  .th-day .wd{ font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--ink-soft); }
-  .th-day .dn{ font-family:'JetBrains Mono', monospace; font-size:13px; font-weight:700; }
-  .issue-num{ font-family:'JetBrains Mono', monospace; font-size:9px; color:var(--ink-soft); line-height:1.3; }
-  .th-day.is-today{ background:var(--stamp-red-soft); }
-  .th-day.is-today .wd, .th-day.is-today .dn{ color:var(--stamp-red); }
-  td.cell{ text-align:center; padding:5px 3px !important; vertical-align:middle; }
-  td.cell.is-today-col{ background:rgba(164,56,44,0.05); }
-  .cell-sub{ font-size:9.5px; color:var(--ink-soft); margin-bottom:2px; line-height:1.1; }
+  /* Tramos bar */
+  .tramos{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:10px; padding:8px 10px; border:1px solid var(--rule); border-radius:4px; background:var(--paper-dark)}
+  .tramos .status{font-size:12.5px; color:var(--ink-soft); margin-right:6px}
+  .tb{font-family:var(--mono); font-size:11px; text-transform:uppercase; border-radius:3px; padding:5px 10px; cursor:pointer; background:transparent; border:1.5px solid var(--rule); color:var(--ink-soft)}
+  .tb:hover{background:var(--paper-darker)}
+  .tb.e{border-color:var(--green); color:var(--green)} .tb.e:hover{background:var(--green-soft)}
+  .tb.t{border-color:var(--purple); color:var(--purple)} .tb.t:hover{background:var(--purple-soft)}
+  .manual{display:flex; gap:10px; align-items:flex-end; flex-wrap:wrap; width:100%; padding-top:10px; margin-top:4px; border-top:1px dashed var(--rule)}
+  .manual[hidden]{display:none}
 
-  .stamp-btn{
-    font-family:'Special Elite', monospace; font-size:10px; text-transform:uppercase; letter-spacing:.02em;
-    border:1.5px solid var(--rule); border-radius:3px 7px 4px 8px/8px 4px 7px 3px;
-    background:transparent; color:var(--ink-soft); padding:3px 7px; cursor:pointer; width:100%;
-  }
-  .stamp-btn.progreso{ color:var(--mustard); border-color:var(--mustard); background:var(--mustard-soft); }
-  .stamp-btn.listo{ color:var(--stamp-red); border-color:var(--stamp-red); background:var(--stamp-red-soft); }
-  .row-galeria .stamp-btn.listo{ color:var(--stamp-green); border-color:var(--stamp-green); background:var(--stamp-green-soft); }
+  /* Panorama */
+  .pano{margin-top:28px; padding-top:12px; border-top:3px double var(--ink); display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr); gap:28px}
+  .pano h2{font-family:var(--mono); font-size:11px; font-weight:500; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-soft); margin:0 0 10px}
+  .bars{display:grid; grid-template-columns:150px minmax(0,1fr) 64px; gap:7px 10px; align-items:center; font-size:12.5px}
+  .bar{height:10px; background:var(--paper-darker); border-radius:2px; overflow:hidden}
+  .bar span{display:block; height:100%; background:var(--ink-soft)}
+  .bar span.low{background:var(--red)}
+  .val{font-family:var(--mono); font-size:11px; color:var(--ink-soft); text-align:right; white-space:nowrap}
+  .note{font-size:12.5px; color:var(--ink-soft); font-style:italic}
+  @media (max-width:900px){ .pano{grid-template-columns:1fr} }
 
-  select.comic-select{
-    font-family:'Lora', serif; font-size:10.5px; padding:2px 3px; border:1px solid var(--rule);
-    border-radius:3px; background:var(--paper); color:var(--ink-soft); width:100%; margin-bottom:3px; cursor:pointer;
-  }
-
-  td.band{
-    text-align:center; font-family:'JetBrains Mono', monospace; font-size:11px; font-weight:700;
-    padding:5px 4px !important; border-left:1px solid var(--rule); border-right:1px solid var(--rule);
-  }
-  .band-estandar{ background:var(--stamp-green-soft); color:var(--stamp-green); }
-  .band-tematica{ background:var(--stamp-purple-soft); color:var(--stamp-purple); }
-  .band-previo{ background:transparent; color:var(--ink-soft); font-weight:400; }
-  .band-vencido{ background:var(--mustard-soft); color:var(--mustard); }
-  td.cell.cat-estandar{ background:var(--stamp-green-soft); }
-  td.cell.cat-tematica{ background:var(--stamp-purple-soft); }
-  td.cell.cat-vencido{ background:var(--mustard-soft); }
-
-  .gal-icons{ display:flex; gap:3px; justify-content:center; margin-top:2px; font-size:12px; }
-  .gal-edit-btn{
-    display:block; margin:2px auto 0; width:16px; height:16px; line-height:14px; border-radius:50%;
-    border:1px solid var(--rule); background:var(--paper); color:var(--ink-soft); font-size:10px; cursor:pointer; padding:0;
-  }
-
-  body.filter-heraldo .row-band, body.filter-heraldo .row-galeria{ display:none; }
-  body.filter-galeria .row-efemerides, body.filter-galeria .row-secundaria, body.filter-galeria .row-tira{ display:none; }
-
-  .footer-panel{ max-width:1500px; margin:26px auto 0; padding:14px 18px; border-top:2px double var(--ink); }
-  .footer-panel h2{ font-family:'Special Elite', monospace; font-size:14px; margin:0 0 10px; text-transform:uppercase; }
-  .pano-block{ margin:20px 0 26px; }
-  .pano-block:first-of-type{ margin-top:6px; }
-  .pano-block h3{
-    font-family:'JetBrains Mono', monospace; font-size:11px; text-transform:uppercase;
-    letter-spacing:.08em; color:var(--ink-soft); margin:0 0 6px;
-  }
-  .section-stats{ display:flex; flex-direction:column; gap:9px; }
-  .sec-stat-row{ display:flex; align-items:center; gap:10px; font-size:12.5px; }
-  .sec-stat-row .sec-name{ flex:0 0 160px; font-family:'JetBrains Mono', monospace; font-size:11px; }
-  .stack-bar{ flex:1; display:flex; height:12px; border-radius:2px; overflow:hidden; background:var(--paper-darker); min-width:120px; }
-  .stack-seg.pendiente{ background:var(--paper-darker); }
-  .stack-seg.progreso{ background:var(--mustard); }
-  .stack-seg.listo{ background:var(--stamp-red); }
-  .sec-stat-row.is-galeria .stack-seg.listo{ background:var(--stamp-green); }
-  .sec-stat-count{ flex:0 0 50px; text-align:right; font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--ink-soft); }
-  .pano-row{ display:flex; flex-wrap:wrap; gap:14px; font-size:13px; }
-  .stats-bars{ display:flex; flex-direction:column; gap:6px; max-width:400px; }
-  .stat-row{ display:flex; align-items:center; gap:8px; font-family:'JetBrains Mono', monospace; font-size:11px; }
-  .stat-row .name{ width:90px; text-transform:capitalize; }
-  .stat-row .bar-bg{ flex:1; height:10px; background:var(--paper-darker); border-radius:2px; overflow:hidden; }
-  .stat-row .bar-fg{ height:100%; background:var(--stamp-red); }
-  .stat-row .count{ width:26px; text-align:right; }
-  .empty-note{ text-align:center; color:var(--ink-soft); font-size:13px; padding:16px 0; }
-
-  #toast{
-    position:fixed; bottom:18px; right:18px; font-family:'JetBrains Mono', monospace; font-size:12px;
-    background:var(--ink); color:var(--paper); padding:8px 14px; border-radius:3px;
-    opacity:0; transform:translateY(8px); transition:opacity .25s, transform .25s; pointer-events:none; z-index:50;
-    max-width:320px;
-  }
-  #toast.show{ opacity:1; transform:translateY(0); }
-
-  .modal-overlay{ position:fixed; inset:0; background:rgba(36,31,24,0.55); z-index:100; display:flex; align-items:center; justify-content:center; padding:20px; }
-  .modal-overlay[hidden]{ display:none; }
-  .modal{ background:var(--paper); border:2px solid var(--ink); border-radius:6px; max-width:440px; width:100%; padding:22px 24px; max-height:88vh; overflow:auto; }
-  .modal h2{ font-family:'Special Elite', monospace; font-size:18px; margin:0 0 10px; }
-  .modal-note{ font-size:12.5px; color:var(--ink-soft); margin:0 0 16px; line-height:1.5; }
-  .modal-note code{ background:var(--paper-dark); padding:1px 4px; border-radius:2px; }
-  .modal-actions{ display:flex; gap:8px; margin-top:6px; flex-wrap:wrap; }
-  .modal-msg{ font-size:12px; margin-top:10px; min-height:16px; }
-  .modal-msg.ok{ color:var(--stamp-green); }
-  .modal-msg.err{ color:var(--stamp-red); }
-
-  .gal-popover{
-    position:fixed; z-index:200; background:var(--paper); border:1.5px solid var(--ink); border-radius:6px;
-    padding:14px; width:230px; box-shadow:0 4px 14px rgba(36,31,24,0.3);
-  }
-  .gal-popover[hidden]{ display:none; }
-  .gal-popover label{ display:block; font-size:11.5px; margin-bottom:8px; color:var(--ink-soft); }
-  .gal-popover input[type="text"]{
-    width:100%; font-family:'Lora', serif; font-size:13px; padding:5px 7px; border:1px solid var(--rule);
-    border-radius:3px; background:var(--paper); color:var(--ink); margin-top:3px;
-  }
-  .gal-popover .chk-row{ display:flex; align-items:center; gap:6px; margin-bottom:8px; font-size:12px; }
-  .gal-popover .chk-row input{ margin:0; }
-
-  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; } }
+  /* Forms, modals, popover */
+  .f{display:flex; flex-direction:column; gap:3px; margin-bottom:10px}
+  .f label{font-family:var(--mono); font-size:10px; text-transform:uppercase; color:var(--ink-soft)}
+  .f input,.f select{font-family:'Lora', serif; font-size:13px; padding:6px 8px; border:1px solid var(--rule); border-radius:3px; background:var(--paper); color:var(--ink)}
+  .manual .f{margin:0}
+  .btn{font-family:var(--mono); font-size:11.5px; text-transform:uppercase; letter-spacing:.03em; border:1.5px solid var(--ink); background:transparent; padding:6px 12px; border-radius:3px; cursor:pointer}
+  .btn:hover{background:var(--paper-dark)}
+  .btn.main{background:var(--ink); color:var(--paper)}
+  .overlay{position:fixed; inset:0; background:rgba(36,31,24,.55); z-index:100; display:flex; align-items:center; justify-content:center; padding:20px}
+  .overlay[hidden]{display:none}
+  .modal{background:var(--paper); border:2px solid var(--ink); border-radius:6px; width:100%; max-width:440px; max-height:88vh; overflow:auto; padding:20px 22px}
+  .modal.wide{max-width:560px}
+  .modal h2{font-family:var(--type); font-weight:400; font-size:19px; margin:0 0 8px}
+  .modal p{font-size:12.5px; color:var(--ink-soft); margin:0 0 14px; line-height:1.5}
+  .modal code{background:var(--paper-dark); padding:1px 4px; border-radius:2px; font-size:11.5px}
+  .actions{display:flex; gap:8px; flex-wrap:wrap; margin-top:6px}
+  .msg{font-size:12px; min-height:16px; margin:10px 0 0}
+  .msg.ok{color:var(--green)} .msg.err{color:var(--red)}
+  .sec-table{width:100%; border-collapse:collapse; margin-bottom:8px}
+  .sec-table th{font-family:var(--mono); font-size:10px; text-transform:uppercase; color:var(--ink-soft); text-align:left; padding:3px 4px; font-weight:400}
+  .sec-table td{padding:3px 4px}
+  .sec-table td:first-child{font-size:13px; width:90px}
+  .sec-table input{width:100%; font-family:'Lora', serif; font-size:13px; padding:5px 7px; border:1px solid var(--rule); border-radius:3px; background:var(--paper)}
+  .pop{position:fixed; z-index:150; width:230px; background:var(--paper); border:1.5px solid var(--ink); border-radius:6px; padding:12px; box-shadow:0 4px 14px rgba(36,31,24,.28); font-size:12.5px}
+  .pop[hidden]{display:none}
+  .pop label.chk{display:flex; gap:6px; align-items:center; margin-bottom:8px}
+  .pop .f input{font-size:12.5px}
+  #toast{position:fixed; right:18px; bottom:18px; z-index:200; background:var(--ink); color:var(--paper); font-family:var(--mono); font-size:12px; padding:8px 14px; border-radius:3px; opacity:0; transform:translateY(8px); transition:opacity .2s, transform .2s; pointer-events:none; max-width:340px}
+  #toast.show{opacity:1; transform:none}
+  .empty{padding:28px; text-align:center; color:var(--ink-soft); font-size:13px}
+  @media (prefers-reduced-motion:reduce){ *{transition:none !important} }
 </style>
 </head>
 <body>
 
-<header class="masthead">
-  <div class="kicker">Uso interno — no es para publicar</div>
+<header class="topbar">
   <h1>El Heraldo de Goma</h1>
-  <div class="sub">Panel de control de redacción · Heraldo Principal &amp; Galería de Goma</div>
+  <div class="stats">
+    <span class="stat" title="Días con todo en Listo, desde hoy (o mañana, pasado el mediodía)">Preparados<b id="sPrep">·</b></span>
+    <span class="stat" title="Efemérides y Galería listas, pero falta la tira o la secundaria">Activos<b id="sAct">·</b></span>
+    <span class="stat" title="Días seguidos completos a partir de hoy">Consecutivos<b id="sCons">·</b></span>
+    <span class="stat minor" title="Días con Efemérides en Listo">Heraldos<b id="sHer">·</b></span>
+    <span class="stat minor" title="Días con Galería en Listo">Galerías<b id="sGal">·</b></span>
+  </div>
+  <div class="right">
+    <span class="save" id="save"><i></i><span id="saveText">Sin configurar</span></span>
+    <button class="icon-btn" id="cfgBtn" title="Conexión con GitHub">⚙ Conexión</button>
+  </div>
 </header>
 
-<div class="conn-status" id="connStatus">
-  <span class="dot" id="connDot"></span>
-  <span id="connText">Sin configurar</span>
-  <button id="connEditBtn">⚙ Configuración</button>
+<div class="alerts" id="alerts"></div>
+
+<div class="toolbar">
+  <div class="seg" role="group" aria-label="Filtro">
+    <button class="on" data-f="all">Todo</button>
+    <button data-f="heraldo">Heraldo</button>
+    <button data-f="galeria">Galería</button>
+  </div>
+  <button class="icon-btn" id="todayBtn">Ir a hoy</button>
+  <span class="spacer"></span>
+  <button class="icon-btn" id="secBtn">Secciones</button>
+  <button class="icon-btn" id="numBtn">N° de edición</button>
 </div>
 
-<div class="stats-wrap">
-  <div class="stats-primary">
-    <div class="stat-card"><div class="stat-label">Días preparados</div><div class="stat-num" id="statPreparados">—</div></div>
-    <div class="stat-card"><div class="stat-label">Días activos</div><div class="stat-num" id="statActivos">—</div></div>
-    <div class="stat-card"><div class="stat-label">Días consecutivos</div><div class="stat-num" id="statConsecutivos">—</div></div>
-  </div>
-  <div class="stats-secondary">
-    <span>Heraldos listos: <b id="statHeraldos">—</b></span>
-    <span>Galerías listas: <b id="statGalerias">—</b></span>
-  </div>
-</div>
+<div class="grid-wrap" id="gridWrap"><div class="empty">Configurá la conexión con GitHub para empezar.</div></div>
 
-<div class="controls">
-  <div class="filter-group" role="group" aria-label="Filtro de publicación">
-    <button class="btn active" data-filter="all">Todo</button>
-    <button class="btn" data-filter="heraldo">Heraldo</button>
-    <button class="btn" data-filter="galeria">Galería</button>
-  </div>
-  <button class="btn" id="todayBtn">Ir a hoy</button>
-  <button class="btn" id="numEditBtn">N° de edición</button>
-</div>
-
-<div class="grid-section">
-  <div class="grid-wrap" id="gridWrap">
-    <div class="empty-note">Configurá la conexión con GitHub para empezar.</div>
+<div class="tramos">
+  <span class="status" id="tramoStatus">·</span>
+  <button class="tb e" id="markE">Semana estándar</button>
+  <button class="tb t" id="markT">Temática</button>
+  <button class="tb" id="undoT">Borrar última</button>
+  <button class="tb" id="manualT">Manual</button>
+  <div class="manual" id="manual" hidden>
+    <div class="f"><label for="mType">Tipo</label><select id="mType"><option value="estandar">Estándar</option><option value="tematica">Temática</option></select></div>
+    <div class="f"><label for="mStart">Desde</label><input type="date" id="mStart"></div>
+    <div class="f"><label for="mEnd">Hasta</label><input type="date" id="mEnd"></div>
+    <button class="btn" id="mSave">Guardar tramo</button>
   </div>
 </div>
 
-<div class="panel" id="editionPanel">
-  <div class="edition-bar">
-    <span id="editionSummary" class="edition-status">Cargando…</span>
-    <button class="btn-mark mark-estandar" id="btnMarkEstandar">Semana estándar</button>
-    <button class="btn-mark mark-tematica" id="btnMarkTematica">Temática</button>
-    <button class="btn-mark mark-undo" id="btnUndoPeriod">Borrar última asignada</button>
-    <button class="btn-mark mark-manual" id="btnManualToggle">Agregar manualmente</button>
+<section class="pano">
+  <div>
+    <h2>Anticipación media por sección</h2>
+    <div id="pAnt"></div>
   </div>
-  <div class="manual-form" id="manualForm" hidden>
-    <div class="field-mini" style="flex:1 1 130px;">
-      <label for="manType">Tipo</label>
-      <select id="manType" class="mini">
-        <option value="estandar">Estándar</option>
-        <option value="tematica">Temática</option>
-      </select>
-    </div>
-    <div class="field-mini" style="flex:1 1 130px;">
-      <label for="manStart">Desde</label>
-      <input type="date" id="manStart" class="mini">
-    </div>
-    <div class="field-mini" style="flex:1 1 130px;">
-      <label for="manEnd">Hasta</label>
-      <input type="date" id="manEnd" class="mini">
-    </div>
-    <button class="btn" id="manSave">Guardar tramo</button>
+  <div>
+    <h2>Tira cómica</h2>
+    <div id="pTira"></div>
+  </div>
+  <div>
+    <h2>Galería: efemérides de artistas</h2>
+    <div id="pGal"></div>
+  </div>
+</section>
+
+<div class="pop" id="pop" hidden>
+  <label class="chk"><input type="checkbox" id="pBirth"> Nacimiento de artista</label>
+  <label class="chk"><input type="checkbox" id="pDeath"> Defunción de artista</label>
+  <div class="f" id="pNameWrap"><label for="pName">Artista</label><input type="text" id="pName"></div>
+  <div class="actions"><button class="btn" id="pClose">Listo</button></div>
+</div>
+
+<div class="overlay" id="numModal" hidden>
+  <div class="modal">
+    <h2>Numeración de ediciones</h2>
+    <p>Fijá el número de una edición en una fecha conocida. El resto se calcula sumando o restando un número por día.</p>
+    <div class="f"><label for="nH">N° del Heraldo</label><input type="number" id="nH"></div>
+    <div class="f"><label for="nHd">Fecha de ese número</label><input type="date" id="nHd"></div>
+    <div class="f"><label for="nG">N° de la Galería</label><input type="number" id="nG"></div>
+    <div class="f"><label for="nGd">Fecha de ese número</label><input type="date" id="nGd"></div>
+    <div class="actions"><button class="btn main" id="nSave">Guardar</button><button class="btn" data-close>Cancelar</button></div>
   </div>
 </div>
 
-<div class="footer-panel">
-  <h2>Panorama general</h2>
-
-  <div class="pano-block">
-    <h3>Cumplimiento por sección</h3>
-    <div id="sectionStats" class="section-stats"></div>
+<div class="overlay" id="secModal" hidden>
+  <div class="modal wide">
+    <h2>Secciones secundarias</h2>
+    <p>El nombre completo aparece en el correo y en el panorama; el corto, dentro de la grilla. Los datos quedan atados al día de la semana, así que renombrar no borra nada.</p>
+    <table class="sec-table">
+      <thead><tr><th>Día</th><th>Nombre</th><th>Corto</th></tr></thead>
+      <tbody id="secRows"></tbody>
+    </table>
+    <div class="actions"><button class="btn main" id="secSave">Guardar</button><button class="btn" data-close>Cancelar</button></div>
   </div>
+</div>
 
-  <div class="pano-block">
-    <h3>Tira cómica (dado)</h3>
-    <div class="stats-bars" id="statsBars"><span class="empty-note" style="padding:6px 0;">Sin datos aún.</span></div>
-  </div>
-
-  <div class="pano-block">
-    <h3>Galería de Goma — efemérides de artistas</h3>
-    <div id="galeriaSummary" class="pano-row"></div>
+<div class="overlay" id="cfgModal" hidden>
+  <div class="modal">
+    <h2>Conexión con GitHub</h2>
+    <p>Los datos viven en <code>data.json</code> dentro de tu repositorio. El token queda guardado solo en este navegador.</p>
+    <div class="f"><label for="cOwner">Usuario de GitHub</label><input id="cOwner" placeholder="tu-usuario"></div>
+    <div class="f"><label for="cRepo">Repositorio</label><input id="cRepo" placeholder="hemeroteca"></div>
+    <div class="f"><label for="cBranch">Rama</label><input id="cBranch" value="main"></div>
+    <div class="f"><label for="cPath">Archivo de datos</label><input id="cPath" value="data.json"></div>
+    <div class="f"><label for="cToken">Token (fine-grained, Contents: Read and write)</label><input id="cToken" type="password" placeholder="github_pat_…"></div>
+    <div class="actions"><button class="btn" id="cTest">Probar</button><button class="btn main" id="cSave">Guardar</button><button class="btn" data-close>Cancelar</button></div>
+    <p class="msg" id="cMsg"></p>
   </div>
 </div>
 
 <div id="toast"></div>
 
-<div class="gal-popover" id="galPopover" hidden>
-  <div class="chk-row"><input type="checkbox" id="gpBirth"><label style="margin:0;" for="gpBirth">Cumpleaños de artista</label></div>
-  <div class="chk-row"><input type="checkbox" id="gpDeath"><label style="margin:0;" for="gpDeath">Defunción de artista</label></div>
-  <label id="gpFlagNameWrap" style="display:none;">Nombre del artista<input type="text" id="gpFlagName"></label>
-  <div class="modal-actions"><button class="btn" id="gpClose">Cerrar</button></div>
-</div>
-
-<div class="modal-overlay" id="numberModal" hidden>
-  <div class="modal">
-    <h2>Numeración de ediciones</h2>
-    <p class="modal-note">
-      Fijá el número de una edición en una fecha conocida — el resto de la grilla
-      se calcula solo, sumando o restando un número por cada día de diferencia.
-    </p>
-    <div class="field-mini"><label for="numHeraldoN">N° del Heraldo</label><input type="number" id="numHeraldoN" class="mini"></div>
-    <div class="field-mini"><label for="numHeraldoD">Fecha de ese N°</label><input type="date" id="numHeraldoD" class="mini"></div>
-    <div class="field-mini"><label for="numGaleriaN">N° de la Galería</label><input type="number" id="numGaleriaN" class="mini"></div>
-    <div class="field-mini"><label for="numGaleriaD">Fecha de ese N°</label><input type="date" id="numGaleriaD" class="mini"></div>
-    <div class="modal-actions">
-      <button class="btn active" id="numSave">Guardar</button>
-      <button class="btn" id="numCancel">Cancelar</button>
-    </div>
-  </div>
-</div>
-
-<div class="modal-overlay" id="configModal" hidden>
-  <div class="modal">
-    <h2>Conexión con GitHub</h2>
-    <p class="modal-note">
-      Los datos se guardan como un archivo <code>data.json</code> dentro de tu propio repositorio.
-      Así podés abrir este panel desde cualquier dispositivo y ver siempre la misma información.
-      El token queda guardado solo en este navegador — nunca se sube al repo.
-    </p>
-    <div class="field-mini"><label for="cfgOwner">Usuario u organización de GitHub</label><input id="cfgOwner" class="mini" placeholder="tu-usuario"></div>
-    <div class="field-mini"><label for="cfgRepo">Repositorio</label><input id="cfgRepo" class="mini" placeholder="heraldo-control"></div>
-    <div class="field-mini"><label for="cfgBranch">Rama</label><input id="cfgBranch" class="mini" value="main"></div>
-    <div class="field-mini"><label for="cfgPath">Archivo de datos</label><input id="cfgPath" class="mini" value="data.json"></div>
-    <div class="field-mini"><label for="cfgToken">Token personal (fine-grained, permiso Contents: Read and write)</label><input id="cfgToken" class="mini" type="password" placeholder="github_pat_…"></div>
-    <div class="modal-actions">
-      <button class="btn" id="cfgTest">Probar conexión</button>
-      <button class="btn active" id="cfgSave">Guardar y continuar</button>
-      <button class="btn" id="cfgCancel">Cancelar</button>
-    </div>
-    <p class="modal-msg" id="cfgMsg"></p>
-  </div>
-</div>
-
 <script>
 (function(){
-  "use strict";
+"use strict";
 
-  /* ================= Date utilities ================= */
-  const WEEKDAYS_ES = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
-  const WEEKDAYS_SHORT = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
-  const MONTHS_ES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+/* ---------- Fechas (Uruguay, UTC-3 fijo) ---------- */
+const WD_SHORT = ['dom','lun','mar','mié','jue','vie','sáb'];
+const WD_LONG = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+const MONTHS = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+const pad = n => String(n).padStart(2,'0');
+const isoOf = (y,m,d) => `${y}-${pad(m)}-${pad(d)}`;
+const parts = iso => { const [y,m,d] = iso.split('-').map(Number); return {y,m,d}; };
+const utc = iso => { const p = parts(iso); return Date.UTC(p.y,p.m-1,p.d); };
+const weekday = iso => new Date(utc(iso)).getUTCDay();
+const addDays = (iso,n) => { const t = new Date(utc(iso) + n*86400000); return isoOf(t.getUTCFullYear(), t.getUTCMonth()+1, t.getUTCDate()); };
+const diffDays = (a,b) => Math.round((utc(b)-utc(a))/86400000);
+const lastDay = (y,m) => new Date(Date.UTC(y,m,0)).getUTCDate();
+function mvNow(){ const t = new Date(Date.now() - 3*3600000); return {iso: isoOf(t.getUTCFullYear(), t.getUTCMonth()+1, t.getUTCDate()), hour: t.getUTCHours()}; }
+const today = () => mvNow().iso;
+const cutoff = () => { const n = mvNow(); return n.hour >= 12 ? addDays(n.iso,1) : n.iso; };
+const shortDate = iso => { const p = parts(iso); return `${WD_SHORT[weekday(iso)]} ${p.d}/${p.m}`; };
+function mondayOf(iso){ const w = weekday(iso); return addDays(iso, -(w===0 ? 6 : w-1)); }
 
-  function isoFromParts(y,m,d){
-    return `${String(y).padStart(4,'0')}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-  }
-  function partsFromISO(iso){
-    const [y,m,d] = iso.split('-').map(Number);
-    return {y,m,d};
-  }
-  function weekdayIndex(iso){
-    const {y,m,d} = partsFromISO(iso);
-    return new Date(Date.UTC(y,m-1,d)).getUTCDay();
-  }
-  function addDaysISO(iso,n){
-    const {y,m,d} = partsFromISO(iso);
-    const dt = new Date(Date.UTC(y,m-1,d));
-    dt.setUTCDate(dt.getUTCDate()+n);
-    return isoFromParts(dt.getUTCFullYear(), dt.getUTCMonth()+1, dt.getUTCDate());
-  }
-  function diffDaysISO(a,b){
-    const pa = partsFromISO(a), pb = partsFromISO(b);
-    return Math.round((Date.UTC(pb.y,pb.m-1,pb.d) - Date.UTC(pa.y,pa.m-1,pa.d)) / 86400000);
-  }
-  function lastDayOfMonth(y,m){ return new Date(Date.UTC(y,m,0)).getUTCDate(); }
+/* ---------- Modelo ---------- */
+const DEFAULT_SECTIONS = {
+  '1':{label:'Editorial (Matilde)', short:'Matilde'},
+  '2':{label:'Noticias del Mundo', short:'Noticias'},
+  '3':{label:'Ludo', short:'Ludo'},
+  '4':{label:'Noticias del Mundo', short:'Noticias'},
+  '5':{label:'Editorial (Martín)', short:'Martín'},
+  '6':{label:'El Rancho de Angela', short:'Rancho'},
+  '0':{label:'Fonoteca', short:'Fonoteca'},
+};
+const COMICS = [{id:'mafalda',label:'Mafalda'},{id:'gaturro',label:'Gaturro'},{id:'garfield',label:'Garfield'},{id:'charlie',label:'Charlie Brown'}];
+const ORDER = ['pendiente','progreso','listo'];
+const LABEL = {pendiente:'Pendiente', progreso:'Curso', listo:'Listo'};
+const SECS = ['efemerides','secundaria','tira','galeria'];
+const clone = o => JSON.parse(JSON.stringify(o));
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2,7);
 
-  // Uruguay is fixed at UTC-3 year-round (no DST since 2015).
-  function montevideoNow(){
-    const shifted = new Date(Date.now() - 3*60*60*1000);
-    return {
-      iso: isoFromParts(shifted.getUTCFullYear(), shifted.getUTCMonth()+1, shifted.getUTCDate()),
-      hour: shifted.getUTCHours(),
-    };
-  }
-  function todayISO(){ return montevideoNow().iso; }
-  function publishCutoffISO(){
-    const mv = montevideoNow();
-    return mv.hour >= 12 ? addDaysISO(mv.iso, 1) : mv.iso;
-  }
-
-  /* ================= Content config ================= */
-  const SECUNDARIA_CONFIG = {
-    1: [{key:'matilde', label:'Editorial (Matilde)', short:'Matilde'}],
-    5: [{key:'martin', label:'Editorial (Martín)', short:'Martín'}],
-    2: [{key:'noticias', label:'Noticias del Mundo', short:'Noticias'}],
-    4: [{key:'noticias', label:'Noticias del Mundo', short:'Noticias'}],
-    3: [{key:'donde_estoy', label:'Ludo', short:'Ludo'}],
-    6: [{key:'animales', label:'El Rancho de Angela', short:'Rancho'}],
-    0: [{key:'fonoteca', label:'Fonoteca', short:'Fonoteca'}],
+function emptyData(){
+  return {
+    version:2,
+    settings:{sections: clone(DEFAULT_SECTIONS)},
+    numbering:{heraldo:{anchorNumber:1810, anchorDate:'2026-09-08'}, galeria:{anchorNumber:1690, anchorDate:'2026-09-08'}},
+    periods:[],
+    days:{},
   };
-  const COMICS = [
-    {id:'mafalda', label:'Mafalda'},
-    {id:'gaturro', label:'Gaturro'},
-    {id:'garfield', label:'Garfield'},
-    {id:'charlie', label:'Charlie Brown'},
-  ];
-  const STATUS_ORDER = ['pendiente','progreso','listo'];
-  const STATUS_LABEL = {pendiente:'Pendiente', progreso:'Curso', listo:'Listo'};
+}
 
-  function nextStatus(s){
-    const i = STATUS_ORDER.indexOf(s);
-    return STATUS_ORDER[(i+1) % STATUS_ORDER.length];
-  }
+function isEmptyCell(v){
+  return !v || ((v.status||'pendiente')==='pendiente' && !v.comic && !v.birth && !v.death && !v.name);
+}
 
-  function defaultDayData(iso){
-    const wd = weekdayIndex(iso);
-    const secundaria = {};
-    (SECUNDARIA_CONFIG[wd] || []).forEach(item=>{
-      secundaria[item.key] = {status:'pendiente'};
-    });
-    return {
-      efemerides:{status:'pendiente'},
-      secundaria,
-      tira:{comic:'', status:'pendiente'},
-      galeria:{status:'pendiente', flagBirth:false, flagDeath:false, flagName:''},
-    };
+// Lleva cualquier versión anterior de data.json al formato 2 y descarta días vacíos.
+function migrate(raw){
+  if(!raw || typeof raw !== 'object') return emptyData();
+  if(raw.version === 2){
+    const d = Object.assign(emptyData(), raw);
+    d.settings = Object.assign({sections:{}}, raw.settings || {});
+    d.settings.sections = Object.assign(clone(DEFAULT_SECTIONS), d.settings.sections || {});
+    d.periods = Array.isArray(raw.periods) ? raw.periods : [];
+    d.days = raw.days || {};
+    return d;
   }
-
-  /* ================= GitHub-backed storage ================= */
-  const GH_API = 'https://api.github.com';
-  const CFG_KEY = 'heraldo-gh-config';
-
-  function loadConfig(){
-    try{ const raw = localStorage.getItem(CFG_KEY); return raw ? JSON.parse(raw) : null; }catch(e){ return null; }
+  const d = emptyData();
+  if(raw.numbering && (raw.numbering.heraldo || raw.numbering.galeria)) d.numbering = raw.numbering;
+  const per = Array.isArray(raw.editionPeriods) ? raw.editionPeriods.slice() : [];
+  if(raw.editionSettings && raw.editionSettings.startDate && per.length===0){
+    per.push({type:raw.editionSettings.type, startDate:raw.editionSettings.startDate, endDate:addDays(raw.editionSettings.startDate,13)});
   }
-  function saveConfig(cfg){ localStorage.setItem(CFG_KEY, JSON.stringify(cfg)); }
-
-  function b64DecodeUnicode(str){
-    const binary = atob(str);
-    const bytes = new Uint8Array(binary.length);
-    for(let i=0;i<binary.length;i++) bytes[i] = binary.charCodeAt(i);
-    return new TextDecoder('utf-8').decode(bytes);
-  }
-  function utf8ToB64(str){
-    const bytes = new TextEncoder().encode(str);
-    let binary = '';
-    bytes.forEach(b=> binary += String.fromCharCode(b));
-    return btoa(binary);
-  }
-  function ghHeaders(token){
-    return {
-      'Authorization': 'Bearer ' + token,
-      'Accept': 'application/vnd.github+json',
-      'X-GitHub-Api-Version': '2022-11-28',
-      'Content-Type': 'application/json',
-    };
-  }
-  async function ghGetFile(cfg){
-    const url = `${GH_API}/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/${encodeURIComponent(cfg.path)}?ref=${encodeURIComponent(cfg.branch)}`;
-    const res = await fetch(url, {headers: ghHeaders(cfg.token)});
-    if(res.status===404) return {exists:false};
-    if(!res.ok){ const t = await res.text().catch(()=> ''); throw new Error(`GET ${res.status}: ${t.slice(0,200)}`); }
-    const json = await res.json();
-    const text = b64DecodeUnicode(json.content.replace(/\n/g,''));
-    return {exists:true, sha:json.sha, data: JSON.parse(text)};
-  }
-  async function ghPutFile(cfg, dataObj, sha){
-    const url = `${GH_API}/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/${encodeURIComponent(cfg.path)}`;
-    const body = {
-      message: 'Actualiza control de redacción — ' + new Date().toISOString(),
-      content: utf8ToB64(JSON.stringify(dataObj, null, 2)),
-      branch: cfg.branch,
-    };
-    if(sha) body.sha = sha;
-    const res = await fetch(url, {method:'PUT', headers: ghHeaders(cfg.token), body: JSON.stringify(body)});
-    if(!res.ok){
-      const t = await res.text().catch(()=> '');
-      const err = new Error(`PUT ${res.status}: ${t.slice(0,200)}`);
-      err.status = res.status;
-      throw err;
-    }
-    const json = await res.json();
-    return json.content.sha;
-  }
-
-  /* ================= App state ================= */
-  const state = {
-    filter: 'all',
-    config: loadConfig(),
-    sha: null,
-    fileExists: false,
-    appData: {days:{}, editionPeriods:[], numbering:null},
-  };
-
-  function getDay(iso){
-    if(!state.appData.days[iso]) state.appData.days[iso] = defaultDayData(iso);
-    const day = state.appData.days[iso];
-    const wd = weekdayIndex(iso);
-    const expectedKeys = (SECUNDARIA_CONFIG[wd]||[]).map(item=>item.key);
-    expectedKeys.forEach(k=>{ if(!day.secundaria[k]) day.secundaria[k] = {status:'pendiente'}; });
-    Object.keys(day.secundaria).forEach(k=>{ if(!expectedKeys.includes(k)) delete day.secundaria[k]; });
-    return day;
-  }
-  function peekDay(iso){ return state.appData.days[iso] || null; }
-
-  /* ================= Save queue ================= */
-  let saveChain = Promise.resolve();
-  let pendingSaves = 0;
-  function queueSave(){
-    pendingSaves++;
-    setConnStatus('saving');
-    saveChain = saveChain.then(doSave).catch(()=>{});
-    return saveChain;
-  }
-  async function doSave(){
-    const cfg = state.config;
-    if(!cfg) return;
-    try{
-      const newSha = await ghPutFile(cfg, state.appData, state.fileExists ? state.sha : undefined);
-      state.sha = newSha;
-      state.fileExists = true;
-      pendingSaves = Math.max(0, pendingSaves-1);
-      if(pendingSaves===0){ showToast('Guardado en GitHub ✓'); setConnStatus('ok'); }
-    }catch(e){
-      pendingSaves = Math.max(0, pendingSaves-1);
-      if(e.status===409){
-        showToast('Conflicto con otra sesión: se recargaron los datos remotos');
-        await loadRemoteData();
-        renderAll();
-      }else{
-        showToast('Error al guardar en GitHub');
-        setConnStatus('err');
-      }
-    }
-  }
-  function setConnStatus(kind){
-    const dot = document.getElementById('connDot');
-    const text = document.getElementById('connText');
-    dot.className = 'dot';
-    if(!state.config){ text.textContent = 'Sin configurar'; return; }
-    const base = `${state.config.owner}/${state.config.repo}`;
-    if(kind==='saving'){ dot.classList.add('ok'); text.textContent = `Guardando… (${base})`; }
-    else if(kind==='ok'){ dot.classList.add('ok'); text.textContent = `Conectado a ${base}`; }
-    else if(kind==='err'){ dot.classList.add('err'); text.textContent = `Error de conexión con ${base}`; }
-    else { text.textContent = `Conectado a ${base}`; dot.classList.add('ok'); }
-  }
-
-  let toastTimer = null;
-  function showToast(msg){
-    const el = document.getElementById('toast');
-    el.textContent = msg;
-    el.classList.add('show');
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(()=> el.classList.remove('show'), 1800);
-  }
-
-  /* ================= Edition periods (list, non-destructive) ================= */
-  function findPeriod(iso){
-    // If periods overlap, the first match (array order) wins.
-    return state.appData.editionPeriods.find(p => diffDaysISO(p.startDate, iso) >= 0 && diffDaysISO(iso, p.endDate) >= 0) || null;
-  }
-  function editionCategory(iso){
-    const p = findPeriod(iso);
-    if(!p) return {cat:'previo', label:'Sin definir'};
-    return p.type === 'tematica' ? {cat:'tematica', label:'Temática'} : {cat:'estandar', label:'Estándar'};
-  }
-  function sortPeriods(){
-    state.appData.editionPeriods.sort((a,b)=> a.startDate < b.startDate ? -1 : (a.startDate > b.startDate ? 1 : 0));
-  }
-
-  /* ================= Issue numbering ================= */
-  // Publishes daily, so the number for any date is just the anchor number
-  // plus/minus how many days away that date is from the anchor date.
-  function issueNumber(pub, iso){
-    const n = state.appData.numbering && state.appData.numbering[pub];
-    if(!n) return null;
-    return n.anchorNumber + diffDaysISO(n.anchorDate, iso);
-  }
-  // One-time convenience seed: the numbers as given for 2026-09-08. Only
-  // used when nothing has been configured yet; the modal can adjust anytime.
-  function seedNumbering(){
-    return {
-      heraldo: {anchorNumber: 1810, anchorDate: '2026-09-08'},
-      galeria: {anchorNumber: 1690, anchorDate: '2026-09-08'},
-    };
-  }
-
-  function mondayOfWeek(iso){
-    const wd = weekdayIndex(iso);
-    const back = wd===0 ? 6 : wd-1;
-    return addDaysISO(iso, -back);
-  }
-  function findNextUnassignedMonday(){
-    let m = mondayOfWeek(todayISO());
-    for(let i=0;i<520;i++){ // up to ~10 years forward, plenty of headroom
-      if(!findPeriod(m)) return m;
-      m = addDaysISO(m, 7);
-    }
-    return m;
-  }
-
-  function renderEditionPanel(){
-    const summary = document.getElementById('editionSummary');
-    const today = editionCategory(todayISO());
-    const nextMonday = findNextUnassignedMonday();
-    const todayLabel = today.cat==='previo' ? 'sin definir' : today.label.toLowerCase();
-    summary.innerHTML = `Hoy: <strong class="${today.cat==='previo'?'warn':''}">${escapeHtml(todayLabel)}</strong> · próxima semana libre: ${escapeHtml(nextMonday)}`;
-
-    const undoBtn = document.getElementById('btnUndoPeriod');
-    undoBtn.disabled = state.appData.editionPeriods.length === 0;
-  }
-
-  function markNextWeek(type){
-    const monday = findNextUnassignedMonday();
-    const endDate = type==='estandar' ? addDaysISO(monday, 13) : addDaysISO(monday, 6);
-    state.appData.editionPeriods.push({
-      id: Date.now() + '-' + Math.random().toString(36).slice(2,7),
-      createdAt: Date.now(),
-      type, startDate: monday, endDate,
-    });
-    sortPeriods();
-    queueSave();
-    renderEditionPanel();
-    renderGrid();
-  }
-  document.getElementById('btnMarkEstandar').addEventListener('click', ()=> markNextWeek('estandar'));
-  document.getElementById('btnMarkTematica').addEventListener('click', ()=> markNextWeek('tematica'));
-  document.getElementById('btnUndoPeriod').addEventListener('click', ()=>{
-    const periods = state.appData.editionPeriods;
-    if(periods.length===0) return;
-    let lastIdx = 0;
-    for(let i=1;i<periods.length;i++){
-      if((periods[i].createdAt||0) > (periods[lastIdx].createdAt||0)) lastIdx = i;
-    }
-    periods.splice(lastIdx,1);
-    queueSave();
-    renderEditionPanel();
-    renderGrid();
+  d.periods = per.filter(p => p.startDate && p.endDate).map(p => ({
+    id: p.id || uid(), createdAt: p.createdAt || 0,
+    type: p.type === 'tematica' ? 'tematica' : 'estandar',
+    startDate: p.startDate, endDate: p.endDate,
+  }));
+  Object.entries(raw.days || {}).forEach(([iso, o]) => {
+    if(!o || !/^\d{4}-\d{2}-\d{2}$/.test(iso)) return;
+    const day = {};
+    const s = x => (x && ORDER.includes(x.status)) ? x.status : 'pendiente';
+    const efe = {status: s(o.efemerides)};
+    const firstSec = Object.values(o.secundaria || {})[0];
+    const sec = {status: s(firstSec)};
+    const tira = {status: s(o.tira)}; if(o.tira && o.tira.comic) tira.comic = o.tira.comic;
+    const g = o.galeria || {};
+    const gal = {status: s(g)};
+    if(g.flagBirth) gal.birth = true;
+    if(g.flagDeath) gal.death = true;
+    if(g.flagName) gal.name = g.flagName;
+    [['efemerides',efe],['secundaria',sec],['tira',tira],['galeria',gal]].forEach(([k,v]) => { if(!isEmptyCell(v)) day[k] = v; });
+    if(Object.keys(day).length) d.days[iso] = day;
   });
+  sortPeriods(d);
+  return d;
+}
 
-  document.getElementById('btnManualToggle').addEventListener('click', ()=>{
-    const form = document.getElementById('manualForm');
-    form.hidden = !form.hidden;
-    if(!form.hidden){
-      document.getElementById('manStart').value = findNextUnassignedMonday();
-      document.getElementById('manEnd').value = '';
-    }
-  });
-  document.getElementById('manSave').addEventListener('click', ()=>{
-    const type = document.getElementById('manType').value;
-    const startDate = document.getElementById('manStart').value;
-    const endDate = document.getElementById('manEnd').value;
-    if(!startDate || !endDate){
-      showToast('Completá desde y hasta');
-      return;
-    }
-    if(diffDaysISO(startDate, endDate) < 0){
-      showToast('La fecha "hasta" no puede ser anterior a "desde"');
-      return;
-    }
-    state.appData.editionPeriods.push({
-      id: Date.now() + '-' + Math.random().toString(36).slice(2,7),
-      createdAt: Date.now(),
-      type, startDate, endDate,
-    });
-    sortPeriods();
-    queueSave();
-    document.getElementById('manualForm').hidden = true;
-    renderEditionPanel();
-    renderGrid();
-  });
+function sortPeriods(d){ d.periods.sort((a,b) => a.startDate < b.startDate ? -1 : a.startDate > b.startDate ? 1 : 0); }
 
-  /* ================= Stats ================= */
-  function computeStats(){
-    const cutoff = publishCutoffISO();
-    let preparados=0, activos=0, consecutivos=0, heraldosListos=0, galeriasListas=0;
-    let streakBroken = false;
-    let iso = cutoff;
-    for(let i=0;i<90;i++){
-      const day = peekDay(iso);
-      const wd = weekdayIndex(iso);
-      const secItems = SECUNDARIA_CONFIG[wd] || [];
-      const efe = day ? day.efemerides.status : 'pendiente';
-      const secAllListo = secItems.every(item => day && day.secundaria[item.key] && day.secundaria[item.key].status==='listo');
-      const tira = day ? day.tira.status : 'pendiente';
-      const gal = day ? day.galeria.status : 'pendiente';
-      const fullyReady = efe==='listo' && secAllListo && tira==='listo' && gal==='listo';
-      if(fullyReady) preparados++;
-      else if(efe==='listo' && gal==='listo' && (tira!=='listo' || !secAllListo)) activos++;
-      if(efe==='listo') heraldosListos++;
-      if(gal==='listo') galeriasListas++;
-      if(!streakBroken){
-        if(fullyReady) consecutivos++;
-        else streakBroken = true;
-      }
-      iso = addDaysISO(iso,1);
-    }
-    return {preparados, activos, consecutivos, heraldosListos, galeriasListas};
+/* ---------- Operaciones (lo que se guarda y se reaplica si hay choque) ---------- */
+function applyOp(d, op){
+  if(op.t === 'cell'){
+    const day = d.days[op.iso] || {};
+    if(op.v == null) delete day[op.sec]; else day[op.sec] = op.v;
+    if(Object.keys(day).length) d.days[op.iso] = day; else delete d.days[op.iso];
+  } else if(op.t === 'addPeriod'){
+    if(!d.periods.some(p => p.id === op.v.id)) d.periods.push(op.v);
+    sortPeriods(d);
+  } else if(op.t === 'delPeriod'){
+    d.periods = d.periods.filter(p => p.id !== op.id);
+  } else if(op.t === 'numbering'){
+    d.numbering = op.v;
+  } else if(op.t === 'sections'){
+    d.settings.sections = op.v;
   }
-  function refreshStats(){
-    const s = computeStats();
-    document.getElementById('statPreparados').textContent = s.preparados;
-    document.getElementById('statActivos').textContent = s.activos;
-    document.getElementById('statConsecutivos').textContent = s.consecutivos;
-    document.getElementById('statHeraldos').textContent = s.heraldosListos;
-    document.getElementById('statGalerias').textContent = s.galeriasListas;
-  }
+  return d;
+}
+const applyAll = (d, ops) => { ops.forEach(op => applyOp(d, op)); return d; };
 
-  /* ================= Grid range: current month + next month ================= */
-  function getVisibleRange(){
-    const {y,m} = partsFromISO(todayISO());
-    const startIso = isoFromParts(y,m,1);
-    let ny=y, nm=m+1; if(nm>12){ nm=1; ny=y+1; }
-    const endIso = isoFromParts(ny, nm, lastDayOfMonth(ny,nm));
-    return {startIso, endIso};
-  }
-  function buildColumns(){
-    const {startIso, endIso} = getVisibleRange();
-    const cols = [];
-    let iso = startIso;
-    while(diffDaysISO(iso, endIso) >= 0){ cols.push(iso); iso = addDaysISO(iso,1); }
-    return cols;
-  }
+/* ---------- Estado ---------- */
+const CFG_KEY = 'heraldo-gh-config';
+const S = {
+  cfg: null,
+  base: null,       // último data.json conocido del repo
+  sha: null,
+  pending: [],      // cambios todavía no subidos
+  data: emptyData(),// base + pending
+  save: 'idle',     // idle | ok | saving | pending | offline | auth | err
+  loadError: null,
+  filter: 'all',
+};
+try{ S.cfg = JSON.parse(localStorage.getItem(CFG_KEY) || 'null'); }catch(e){ S.cfg = null; }
+const pendingKey = () => S.cfg ? `heraldo-pending:${S.cfg.owner}/${S.cfg.repo}/${S.cfg.path}` : null;
+function storePending(){ try{ const k = pendingKey(); if(k) localStorage.setItem(k, JSON.stringify(S.pending)); }catch(e){} }
+function readPending(){ try{ const k = pendingKey(); return k ? (JSON.parse(localStorage.getItem(k) || '[]') || []) : []; }catch(e){ return []; } }
+function recompute(){ S.data = applyAll(clone(S.base || emptyData()), S.pending); }
 
-  function escapeHtml(str){
-    return String(str||'').replace(/[&<>"']/g, ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
-  }
+function cellOf(iso, sec){
+  const day = S.data.days[iso];
+  return Object.assign({status:'pendiente'}, day && day[sec] ? day[sec] : {});
+}
+function sectionFor(iso){ return S.data.settings.sections[String(weekday(iso))] || DEFAULT_SECTIONS[String(weekday(iso))]; }
 
-  function statusButtonHtml(section, sub, status, iso){
-    return `<button type="button" class="stamp-btn ${status}" data-action="cycle" data-iso="${iso}" data-section="${section}" data-sub="${sub||''}">${STATUS_LABEL[status]}</button>`;
-  }
+function commit(op){
+  applyOp(S.data, op);
+  S.pending.push(op);
+  storePending();
+  if(S.save !== 'auth' && S.save !== 'offline') setSave('pending');
+  scheduleFlush(1500);
+  render();
+}
+function setCell(iso, sec, v){ commit({t:'cell', iso, sec, v: isEmptyCell(v) ? null : v}); }
 
-  function renderGrid(){
-    const wrap = document.getElementById('gridWrap');
-    if(!state.config){
-      wrap.innerHTML = '<div class="empty-note">Configurá la conexión con GitHub para empezar.</div>';
-      return;
-    }
-    const cols = buildColumns();
-    const today = todayISO();
+/* ---------- GitHub ---------- */
+const API = 'https://api.github.com';
+function headers(token){ return {'Authorization':'Bearer '+token, 'Accept':'application/vnd.github+json', 'X-GitHub-Api-Version':'2022-11-28', 'Content-Type':'application/json'}; }
+const fileUrl = c => `${API}/repos/${encodeURIComponent(c.owner)}/${encodeURIComponent(c.repo)}/contents/${c.path.split('/').map(encodeURIComponent).join('/')}`;
+function b64decode(s){ const bin = atob(s.replace(/\n/g,'')); const bytes = new Uint8Array(bin.length); for(let i=0;i<bin.length;i++) bytes[i] = bin.charCodeAt(i); return new TextDecoder().decode(bytes); }
+function b64encode(s){ const bytes = new TextEncoder().encode(s); let bin = ''; for(let i=0;i<bytes.length;i+=0x8000) bin += String.fromCharCode.apply(null, bytes.subarray(i, i+0x8000)); return btoa(bin); }
+async function httpError(res, verb){ const t = await res.text().catch(()=> ''); const e = new Error(`${verb} ${res.status}: ${t.slice(0,180)}`); e.status = res.status; return e; }
+async function ghGet(c){
+  const res = await fetch(`${fileUrl(c)}?ref=${encodeURIComponent(c.branch)}&t=${Date.now()}`, {headers: headers(c.token), cache:'no-store'});
+  if(res.status === 404) return {exists:false};
+  if(!res.ok) throw await httpError(res, 'GET');
+  const j = await res.json();
+  return {exists:true, sha:j.sha, data: JSON.parse(b64decode(j.content))};
+}
+async function ghPut(c, obj, sha){
+  const body = {message:'Panel: actualiza redacción', content: b64encode(JSON.stringify(obj, null, 1)), branch:c.branch};
+  if(sha) body.sha = sha;
+  const res = await fetch(fileUrl(c), {method:'PUT', headers: headers(c.token), body: JSON.stringify(body), cache:'no-store'});
+  if(!res.ok) throw await httpError(res, 'PUT');
+  return (await res.json()).content.sha;
+}
 
-    // Month header groups
-    const monthGroups = [];
-    cols.forEach(iso=>{
-      const {y,m} = partsFromISO(iso);
-      const key = y+'-'+m;
-      const last = monthGroups[monthGroups.length-1];
-      if(last && last.key===key) last.count++;
-      else monthGroups.push({key, y, m, count:1});
-    });
-    let monthRow = '<tr><td class="row-label"></td>' + monthGroups.map(g=>
-      `<td class="th-month" colspan="${g.count}">${MONTHS_ES[g.m-1]} ${g.y}</td>`
-    ).join('') + '</tr>';
+async function pull(){
+  const r = await ghGet(S.cfg);
+  S.base = r.exists ? migrate(r.data) : emptyData();
+  S.sha = r.exists ? r.sha : null;
+  recompute();
+}
 
-    let dayRow = '<tr><td class="row-label"></td>' + cols.map(iso=>{
-      const {d} = partsFromISO(iso);
-      const wd = weekdayIndex(iso);
-      const isToday = iso===today ? ' is-today' : '';
-      const hNum = issueNumber('heraldo', iso);
-      return `<th class="th-day col-day${isToday}"><div class="wd">${WEEKDAYS_SHORT[wd]}</div><div class="dn">${d}</div>${hNum!=null?`<div class="issue-num">H° ${hNum}</div>`:''}</th>`;
-    }).join('') + '</tr>';
-
-    let efeRow = '<tr class="row-efemerides"><td class="row-label">Efemérides</td>' + cols.map(iso=>{
-      const day = getDay(iso);
-      const isToday = iso===today ? ' is-today-col' : '';
-      return `<td class="cell${isToday}">${statusButtonHtml('efemerides','', day.efemerides.status, iso)}</td>`;
-    }).join('') + '</tr>';
-
-    let secRow = '<tr class="row-secundaria"><td class="row-label">Secundaria</td>' + cols.map(iso=>{
-      const day = getDay(iso);
-      const wd = weekdayIndex(iso);
-      const items = SECUNDARIA_CONFIG[wd] || [];
-      const isToday = iso===today ? ' is-today-col' : '';
-      if(items.length===0) return `<td class="cell${isToday}"></td>`;
-      const item = items[0];
-      const sd = day.secundaria[item.key];
-      const shortLabel = item.short || item.label;
-      return `<td class="cell${isToday}"><div class="cell-sub">${escapeHtml(shortLabel)}</div>${statusButtonHtml('secundaria', item.key, sd.status, iso)}</td>`;
-    }).join('') + '</tr>';
-
-    let tiraRow = '<tr class="row-tira"><td class="row-label">Tira cómica</td>' + cols.map(iso=>{
-      const day = getDay(iso);
-      const isToday = iso===today ? ' is-today-col' : '';
-      const options = ['<option value="">Elegir</option>'].concat(
-        COMICS.map(c=>`<option value="${c.id}" ${day.tira.comic===c.id?'selected':''}>${c.label}</option>`)
-      ).join('');
-      return `<td class="cell${isToday}"><select class="comic-select" data-iso="${iso}" data-action="comic">${options}</select>${statusButtonHtml('tira','', day.tira.status, iso)}</td>`;
-    }).join('') + '</tr>';
-
-    // Edition band row: group contiguous columns sharing the same category+label
-    const bandGroups = [];
-    cols.forEach(iso=>{
-      const info = editionCategory(iso);
-      const last = bandGroups[bandGroups.length-1];
-      if(last && last.cat===info.cat && last.label===info.label) last.count++;
-      else bandGroups.push({cat:info.cat, label:info.label, count:1});
-    });
-    let bandRow = '<tr class="row-band"><td class="row-label">Edición Galería</td>' + bandGroups.map(g=>
-      `<td class="band band-${g.cat}" colspan="${g.count}">${escapeHtml(g.label)}</td>`
-    ).join('') + '</tr>';
-
-    let galRow = '<tr class="row-galeria"><td class="row-label">Galería de Goma</td>' + cols.map(iso=>{
-      const day = getDay(iso);
-      const info = editionCategory(iso);
-      const isToday = iso===today ? ' is-today-col' : '';
-      const gNum = issueNumber('galeria', iso);
-      let icons = '';
-      if(day.galeria.flagBirth) icons += '🎂';
-      if(day.galeria.flagDeath) icons += '⚱';
-      return `<td class="cell cat-${info.cat}${isToday}">
-        ${gNum!=null?`<div class="issue-num">G° ${gNum}</div>`:''}
-        ${statusButtonHtml('galeria','', day.galeria.status, iso)}
-        ${icons ? `<div class="gal-icons">${icons}</div>` : ''}
-        <button type="button" class="gal-edit-btn" data-action="gal-edit" data-iso="${iso}" title="Cumpleaños / defunción de artista">✎</button>
-      </td>`;
-    }).join('') + '</tr>';
-
-    wrap.innerHTML = `<table class="grid">${monthRow}${dayRow}${efeRow}${secRow}${tiraRow}${bandRow}${galRow}</table>`;
-  }
-
-  function scrollToToday(){
-    const wrap = document.getElementById('gridWrap');
-    const el = wrap.querySelector('.th-day.is-today');
-    if(el) el.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
-  }
-
-  function renderAll(){
-    renderEditionPanel();
-    renderGrid();
-    refreshStats();
-    renderPanorama();
-  }
-
-  /* ================= Grid interactions ================= */
-  document.getElementById('gridWrap').addEventListener('click', (e)=>{
-    const btn = e.target.closest('[data-action="cycle"]');
-    if(btn){
-      const iso = btn.dataset.iso;
-      const day = getDay(iso);
-      const section = btn.dataset.section;
-      const sub = btn.dataset.sub;
-      const target = sub ? day.secundaria[sub] : day[section];
-      target.status = nextStatus(target.status);
-      queueSave();
-      renderGrid();
-      refreshStats();
-      renderPanorama();
-      return;
-    }
-    const galBtn = e.target.closest('[data-action="gal-edit"]');
-    if(galBtn){
-      openGalPopover(galBtn.dataset.iso, galBtn);
-    }
-  });
-
-  document.getElementById('gridWrap').addEventListener('change', (e)=>{
-    const el = e.target.closest('[data-action="comic"]');
-    if(!el) return;
-    const iso = el.dataset.iso;
-    const day = getDay(iso);
-    day.tira.comic = el.value;
-    queueSave();
-    renderPanorama();
-  });
-
-  /* ================= Galería popover ================= */
-  let popoverIso = null;
-  const galPopoverEl = document.getElementById('galPopover');
-
-  function openGalPopover(iso, anchorEl){
-    popoverIso = iso;
-    const day = getDay(iso);
-    document.getElementById('gpBirth').checked = !!day.galeria.flagBirth;
-    document.getElementById('gpDeath').checked = !!day.galeria.flagDeath;
-    document.getElementById('gpFlagName').value = day.galeria.flagName || '';
-    document.getElementById('gpFlagNameWrap').style.display = (day.galeria.flagBirth || day.galeria.flagDeath) ? '' : 'none';
-
-    const rect = anchorEl.getBoundingClientRect();
-    galPopoverEl.hidden = false;
-    const top = Math.min(rect.bottom + 6, window.innerHeight - 260);
-    const left = Math.min(rect.left, window.innerWidth - 250);
-    galPopoverEl.style.top = Math.max(8, top) + 'px';
-    galPopoverEl.style.left = Math.max(8, left) + 'px';
-  }
-  function closeGalPopover(save){
-    if(popoverIso && save!==false){
-      const day = getDay(popoverIso);
-      day.galeria.flagBirth = document.getElementById('gpBirth').checked;
-      day.galeria.flagDeath = document.getElementById('gpDeath').checked;
-      day.galeria.flagName = document.getElementById('gpFlagName').value;
-      queueSave();
-      renderGrid();
-      renderPanorama();
-    }
-    galPopoverEl.hidden = true;
-    popoverIso = null;
-  }
-  document.getElementById('gpClose').addEventListener('click', ()=> closeGalPopover(true));
-  document.getElementById('gpBirth').addEventListener('change', updateFlagNameVisibility);
-  document.getElementById('gpDeath').addEventListener('change', updateFlagNameVisibility);
-  function updateFlagNameVisibility(){
-    const show = document.getElementById('gpBirth').checked || document.getElementById('gpDeath').checked;
-    document.getElementById('gpFlagNameWrap').style.display = show ? '' : 'none';
-  }
-  document.addEventListener('click', (e)=>{
-    if(galPopoverEl.hidden) return;
-    if(galPopoverEl.contains(e.target)) return;
-    if(e.target.closest('[data-action="gal-edit"]')) return;
-    closeGalPopover(true);
-  });
-
-  /* ================= Controls ================= */
-  document.querySelectorAll('.filter-group .btn').forEach(b=>{
-    b.addEventListener('click', ()=>{
-      document.querySelectorAll('.filter-group .btn').forEach(x=>x.classList.remove('active'));
-      b.classList.add('active');
-      state.filter = b.dataset.filter;
-      document.body.classList.remove('filter-heraldo','filter-galeria');
-      if(state.filter==='heraldo') document.body.classList.add('filter-heraldo');
-      if(state.filter==='galeria') document.body.classList.add('filter-galeria');
-    });
-  });
-  document.getElementById('todayBtn').addEventListener('click', scrollToToday);
-
-  /* ================= Issue numbering modal ================= */
-  const numberModal = document.getElementById('numberModal');
-  document.getElementById('numEditBtn').addEventListener('click', ()=>{
-    const n = state.appData.numbering;
-    document.getElementById('numHeraldoN').value = n && n.heraldo ? n.heraldo.anchorNumber : '';
-    document.getElementById('numHeraldoD').value = n && n.heraldo ? n.heraldo.anchorDate : todayISO();
-    document.getElementById('numGaleriaN').value = n && n.galeria ? n.galeria.anchorNumber : '';
-    document.getElementById('numGaleriaD').value = n && n.galeria ? n.galeria.anchorDate : todayISO();
-    numberModal.hidden = false;
-  });
-  document.getElementById('numCancel').addEventListener('click', ()=>{ numberModal.hidden = true; });
-  document.getElementById('numSave').addEventListener('click', ()=>{
-    const hN = document.getElementById('numHeraldoN').value;
-    const hD = document.getElementById('numHeraldoD').value;
-    const gN = document.getElementById('numGaleriaN').value;
-    const gD = document.getElementById('numGaleriaD').value;
-    const numbering = {};
-    if(hN !== '' && hD) numbering.heraldo = {anchorNumber: parseInt(hN,10), anchorDate: hD};
-    if(gN !== '' && gD) numbering.galeria = {anchorNumber: parseInt(gN,10), anchorDate: gD};
-    state.appData.numbering = numbering;
-    queueSave();
-    numberModal.hidden = true;
-    renderGrid();
-  });
-
-  /* ================= Panorama: section completion, dice stats, gallery summary ================= */
-  function computeSectionStats(){
-    const types = [
-      {label:'Efemérides', galeria:false, get:d=>d.efemerides},
-      {label:'Editorial (Matilde, lun)', galeria:false, get:d=>d.secundaria.matilde},
-      {label:'Editorial (Martín, vie)', galeria:false, get:d=>d.secundaria.martin},
-      {label:'Noticias del Mundo', galeria:false, get:d=>d.secundaria.noticias},
-      {label:'Ludo', galeria:false, get:d=>d.secundaria.donde_estoy},
-      {label:'El Rancho de Angela', galeria:false, get:d=>d.secundaria.animales},
-      {label:'Fonoteca', galeria:false, get:d=>d.secundaria.fonoteca},
-      {label:'Tira cómica', galeria:false, get:d=>d.tira},
-      {label:'Galería de Goma', galeria:true, get:d=>d.galeria},
-    ];
-    return types.map(t=>{
-      let pendiente=0, progreso=0, listo=0;
-      Object.values(state.appData.days).forEach(d=>{
-        const item = t.get(d);
-        if(!item) return;
-        if(item.status==='listo') listo++;
-        else if(item.status==='progreso') progreso++;
-        else pendiente++;
-      });
-      const total = pendiente+progreso+listo;
-      return {label:t.label, galeria:t.galeria, pendiente, progreso, listo, total};
-    }).filter(r=>r.total>0);
-  }
-  function renderSectionStats(){
-    const wrap = document.getElementById('sectionStats');
-    const rows = computeSectionStats();
-    if(rows.length===0){
-      wrap.innerHTML = '<span class="empty-note" style="padding:6px 0;">Todavía no hay días registrados.</span>';
-      return;
-    }
-    wrap.innerHTML = rows.map(r=>{
-      const pctPend = Math.round((r.pendiente/r.total)*100);
-      const pctProg = Math.round((r.progreso/r.total)*100);
-      const pctListo = 100 - pctPend - pctProg;
-      return `
-        <div class="sec-stat-row ${r.galeria?'is-galeria':''}">
-          <span class="sec-name">${escapeHtml(r.label)}</span>
-          <span class="stack-bar" title="${r.listo} listo · ${r.progreso} en curso · ${r.pendiente} pendiente">
-            <span class="stack-seg listo" style="width:${pctListo}%"></span>
-            <span class="stack-seg progreso" style="width:${pctProg}%"></span>
-            <span class="stack-seg pendiente" style="width:${pctPend}%"></span>
-          </span>
-          <span class="sec-stat-count">${r.listo}/${r.total}</span>
-        </div>`;
-    }).join('');
-  }
-  function computeComicStats(){
-    const stats = {mafalda:0, gaturro:0, garfield:0, charlie:0};
-    Object.values(state.appData.days).forEach(d=>{
-      if(d.tira && d.tira.comic && stats.hasOwnProperty(d.tira.comic)) stats[d.tira.comic]++;
-    });
-    return stats;
-  }
-  function renderStats(){
-    const stats = computeComicStats();
-    const wrap = document.getElementById('statsBars');
-    const total = COMICS.reduce((s,c)=> s + (stats[c.id]||0), 0);
-    if(total===0){
-      wrap.innerHTML = '<span class="empty-note" style="padding:6px 0;">Sin datos aún.</span>';
-      return;
-    }
-    const max = Math.max(...COMICS.map(c=>stats[c.id]||0), 1);
-    wrap.innerHTML = COMICS.map(c=>{
-      const n = stats[c.id]||0;
-      const pct = Math.round((n/max)*100);
-      return `<div class="stat-row"><span class="name">${c.label}</span><span class="bar-bg"><span class="bar-fg" style="width:${pct}%"></span></span><span class="count">${n}</span></div>`;
-    }).join('');
-  }
-  function renderGaleriaSummary(){
-    const wrap = document.getElementById('galeriaSummary');
-    let births=0, deaths=0, tracked=0;
-    Object.values(state.appData.days).forEach(d=>{
-      tracked++;
-      if(d.galeria.flagBirth) births++;
-      if(d.galeria.flagDeath) deaths++;
-    });
-    if(tracked===0){
-      wrap.innerHTML = '<span class="empty-note" style="padding:6px 0;">Todavía no hay días registrados.</span>';
-      return;
-    }
-    wrap.innerHTML = `
-      <span>🎂 ${births} cumpleaños de artista marcados</span>
-      <span>⚱ ${deaths} defunciones marcadas</span>`;
-  }
-  function renderPanorama(){
-    renderSectionStats();
-    renderStats();
-    renderGaleriaSummary();
-  }
-
-  /* ================= Config modal ================= */
-  const modal = document.getElementById('configModal');
-  function openModal(){
-    const c = state.config || {};
-    document.getElementById('cfgOwner').value = c.owner || '';
-    document.getElementById('cfgRepo').value = c.repo || '';
-    document.getElementById('cfgBranch').value = c.branch || 'main';
-    document.getElementById('cfgPath').value = c.path || 'data.json';
-    document.getElementById('cfgToken').value = c.token || '';
-    document.getElementById('cfgMsg').textContent = '';
-    document.getElementById('cfgMsg').className = 'modal-msg';
-    modal.hidden = false;
-  }
-  function closeModal(){ modal.hidden = true; }
-  document.getElementById('connEditBtn').addEventListener('click', openModal);
-  document.getElementById('cfgCancel').addEventListener('click', ()=>{ if(state.config) closeModal(); });
-
-  function readModalConfig(){
-    return {
-      owner: document.getElementById('cfgOwner').value.trim(),
-      repo: document.getElementById('cfgRepo').value.trim(),
-      branch: document.getElementById('cfgBranch').value.trim() || 'main',
-      path: document.getElementById('cfgPath').value.trim() || 'data.json',
-      token: document.getElementById('cfgToken').value.trim(),
-    };
-  }
-  document.getElementById('cfgTest').addEventListener('click', async ()=>{
-    const msg = document.getElementById('cfgMsg');
-    const cfg = readModalConfig();
-    if(!cfg.owner || !cfg.repo || !cfg.token){
-      msg.textContent = 'Completá usuario, repositorio y token.';
-      msg.className = 'modal-msg err';
-      return;
-    }
-    msg.textContent = 'Probando…';
-    msg.className = 'modal-msg';
-    try{
-      const res = await ghGetFile(cfg);
-      msg.textContent = res.exists ? 'Conexión OK — se encontró el archivo de datos existente.' : 'Conexión OK — el archivo se creará con el primer guardado.';
-      msg.className = 'modal-msg ok';
-    }catch(e){
-      msg.textContent = 'No se pudo conectar: ' + e.message;
-      msg.className = 'modal-msg err';
-    }
-  });
-  document.getElementById('cfgSave').addEventListener('click', async ()=>{
-    const msg = document.getElementById('cfgMsg');
-    const cfg = readModalConfig();
-    if(!cfg.owner || !cfg.repo || !cfg.token){
-      msg.textContent = 'Completá usuario, repositorio y token.';
-      msg.className = 'modal-msg err';
-      return;
-    }
-    state.config = cfg;
-    saveConfig(cfg);
-    closeModal();
-    setConnStatus('saving');
-    await loadRemoteData();
-    renderAll();
-    scrollToToday();
-  });
-
-  /* ================= Load remote data ================= */
-  async function loadRemoteData(){
-    if(!state.config) return;
-    try{
-      const res = await ghGetFile(state.config);
-      if(res.exists){
-        state.appData = Object.assign({days:{}, editionPeriods:[]}, res.data);
-        if(!state.appData.days) state.appData.days = {};
-        if(!state.appData.editionPeriods) state.appData.editionPeriods = [];
-        // Migration: older versions stored a single mutable editionSettings
-        // object instead of a list of periods. Convert it into one period
-        // so past data isn't lost, then drop the old field.
-        if(state.appData.editionSettings && state.appData.editionPeriods.length===0){
-          const s = state.appData.editionSettings;
-          const fallbackEnd = s.type==='estandar' ? addDaysISO(s.startDate,13) : addDaysISO(s.startDate,13);
-          state.appData.editionPeriods.push({
-            id: 'migrated-' + s.startDate,
-            type: s.type, startDate: s.startDate, endDate: fallbackEnd, themeName: s.themeName || '',
-          });
+/* ---------- Guardado por lotes ---------- */
+let flushTimer = null, flushing = false;
+function scheduleFlush(ms){ clearTimeout(flushTimer); flushTimer = setTimeout(flush, ms); }
+async function flush(){
+  if(flushing || !S.cfg || !S.pending.length) return;
+  flushing = true;
+  setSave('saving');
+  const n = S.pending.length;
+  let retries = 0;
+  try{
+    for(;;){
+      const content = applyAll(clone(S.base || emptyData()), S.pending.slice(0, n));
+      try{
+        S.sha = await ghPut(S.cfg, content, S.sha);
+        S.base = content;
+        S.pending.splice(0, n);
+        storePending();
+        break;
+      }catch(e){
+        if((e.status === 409 || e.status === 422) && retries < 3){
+          retries++;
+          await pull(); // bajo lo remoto y reaplico mis cambios encima
+          render();
+          continue;
         }
-        delete state.appData.editionSettings;
-        sortPeriods();
-        if(!state.appData.numbering) state.appData.numbering = seedNumbering();
-        state.sha = res.sha;
-        state.fileExists = true;
-      }else{
-        state.appData = {days:{}, editionPeriods:[], numbering: seedNumbering()};
-        state.fileExists = false;
-        state.sha = null;
+        throw e;
       }
-      setConnStatus('ok');
-    }catch(e){
-      showToast('No se pudo cargar desde GitHub: ' + e.message);
-      setConnStatus('err');
+    }
+    recompute();
+    setSave(S.pending.length ? 'pending' : 'ok');
+    if(!S.pending.length) toast('Guardado');
+  }catch(e){
+    if(e.status === 401 || e.status === 403) setSave('auth');
+    else if(!e.status) setSave('offline');
+    else { setSave('err'); toast('No se pudo guardar: ' + e.message); }
+  }finally{
+    flushing = false;
+    render();
+    if(S.pending.length){
+      if(S.save === 'offline') scheduleFlush(30000);
+      else if(S.save === 'pending') scheduleFlush(400);
     }
   }
+}
+window.addEventListener('online', () => { if(S.pending.length) scheduleFlush(0); });
+window.addEventListener('beforeunload', e => { if(S.pending.length){ e.preventDefault(); e.returnValue = ''; } });
 
-  /* ================= Init ================= */
-  async function init(){
-    if(!state.config){ setConnStatus(); openModal(); return; }
-    setConnStatus('saving');
-    await loadRemoteData();
-    renderAll();
-    setTimeout(scrollToToday, 50);
+// Al volver a la pestaña, traigo cambios hechos desde otro navegador.
+let lastSync = 0;
+async function refreshIfIdle(){
+  if(!S.cfg || flushing || S.pending.length || Date.now() - lastSync < 15000) return;
+  lastSync = Date.now();
+  try{
+    const prev = S.sha;
+    await pull();
+    if(S.sha !== prev) render();
+    if(S.save === 'offline' || S.save === 'err') setSave('ok');
+  }catch(e){ /* sin conexión: se reintenta en la próxima vuelta */ }
+}
+document.addEventListener('visibilitychange', () => { if(document.visibilityState === 'visible') refreshIfIdle(); });
+
+/* ---------- Estado de guardado ---------- */
+function setSave(kind){
+  S.save = kind;
+  const el = document.getElementById('save');
+  const txt = document.getElementById('saveText');
+  const n = S.pending.length;
+  el.className = 'save ' + ({ok:'ok', idle:'ok', saving:'saving', pending:'pending', offline:'err', auth:'err', err:'err'}[kind] || '');
+  txt.textContent = !S.cfg ? 'Sin configurar'
+    : kind === 'saving' ? 'Guardando…'
+    : kind === 'pending' ? `${n} sin guardar`
+    : kind === 'offline' ? `Sin conexión · ${n} pendientes`
+    : kind === 'auth' ? 'Token rechazado'
+    : kind === 'err' ? 'Error al guardar'
+    : 'Guardado';
+}
+let toastTimer = null;
+function toast(m){ const t = document.getElementById('toast'); t.textContent = m; t.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove('show'), 1800); }
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+/* ---------- Cálculos ---------- */
+function findPeriod(iso){ return S.data.periods.find(p => diffDays(p.startDate, iso) >= 0 && diffDays(iso, p.endDate) >= 0) || null; }
+function issue(pub, iso){ const n = S.data.numbering && S.data.numbering[pub]; return n && n.anchorDate ? n.anchorNumber + diffDays(n.anchorDate, iso) : null; }
+function nextFreeMonday(){ let m = mondayOf(today()); for(let i=0;i<520;i++){ if(!findPeriod(m)) return m; m = addDays(m,7); } return m; }
+
+function stats(){
+  let prep=0, act=0, cons=0, her=0, gal=0, streak=true;
+  let iso = cutoff();
+  for(let i=0;i<120;i++){
+    const e = cellOf(iso,'efemerides').status === 'listo';
+    const s = cellOf(iso,'secundaria').status === 'listo';
+    const t = cellOf(iso,'tira').status === 'listo';
+    const g = cellOf(iso,'galeria').status === 'listo';
+    const full = e && s && t && g;
+    if(full) prep++; else if(e && g) act++;
+    if(e) her++;
+    if(g) gal++;
+    if(streak){ if(full) cons++; else streak = false; }
+    iso = addDays(iso,1);
+  }
+  return {prep, act, cons, her, gal};
+}
+
+/* ---------- Render ---------- */
+function render(){
+  renderStats();
+  renderAlerts();
+  renderGrid();
+  renderTramos();
+  renderPano();
+}
+
+function renderStats(){
+  const st = stats();
+  document.getElementById('sPrep').textContent = st.prep;
+  document.getElementById('sAct').textContent = st.act;
+  document.getElementById('sCons').textContent = st.cons;
+  document.getElementById('sHer').textContent = st.her;
+  document.getElementById('sGal').textContent = st.gal;
+}
+
+function renderAlerts(){
+  const out = [];
+  if(S.loadError) out.push(`<div class="alert err">No se pudieron cargar los datos: ${esc(S.loadError)} <button data-a="retry">Reintentar</button></div>`);
+  if(S.save === 'auth') out.push(`<div class="alert err">GitHub rechazó el token del panel. Generá uno nuevo y cargalo en Conexión. Tus cambios siguen guardados en este navegador. <button data-a="cfg">Conexión</button></div>`);
+  if(S.save === 'offline') out.push(`<div class="alert warn">Sin conexión con GitHub. ${S.pending.length} cambios esperan para subir. <button data-a="retry-save">Reintentar</button></div>`);
+  if(S.save === 'err' && S.pending.length) out.push(`<div class="alert err">GitHub no aceptó el último guardado. ${S.pending.length} cambios siguen en este navegador. <button data-a="retry-save">Reintentar</button></div>`);
+  if(S.cfg && S.base){
+    const t = today();
+    for(let i=0;i<14;i++){
+      const iso = addDays(t,i);
+      if(!findPeriod(iso)){ out.push(`<div class="alert warn">La Galería no tiene tramo asignado desde el ${esc(shortDate(iso))}.</div>`); break; }
+    }
+  }
+  document.getElementById('alerts').innerHTML = out.join('');
+}
+document.getElementById('alerts').addEventListener('click', async e => {
+  const b = e.target.closest('[data-a]'); if(!b) return;
+  if(b.dataset.a === 'cfg') openCfg();
+  if(b.dataset.a === 'retry-save'){ setSave('pending'); scheduleFlush(0); }
+  if(b.dataset.a === 'retry') init();
+});
+
+function columns(){
+  const {y,m} = parts(today());
+  let ny = y, nm = m + 1; if(nm > 12){ nm = 1; ny++; }
+  const out = []; let iso = isoOf(y,m,1); const end = isoOf(ny,nm,lastDay(ny,nm));
+  while(diffDays(iso,end) >= 0){ out.push(iso); iso = addDays(iso,1); }
+  return out;
+}
+const stBtn = (iso, sec, status) => `<button type="button" class="st ${status}" data-cycle="${sec}" data-iso="${iso}">${LABEL[status]}</button>`;
+
+function renderGrid(){
+  const wrap = document.getElementById('gridWrap');
+  if(!S.cfg){ wrap.innerHTML = '<div class="empty">Configurá la conexión con GitHub para empezar.</div>'; return; }
+  if(!S.base){ wrap.innerHTML = `<div class="empty">${S.save === 'auth' ? 'No pude leer los datos: revisá el token en Conexión.' : S.loadError ? 'No se pudieron cargar los datos.' : 'Cargando…'}</div>`; return; }
+  const keepScroll = wrap.scrollLeft;
+  const cols = columns(), t = today(), cut = cutoff();
+  const cls = iso => (iso === t ? ' today' : '') + (diffDays(iso, cut) > 0 ? ' past' : '') + (parts(iso).d === 1 ? ' monthstart' : '');
+
+  const months = [];
+  cols.forEach(iso => { const p = parts(iso); const k = p.y + '-' + p.m; const last = months[months.length-1]; if(last && last.k === k) last.n++; else months.push({k, p, n:1}); });
+  let h = '<table class="grid"><tr><th class="lbl"></th>' + months.map(g => `<th class="month" colspan="${g.n}"><span class="stick">${MONTHS[g.p.m-1]} ${g.p.y}</span></th>`).join('') + '</tr>';
+
+  h += '<tr><th class="lbl"></th>' + cols.map(iso => {
+    const n = issue('heraldo', iso);
+    return `<th class="day${cls(iso)}"${iso===t?' id="todayCol"':''}><div class="wd">${WD_SHORT[weekday(iso)]}</div><div class="dn">${parts(iso).d}</div>${n != null ? `<div class="no">H°${n}</div>` : ''}</th>`;
+  }).join('') + '</tr>';
+
+  h += '<tr class="r-efe"><th class="lbl">Efemérides</th>' + cols.map(iso => `<td class="c${cls(iso)}">${stBtn(iso,'efemerides',cellOf(iso,'efemerides').status)}</td>`).join('') + '</tr>';
+
+  h += '<tr class="r-sec"><th class="lbl">Secundaria</th>' + cols.map(iso => {
+    const sec = sectionFor(iso);
+    return `<td class="c${cls(iso)}"><div class="sub" title="${esc(sec.label)}">${esc(sec.short || sec.label)}</div>${stBtn(iso,'secundaria',cellOf(iso,'secundaria').status)}</td>`;
+  }).join('') + '</tr>';
+
+  h += '<tr class="r-tira"><th class="lbl">Tira cómica</th>' + cols.map(iso => {
+    const c = cellOf(iso,'tira');
+    const opts = '<option value="">Elegir</option>' + COMICS.map(x => `<option value="${x.id}"${c.comic === x.id ? ' selected' : ''}>${x.label}</option>`).join('');
+    return `<td class="c${cls(iso)}"><select class="comic" data-comic="${iso}" aria-label="Tira del ${iso}">${opts}</select>${stBtn(iso,'tira',c.status)}</td>`;
+  }).join('') + '</tr>';
+
+  const bands = [];
+  cols.forEach(iso => { const p = findPeriod(iso); const k = p ? p.type : 'none'; const last = bands[bands.length-1]; if(last && last.k === k && last.id === (p && p.id)) last.n++; else bands.push({k, id: p && p.id, n:1}); });
+  h += '<tr class="r-band"><th class="lbl">Edición</th>' + bands.map(b => `<td class="band b-${b.k}" colspan="${b.n}"><span class="stick">${b.k === 'estandar' ? 'Estándar' : b.k === 'tematica' ? 'Temática' : 'Sin tramo'}</span></td>`).join('') + '</tr>';
+
+  h += '<tr class="r-gal"><th class="lbl">Galería</th>' + cols.map(iso => {
+    const c = cellOf(iso,'galeria'); const p = findPeriod(iso); const n = issue('galeria', iso);
+    const tip = [c.birth ? 'Nacimiento' : '', c.death ? 'Defunción' : ''].filter(Boolean).join(' y ') + (c.name ? ': ' + c.name : '');
+    const flags = (c.birth ? '<span class="flag n">N</span>' : '') + (c.death ? '<span class="flag m">✝</span>' : '');
+    return `<td class="c${cls(iso)}${p ? ' k-' + p.type : ''}">${n != null ? `<div class="no-g">G°${n}</div>` : ''}${stBtn(iso,'galeria',c.status)}<div class="gal-foot" title="${esc(tip)}">${flags}<button type="button" class="pen" data-pen="${iso}" aria-label="Efeméride de artista del ${iso}">✎</button></div></td>`;
+  }).join('') + '</tr></table>';
+
+  wrap.innerHTML = h;
+  wrap.scrollLeft = keepScroll;
+}
+
+function scrollToToday(smooth){
+  const wrap = document.getElementById('gridWrap');
+  const th = document.getElementById('todayCol');
+  if(!th) return;
+  const label = wrap.querySelector('.lbl');
+  const x = th.offsetLeft - (label ? label.offsetWidth : 0) - th.offsetWidth * 2;
+  wrap.scrollTo({left: Math.max(0, x), behavior: smooth ? 'smooth' : 'auto'});
+}
+
+/* ---------- Interacción con la grilla ---------- */
+document.getElementById('gridWrap').addEventListener('click', e => {
+  const b = e.target.closest('[data-cycle]');
+  if(b){
+    const iso = b.dataset.iso, sec = b.dataset.cycle;
+    const cur = cellOf(iso, sec);
+    const next = ORDER[(ORDER.indexOf(cur.status) + 1) % ORDER.length];
+    const v = Object.assign({}, cur, {status: next});
+    if(next === 'listo') v.doneAt = today(); else delete v.doneAt;
+    setCell(iso, sec, v);
+    return;
+  }
+  const pen = e.target.closest('[data-pen]');
+  if(pen) openPop(pen.dataset.pen, pen);
+});
+document.getElementById('gridWrap').addEventListener('change', e => {
+  const s = e.target.closest('[data-comic]'); if(!s) return;
+  const iso = s.dataset.comic;
+  const v = Object.assign({}, cellOf(iso,'tira'));
+  if(s.value) v.comic = s.value; else delete v.comic;
+  setCell(iso, 'tira', v);
+});
+
+/* ---------- Popover de efemérides de artista ---------- */
+const pop = document.getElementById('pop');
+let popIso = null;
+function syncPopName(){ document.getElementById('pNameWrap').style.display = (document.getElementById('pBirth').checked || document.getElementById('pDeath').checked) ? '' : 'none'; }
+function openPop(iso, anchor){
+  if(popIso) closePop();
+  popIso = iso;
+  const c = cellOf(iso,'galeria');
+  document.getElementById('pBirth').checked = !!c.birth;
+  document.getElementById('pDeath').checked = !!c.death;
+  document.getElementById('pName').value = c.name || '';
+  syncPopName();
+  pop.hidden = false;
+  const r = anchor.getBoundingClientRect();
+  pop.style.top = Math.max(8, Math.min(r.bottom + 6, innerHeight - pop.offsetHeight - 8)) + 'px';
+  pop.style.left = Math.max(8, Math.min(r.left - 100, innerWidth - pop.offsetWidth - 8)) + 'px';
+}
+function closePop(){
+  if(!popIso) return;
+  const iso = popIso; popIso = null; pop.hidden = true;
+  const c = cellOf(iso,'galeria');
+  const v = Object.assign({}, c);
+  const birth = document.getElementById('pBirth').checked, death = document.getElementById('pDeath').checked;
+  const name = (birth || death) ? document.getElementById('pName').value.trim() : '';
+  if(birth) v.birth = true; else delete v.birth;
+  if(death) v.death = true; else delete v.death;
+  if(name) v.name = name; else delete v.name;
+  if(!!c.birth === birth && !!c.death === death && (c.name || '') === name) return;
+  setCell(iso, 'galeria', v);
+}
+document.getElementById('pBirth').addEventListener('change', syncPopName);
+document.getElementById('pDeath').addEventListener('change', syncPopName);
+document.getElementById('pClose').addEventListener('click', closePop);
+document.addEventListener('mousedown', e => { if(popIso && !pop.contains(e.target) && !e.target.closest('[data-pen]')) closePop(); });
+document.addEventListener('keydown', e => {
+  if(e.key !== 'Escape') return;
+  if(popIso) closePop();
+  document.querySelectorAll('.overlay').forEach(o => { if(o !== cfgModal || S.cfg) o.hidden = true; });
+});
+
+/* ---------- Tramos de la Galería ---------- */
+function renderTramos(){
+  const el = document.getElementById('tramoStatus');
+  if(!S.base){ el.textContent = '·'; return; }
+  const p = findPeriod(today());
+  el.innerHTML = `Hoy: <b>${p ? (p.type === 'tematica' ? 'temática' : 'estándar') : 'sin tramo'}</b> · próxima semana libre: ${esc(shortDate(nextFreeMonday()))}`;
+}
+function addPeriod(type, startDate, endDate){ commit({t:'addPeriod', v:{id:uid(), createdAt:Date.now(), type, startDate, endDate}}); }
+document.getElementById('markE').addEventListener('click', () => { const m = nextFreeMonday(); addPeriod('estandar', m, addDays(m,13)); });
+document.getElementById('markT').addEventListener('click', () => { const m = nextFreeMonday(); addPeriod('tematica', m, addDays(m,6)); });
+document.getElementById('undoT').addEventListener('click', () => {
+  const ps = S.data.periods; if(!ps.length){ toast('No hay tramos para borrar'); return; }
+  const last = ps.reduce((a,b) => (b.createdAt||0) > (a.createdAt||0) ? b : a);
+  commit({t:'delPeriod', id:last.id});
+  toast(`Borrado el tramo del ${shortDate(last.startDate)}`);
+});
+document.getElementById('manualT').addEventListener('click', () => {
+  const f = document.getElementById('manual'); f.hidden = !f.hidden;
+  if(!f.hidden){ document.getElementById('mStart').value = nextFreeMonday(); document.getElementById('mEnd').value = ''; }
+});
+document.getElementById('mType').addEventListener('change', () => {
+  const s = document.getElementById('mStart').value; if(!s) return;
+  document.getElementById('mEnd').value = addDays(s, document.getElementById('mType').value === 'estandar' ? 13 : 6);
+});
+document.getElementById('mStart').addEventListener('change', () => document.getElementById('mType').dispatchEvent(new Event('change')));
+document.getElementById('mSave').addEventListener('click', () => {
+  const type = document.getElementById('mType').value, s = document.getElementById('mStart').value, e = document.getElementById('mEnd').value;
+  if(!s || !e){ toast('Completá desde y hasta'); return; }
+  if(diffDays(s,e) < 0){ toast('"Hasta" no puede ser anterior a "desde"'); return; }
+  addPeriod(type, s, e);
+  document.getElementById('manual').hidden = true;
+});
+
+/* ---------- Panorama ---------- */
+function renderPano(){
+  const days = S.data.days;
+  // Anticipación: días entre que algo se marcó Listo y su fecha de publicación.
+  const acc = new Map();
+  const add = (name, d) => { const a = acc.get(name) || {sum:0, n:0}; a.sum += d; a.n++; acc.set(name, a); };
+  Object.entries(days).forEach(([iso, day]) => {
+    SECS.forEach(sec => {
+      const c = day[sec]; if(!c || c.status !== 'listo' || !c.doneAt) return;
+      const name = sec === 'efemerides' ? 'Efemérides' : sec === 'tira' ? 'Tira cómica' : sec === 'galeria' ? 'Galería' : sectionFor(iso).label;
+      add(name, Math.max(0, diffDays(c.doneAt, iso)));
+    });
+  });
+  const ant = document.getElementById('pAnt');
+  if(!acc.size){
+    ant.innerHTML = '<p class="note">Se empieza a medir desde esta versión: cada celda que marques como Listo guarda la fecha, y acá vas a ver con cuántos días de adelanto terminás cada sección.</p>';
+  } else {
+    const rows = [...acc.entries()].map(([k,a]) => ({k, avg:a.sum/a.n, n:a.n})).sort((a,b) => b.avg - a.avg);
+    const max = Math.max(...rows.map(r => r.avg), 1);
+    const min = Math.min(...rows.map(r => r.avg));
+    ant.innerHTML = '<div class="bars">' + rows.map(r => `<span>${esc(r.k)}</span><span class="bar"><span class="${rows.length > 1 && r.avg === min ? 'low' : ''}" style="width:${Math.max(3, Math.round(r.avg/max*100))}%"></span></span><span class="val" title="Promedio sobre ${r.n} publicaciones">${r.avg.toLocaleString('es-UY',{maximumFractionDigits:1})} días</span>`).join('') + '</div>';
   }
 
+  const counts = {}; COMICS.forEach(c => counts[c.id] = 0);
+  Object.values(days).forEach(d => { const id = d.tira && d.tira.comic; if(id in counts) counts[id]++; });
+  const total = Object.values(counts).reduce((a,b) => a+b, 0);
+  const tmax = Math.max(...Object.values(counts), 1);
+  document.getElementById('pTira').innerHTML = total
+    ? '<div class="bars" style="grid-template-columns:110px minmax(0,1fr) 40px">' + COMICS.map(c => `<span>${c.label}</span><span class="bar"><span style="width:${Math.round(counts[c.id]/tmax*100)}%"></span></span><span class="val">${counts[c.id]}</span>`).join('') + '</div>'
+    : '<p class="note">Todavía no hay tiras elegidas.</p>';
+
+  let births = 0, deaths = 0;
+  Object.values(days).forEach(d => { if(d.galeria && d.galeria.birth) births++; if(d.galeria && d.galeria.death) deaths++; });
+  document.getElementById('pGal').innerHTML = `<div class="bars" style="grid-template-columns:110px 40px"><span>Nacimientos</span><span class="val">${births}</span><span>Defunciones</span><span class="val">${deaths}</span></div>`;
+}
+
+/* ---------- Filtro y navegación ---------- */
+document.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('.seg button').forEach(x => x.classList.toggle('on', x === b));
+  document.body.classList.remove('f-heraldo','f-galeria');
+  if(b.dataset.f !== 'all') document.body.classList.add('f-' + b.dataset.f);
+}));
+document.getElementById('todayBtn').addEventListener('click', () => scrollToToday(true));
+
+/* ---------- Modales ---------- */
+const numModal = document.getElementById('numModal'), secModal = document.getElementById('secModal'), cfgModal = document.getElementById('cfgModal');
+document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', () => { const o = b.closest('.overlay'); if(o !== cfgModal || S.cfg) o.hidden = true; }));
+
+document.getElementById('numBtn').addEventListener('click', () => {
+  const n = S.data.numbering || {};
+  document.getElementById('nH').value = n.heraldo ? n.heraldo.anchorNumber : '';
+  document.getElementById('nHd').value = n.heraldo ? n.heraldo.anchorDate : today();
+  document.getElementById('nG').value = n.galeria ? n.galeria.anchorNumber : '';
+  document.getElementById('nGd').value = n.galeria ? n.galeria.anchorDate : today();
+  numModal.hidden = false;
+});
+document.getElementById('nSave').addEventListener('click', () => {
+  const v = {};
+  const h = document.getElementById('nH').value, hd = document.getElementById('nHd').value;
+  const g = document.getElementById('nG').value, gd = document.getElementById('nGd').value;
+  if(h !== '' && hd) v.heraldo = {anchorNumber: parseInt(h,10), anchorDate: hd};
+  if(g !== '' && gd) v.galeria = {anchorNumber: parseInt(g,10), anchorDate: gd};
+  commit({t:'numbering', v});
+  numModal.hidden = true;
+});
+
+const WD_ORDER = [1,2,3,4,5,6,0];
+document.getElementById('secBtn').addEventListener('click', () => {
+  const s = S.data.settings.sections;
+  document.getElementById('secRows').innerHTML = WD_ORDER.map(w => `<tr><td>${WD_LONG[w]}</td><td><input data-w="${w}" data-k="label" value="${esc(s[w] ? s[w].label : '')}"></td><td><input data-w="${w}" data-k="short" value="${esc(s[w] ? s[w].short : '')}" maxlength="12"></td></tr>`).join('');
+  secModal.hidden = false;
+});
+document.getElementById('secSave').addEventListener('click', () => {
+  const v = clone(S.data.settings.sections);
+  document.querySelectorAll('#secRows input').forEach(i => {
+    const w = i.dataset.w; v[w] = v[w] || {label:'', short:''};
+    v[w][i.dataset.k] = i.value.trim();
+  });
+  for(const w of WD_ORDER){
+    if(!v[w].label){ toast(`Falta el nombre del ${WD_LONG[w].toLowerCase()}`); return; }
+    if(!v[w].short) v[w].short = v[w].label.slice(0,12);
+  }
+  commit({t:'sections', v});
+  secModal.hidden = true;
+});
+
+function openCfg(){
+  const c = S.cfg || {};
+  document.getElementById('cOwner').value = c.owner || '';
+  document.getElementById('cRepo').value = c.repo || '';
+  document.getElementById('cBranch').value = c.branch || 'main';
+  document.getElementById('cPath').value = c.path || 'data.json';
+  document.getElementById('cToken').value = c.token || '';
+  document.getElementById('cMsg').textContent = '';
+  cfgModal.hidden = false;
+}
+function readCfg(){
+  return {
+    owner: document.getElementById('cOwner').value.trim(),
+    repo: document.getElementById('cRepo').value.trim(),
+    branch: document.getElementById('cBranch').value.trim() || 'main',
+    path: document.getElementById('cPath').value.trim() || 'data.json',
+    token: document.getElementById('cToken').value.trim(),
+  };
+}
+function cfgMsg(t, cls){ const m = document.getElementById('cMsg'); m.textContent = t; m.className = 'msg ' + (cls || ''); }
+document.getElementById('cfgBtn').addEventListener('click', openCfg);
+document.getElementById('cTest').addEventListener('click', async () => {
+  const c = readCfg();
+  if(!c.owner || !c.repo || !c.token){ cfgMsg('Completá usuario, repositorio y token.', 'err'); return; }
+  cfgMsg('Probando…');
+  try{ const r = await ghGet(c); cfgMsg(r.exists ? 'Conexión correcta. Encontré el archivo de datos.' : 'Conexión correcta. El archivo se crea con el primer cambio.', 'ok'); }
+  catch(e){ cfgMsg(e.status === 401 ? 'GitHub rechazó el token.' : 'No se pudo conectar: ' + e.message, 'err'); }
+});
+document.getElementById('cSave').addEventListener('click', () => {
+  const c = readCfg();
+  if(!c.owner || !c.repo || !c.token){ cfgMsg('Completá usuario, repositorio y token.', 'err'); return; }
+  S.cfg = c;
+  localStorage.setItem(CFG_KEY, JSON.stringify(c));
+  cfgModal.hidden = true;
   init();
+});
+
+/* ---------- Arranque ---------- */
+async function init(){
+  if(!S.cfg){ setSave('idle'); render(); openCfg(); return; }
+  S.pending = readPending();
+  S.loadError = null;
+  setSave('saving');
+  document.getElementById('saveText').textContent = 'Cargando…';
+  render();
+  try{
+    await pull();
+    lastSync = Date.now();
+    setSave(S.pending.length ? 'pending' : 'ok');
+    if(S.pending.length) scheduleFlush(500);
+  }catch(e){
+    if(e.status === 401 || e.status === 403){ S.base = null; setSave('auth'); }
+    else { S.loadError = e.message; setSave('err'); }
+  }
+  render();
+  requestAnimationFrame(() => scrollToToday(false));
+}
+// Si la página queda abierta, que el "hoy" avance solo (y con él el corte del mediodía).
+let lastHour = mvNow().hour;
+setInterval(() => { const h = mvNow().hour; if(h !== lastHour){ lastHour = h; if(S.base) render(); } }, 60000);
+
+window.__heraldo = {S, migrate, applyOp, flush}; // para pruebas
+init();
 })();
 </script>
 </body>
