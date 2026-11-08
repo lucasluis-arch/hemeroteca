@@ -1,3491 +1,1517 @@
 {
-  "days": {
-    "2026-08-24": {
-      "skip": false,
-      "efemerides": {
-        "status": "listo",
-        "notes": ""
-      },
-      "secundaria": {
-        "matilde": {
-          "status": "listo",
-          "notes": ""
-        }
-      },
-      "tira": {
-        "comic": "mafalda",
-        "status": "listo",
-        "notes": ""
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "Las bodas de Caná",
-        "artist": "Lavinia Fontana",
-        "flagBirth": true,
-        "flagDeath": false,
-        "flagName": "Lavinia Fontana",
-        "notes": ""
-      }
-    },
-    "2026-08-25": {
-      "skip": false,
-      "efemerides": {
-        "status": "listo",
-        "notes": ""
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "listo",
-          "notes": ""
-        }
-      },
-      "tira": {
-        "comic": "garfield",
-        "status": "listo",
-        "notes": ""
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "Los Discípulos de Emaús",
-        "artist": "Giovanni Battista Piazzetta",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": "",
-        "notes": ""
-      }
-    },
-    "2026-08-26": {
-      "skip": false,
-      "efemerides": {
-        "status": "listo",
-        "notes": ""
-      },
-      "secundaria": {
-        "donde_estoy": {
-          "status": "listo",
-          "notes": ""
-        }
-      },
-      "tira": {
-        "comic": "garfield",
-        "status": "listo",
-        "notes": ""
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "Noche del Armisticio",
-        "artist": "George Luke",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": "",
-        "notes": ""
-      }
-    },
-    "2026-08-27": {
-      "skip": false,
-      "efemerides": {
-        "status": "listo",
-        "notes": ""
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "listo",
-          "notes": ""
-        }
-      },
-      "tira": {
-        "comic": "gaturro",
-        "status": "listo",
-        "notes": ""
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": "",
-        "notes": ""
-      }
-    },
-    "2026-08-28": {
-      "skip": false,
-      "efemerides": {
-        "status": "listo",
-        "notes": ""
-      },
-      "secundaria": {
-        "martin": {
-          "status": "listo",
-          "notes": ""
-        }
-      },
-      "tira": {
-        "comic": "mafalda",
-        "status": "listo",
-        "notes": ""
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": "",
-        "notes": ""
-      }
-    },
-    "2026-08-29": {
-      "skip": false,
-      "efemerides": {
-        "status": "listo",
-        "notes": ""
-      },
-      "secundaria": {
-        "animales": {
-          "status": "listo",
-          "notes": ""
-        }
-      },
-      "tira": {
-        "comic": "mafalda",
-        "status": "listo",
-        "notes": ""
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": "",
-        "notes": ""
-      }
-    },
-    "2026-08-30": {
-      "skip": false,
-      "efemerides": {
-        "status": "listo",
-        "notes": ""
-      },
-      "secundaria": {
-        "fonoteca": {
-          "status": "listo",
-          "notes": ""
-        }
-      },
-      "tira": {
-        "comic": "charlie",
-        "status": "listo",
-        "notes": ""
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": true,
-        "flagDeath": false,
-        "flagName": "",
-        "notes": ""
-      }
-    },
-    "2026-08-31": {
-      "skip": false,
-      "efemerides": {
-        "status": "listo",
-        "notes": ""
-      },
-      "secundaria": {
-        "matilde": {
-          "status": "listo",
-          "notes": ""
-        }
-      },
-      "tira": {
-        "comic": "charlie",
-        "status": "listo",
-        "notes": ""
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": "",
-        "notes": ""
-      }
-    },
-    "2026-09-01": {
-      "skip": false,
-      "efemerides": {
-        "status": "listo",
-        "notes": ""
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "listo",
-          "notes": ""
-        }
-      },
-      "tira": {
-        "comic": "mafalda",
-        "status": "listo",
-        "notes": ""
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": true,
-        "flagDeath": false,
-        "flagName": "",
-        "notes": ""
-      }
-    },
-    "2026-09-02": {
-      "skip": false,
-      "efemerides": {
-        "status": "listo",
-        "notes": ""
-      },
-      "secundaria": {
-        "donde_estoy": {
-          "status": "listo",
-          "notes": ""
-        }
-      },
-      "tira": {
-        "comic": "garfield",
-        "status": "listo",
-        "notes": ""
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": "",
-        "notes": ""
-      }
-    },
-    "2026-09-03": {
-      "skip": false,
-      "efemerides": {
-        "status": "listo",
-        "notes": ""
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "listo",
-          "notes": ""
-        }
-      },
-      "tira": {
-        "comic": "garfield",
-        "status": "listo",
-        "notes": ""
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": "",
-        "notes": ""
-      }
-    },
-    "2026-09-04": {
-      "skip": false,
-      "efemerides": {
-        "status": "listo",
-        "notes": ""
-      },
-      "secundaria": {
-        "martin": {
-          "status": "listo",
-          "notes": ""
-        }
-      },
-      "tira": {
-        "comic": "mafalda",
-        "status": "listo",
-        "notes": ""
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": "",
-        "notes": ""
-      }
-    },
-    "2026-09-05": {
-      "skip": false,
-      "efemerides": {
-        "status": "listo",
-        "notes": ""
-      },
-      "secundaria": {
-        "animales": {
-          "status": "listo",
-          "notes": ""
-        }
-      },
-      "tira": {
-        "comic": "garfield",
-        "status": "listo",
-        "notes": ""
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": "",
-        "notes": ""
-      }
-    },
-    "2026-09-06": {
-      "skip": false,
-      "efemerides": {
-        "status": "listo",
-        "notes": ""
-      },
-      "secundaria": {
-        "fonoteca": {
-          "status": "listo",
-          "notes": ""
-        }
-      },
-      "tira": {
-        "comic": "gaturro",
-        "status": "listo",
-        "notes": ""
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": "",
-        "notes": ""
-      }
-    },
-    "2026-09-07": {
-      "skip": false,
-      "efemerides": {
-        "status": "listo",
-        "notes": ""
-      },
-      "secundaria": {
-        "matilde": {
-          "status": "listo",
-          "notes": ""
-        }
-      },
-      "tira": {
-        "comic": "mafalda",
-        "status": "listo",
-        "notes": ""
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": "",
-        "notes": ""
-      }
-    },
-    "2026-09-08": {
-      "skip": false,
-      "efemerides": {
-        "status": "listo",
-        "notes": ""
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "listo",
-          "notes": ""
-        }
-      },
-      "tira": {
-        "comic": "gaturro",
-        "status": "listo",
-        "notes": ""
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": "",
-        "notes": ""
-      }
-    },
-    "2026-09-09": {
-      "skip": false,
-      "efemerides": {
-        "status": "listo",
-        "notes": ""
-      },
-      "secundaria": {
-        "donde_estoy": {
-          "status": "listo",
-          "notes": ""
-        }
-      },
-      "tira": {
-        "comic": "gaturro",
-        "status": "listo",
-        "notes": ""
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": "",
-        "notes": ""
-      }
-    },
-    "2026-09-10": {
-      "skip": false,
-      "efemerides": {
-        "status": "listo",
-        "notes": ""
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "listo",
-          "notes": ""
-        }
-      },
-      "tira": {
-        "comic": "gaturro",
-        "status": "listo",
-        "notes": ""
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": "",
-        "notes": ""
-      }
-    },
-    "2026-09-11": {
-      "skip": false,
-      "efemerides": {
-        "status": "listo",
-        "notes": ""
-      },
-      "secundaria": {
-        "martin": {
-          "status": "listo",
-          "notes": ""
-        }
-      },
-      "tira": {
-        "comic": "gaturro",
-        "status": "listo",
-        "notes": ""
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": "",
-        "notes": ""
-      }
-    },
-    "2026-09-12": {
-      "skip": false,
-      "efemerides": {
-        "status": "listo",
-        "notes": ""
-      },
-      "secundaria": {
-        "animales": {
-          "status": "listo",
-          "notes": ""
-        }
-      },
-      "tira": {
-        "comic": "charlie",
-        "status": "listo",
-        "notes": ""
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": "",
-        "notes": ""
-      }
-    },
-    "2026-09-13": {
-      "skip": false,
-      "efemerides": {
-        "status": "listo",
-        "notes": ""
-      },
-      "secundaria": {
-        "fonoteca": {
-          "status": "listo",
-          "notes": ""
-        }
-      },
-      "tira": {
-        "comic": "mafalda",
-        "status": "listo",
-        "notes": ""
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": "",
-        "notes": ""
-      }
-    },
-    "2026-08-17": {
-      "skip": false,
-      "efemerides": {
-        "status": "pendiente",
-        "notes": ""
-      },
-      "secundaria": {
-        "matilde": {
-          "status": "pendiente",
-          "notes": ""
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente",
-        "notes": ""
-      },
-      "galeria": {
-        "status": "pendiente",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": "",
-        "notes": ""
-      }
-    },
-    "2026-08-18": {
-      "skip": false,
-      "efemerides": {
-        "status": "pendiente",
-        "notes": ""
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "pendiente",
-          "notes": ""
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente",
-        "notes": ""
-      },
-      "galeria": {
-        "status": "pendiente",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": "",
-        "notes": ""
-      }
-    },
-    "2026-08-19": {
-      "skip": false,
-      "efemerides": {
-        "status": "pendiente",
-        "notes": ""
-      },
-      "secundaria": {
-        "donde_estoy": {
-          "status": "pendiente",
-          "notes": ""
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente",
-        "notes": ""
-      },
-      "galeria": {
-        "status": "pendiente",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": "",
-        "notes": ""
-      }
-    },
-    "2026-08-20": {
-      "skip": false,
-      "efemerides": {
-        "status": "pendiente",
-        "notes": ""
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "pendiente",
-          "notes": ""
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente",
-        "notes": ""
-      },
-      "galeria": {
-        "status": "pendiente",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": "",
-        "notes": ""
-      }
-    },
-    "2026-08-21": {
-      "skip": false,
-      "efemerides": {
-        "status": "pendiente",
-        "notes": ""
-      },
-      "secundaria": {
-        "martin": {
-          "status": "pendiente",
-          "notes": ""
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente",
-        "notes": ""
-      },
-      "galeria": {
-        "status": "pendiente",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": "",
-        "notes": ""
-      }
-    },
-    "2026-08-22": {
-      "skip": false,
-      "efemerides": {
-        "status": "pendiente",
-        "notes": ""
-      },
-      "secundaria": {
-        "animales": {
-          "status": "pendiente",
-          "notes": ""
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente",
-        "notes": ""
-      },
-      "galeria": {
-        "status": "pendiente",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": "",
-        "notes": ""
-      }
-    },
-    "2026-08-23": {
-      "skip": false,
-      "efemerides": {
-        "status": "pendiente",
-        "notes": ""
-      },
-      "secundaria": {
-        "fonoteca": {
-          "status": "pendiente",
-          "notes": ""
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente",
-        "notes": ""
-      },
-      "galeria": {
-        "status": "pendiente",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": "",
-        "notes": ""
-      }
-    },
-    "2026-08-01": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "animales": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-08-02": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "fonoteca": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-08-03": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "matilde": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-08-04": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-08-05": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "donde_estoy": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-08-06": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-08-07": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "martin": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-08-08": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "animales": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-08-09": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "fonoteca": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-08-10": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "matilde": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-08-11": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-08-12": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "donde_estoy": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-08-13": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-08-14": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "martin": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-08-15": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "animales": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-08-16": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "fonoteca": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-09-14": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "matilde": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "mafalda",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-09-15": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "charlie",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-09-16": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "donde_estoy": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "garfield",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-09-17": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "gaturro",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": true,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-09-18": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "martin": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "mafalda",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-09-19": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "animales": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "gaturro",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-09-20": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "fonoteca": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "gaturro",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-09-21": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "matilde": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "gaturro",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": true,
-        "flagName": ""
-      }
-    },
-    "2026-09-22": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "gaturro",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-09-23": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "donde_estoy": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "garfield",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-09-24": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "charlie",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-09-25": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "martin": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "charlie",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-09-26": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "animales": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "gaturro",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": true,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-09-27": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "fonoteca": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "gaturro",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-09-28": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "matilde": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "mafalda",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-09-29": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "gaturro",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-09-30": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "donde_estoy": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "charlie",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-10-01": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "charlie",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-10-02": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "martin": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "mafalda",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-10-03": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "animales": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "gaturro",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-10-04": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "fonoteca": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "charlie",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-10-05": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "matilde": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "charlie",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-10-06": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "garfield",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-10-07": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "donde_estoy": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "garfield",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-10-08": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "gaturro",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-10-09": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "martin": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "mafalda",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-10-10": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "animales": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "mafalda",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-10-11": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "fonoteca": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "mafalda",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-10-12": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "matilde": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "mafalda",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": true,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-10-13": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "garfield",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": true,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-10-14": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "donde_estoy": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "garfield",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-10-15": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "gaturro",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": true,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-10-16": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "martin": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": true,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-10-17": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "animales": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "mafalda",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-10-18": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "fonoteca": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "charlie",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-10-19": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "matilde": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "garfield",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-10-20": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "mafalda",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-10-21": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "donde_estoy": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "garfield",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-10-22": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "garfield",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-10-23": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "martin": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "garfield",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-10-24": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "animales": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "mafalda",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-10-25": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "fonoteca": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "mafalda",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-10-26": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "matilde": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "mafalda",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-10-27": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "gaturro",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-10-28": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "donde_estoy": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "garfield",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-10-29": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "charlie",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-10-30": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "martin": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "gaturro",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-10-31": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "animales": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "gaturro",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "title": "",
-        "artist": "",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-11-01": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "fonoteca": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "mafalda",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-11-02": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "matilde": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "mafalda",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-11-03": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "garfield",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-11-04": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "donde_estoy": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "charlie",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-11-05": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "charlie",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-11-06": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "martin": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "charlie",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-11-07": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "animales": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "charlie",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-11-08": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "fonoteca": {
-          "status": "listo"
-        }
-      },
-      "tira": {
-        "comic": "charlie",
-        "status": "listo"
-      },
-      "galeria": {
-        "status": "listo",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-11-09": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "matilde": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "listo",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-11-10": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "listo",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-11-11": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "donde_estoy": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "listo",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-11-12": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "listo",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-11-13": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "martin": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "listo",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-11-14": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "animales": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "listo",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-11-15": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "fonoteca": {
-          "status": "progreso"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "listo",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-11-16": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "matilde": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "listo",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-11-17": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "listo",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-11-18": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "donde_estoy": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "listo",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-11-19": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "listo",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-11-20": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "martin": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "listo",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-11-21": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "animales": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "listo",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-11-22": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "fonoteca": {
-          "status": "progreso"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "listo",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-11-23": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "matilde": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "listo",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-11-24": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "listo",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-11-25": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "donde_estoy": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "listo",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-11-26": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "listo",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-11-27": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "martin": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "listo",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-11-28": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "animales": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "listo",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-11-29": {
-      "efemerides": {
-        "status": "listo"
-      },
-      "secundaria": {
-        "fonoteca": {
-          "status": "progreso"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "listo",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-11-30": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "matilde": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "progreso",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-12-01": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "progreso",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-12-02": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "donde_estoy": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "progreso",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-12-03": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "progreso",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-12-04": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "martin": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "progreso",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-12-05": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "animales": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "progreso",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-12-06": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "fonoteca": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "progreso",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-12-07": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "matilde": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-12-08": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-12-09": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "donde_estoy": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-12-10": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-12-11": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "martin": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-12-12": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "animales": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-12-13": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "fonoteca": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-12-14": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "matilde": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-12-15": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-12-16": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "donde_estoy": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-12-17": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-12-18": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "martin": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-12-19": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "animales": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-12-20": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "fonoteca": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-12-21": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "matilde": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-12-22": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-12-23": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "donde_estoy": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-12-24": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-12-25": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "martin": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-12-26": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "animales": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-12-27": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "fonoteca": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-12-28": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "matilde": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-12-29": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-12-30": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "donde_estoy": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    },
-    "2026-12-31": {
-      "efemerides": {
-        "status": "pendiente"
-      },
-      "secundaria": {
-        "noticias": {
-          "status": "pendiente"
-        }
-      },
-      "tira": {
-        "comic": "",
-        "status": "pendiente"
-      },
-      "galeria": {
-        "status": "pendiente",
-        "flagBirth": false,
-        "flagDeath": false,
-        "flagName": ""
-      }
-    }
-  },
-  "editionPeriods": [
-    {
-      "id": "1788408572431-0shbk",
-      "createdAt": 1788408572431,
-      "type": "estandar",
-      "startDate": "2026-08-24",
-      "endDate": "2026-09-06"
-    },
-    {
-      "id": "1788408575978-2pl4l",
-      "createdAt": 1788408575978,
-      "type": "tematica",
-      "startDate": "2026-09-07",
-      "endDate": "2026-09-13"
-    },
-    {
-      "id": "1788408577212-y94l9",
-      "createdAt": 1788408577212,
-      "type": "estandar",
-      "startDate": "2026-09-14",
-      "endDate": "2026-09-27"
-    },
-    {
-      "id": "1788408577947-s333k",
-      "createdAt": 1788408577947,
-      "type": "tematica",
-      "startDate": "2026-09-28",
-      "endDate": "2026-10-04"
-    },
-    {
-      "id": "1788408595263-jw1q0",
-      "createdAt": 1788408595263,
-      "type": "estandar",
-      "startDate": "2026-10-05",
-      "endDate": "2026-10-18"
-    },
-    {
-      "id": "1788408596122-twwb9",
-      "createdAt": 1788408596122,
-      "type": "tematica",
-      "startDate": "2026-10-19",
-      "endDate": "2026-10-25"
-    },
-    {
-      "id": "1788408624632-nenh7",
-      "createdAt": 1788408624632,
-      "type": "estandar",
-      "startDate": "2026-10-26",
-      "endDate": "2026-11-08"
-    },
-    {
-      "id": "1791548956264-bs31v",
-      "createdAt": 1791548956264,
-      "type": "tematica",
-      "startDate": "2026-11-09",
-      "endDate": "2026-11-15"
-    },
-    {
-      "id": "1791548958889-5p81f",
-      "createdAt": 1791548958889,
-      "type": "estandar",
-      "startDate": "2026-11-16",
-      "endDate": "2026-11-29"
-    },
-    {
-      "id": "1792790510659-9n3iq",
-      "createdAt": 1792790510659,
-      "type": "tematica",
-      "startDate": "2026-11-30",
-      "endDate": "2026-12-06"
-    },
-    {
-      "id": "1793732991348-9uglg",
-      "createdAt": 1793732991348,
-      "type": "estandar",
-      "startDate": "2026-12-07",
-      "endDate": "2026-12-20"
-    },
-    {
-      "id": "1793732995903-446h2",
-      "createdAt": 1793732995903,
-      "type": "tematica",
-      "startDate": "2026-12-21",
-      "endDate": "2026-12-27"
-    },
-    {
-      "id": "1793733001303-2hz68",
-      "createdAt": 1793733001303,
-      "type": "estandar",
-      "startDate": "2026-12-28",
-      "endDate": "2027-01-10"
-    }
-  ],
-  "numbering": {
-    "heraldo": {
-      "anchorNumber": 1810,
-      "anchorDate": "2026-09-08"
-    },
-    "galeria": {
-      "anchorNumber": 1690,
-      "anchorDate": "2026-09-08"
-    }
+ "version": 2,
+ "settings": {
+  "sections": {
+   "0": {
+    "label": "Fonoteca",
+    "short": "Fonoteca"
+   },
+   "1": {
+    "label": "Editorial",
+    "short": "Matilde"
+   },
+   "2": {
+    "label": "Noticias del Mundo",
+    "short": "Noticias"
+   },
+   "3": {
+    "label": "Ludoteca",
+    "short": "Ludo"
+   },
+   "4": {
+    "label": "Noticias del Mundo",
+    "short": "Noticias"
+   },
+   "5": {
+    "label": "Editorial",
+    "short": "Martín"
+   },
+   "6": {
+    "label": "El Rancho de Angela",
+    "short": "Rancho"
+   }
   }
+ },
+ "numbering": {
+  "heraldo": {
+   "anchorNumber": 1810,
+   "anchorDate": "2026-09-08"
+  },
+  "galeria": {
+   "anchorNumber": 1690,
+   "anchorDate": "2026-09-08"
+  }
+ },
+ "periods": [
+  {
+   "id": "1788408572431-0shbk",
+   "createdAt": 1788408572431,
+   "type": "estandar",
+   "startDate": "2026-08-24",
+   "endDate": "2026-09-06"
+  },
+  {
+   "id": "1788408575978-2pl4l",
+   "createdAt": 1788408575978,
+   "type": "tematica",
+   "startDate": "2026-09-07",
+   "endDate": "2026-09-13"
+  },
+  {
+   "id": "1788408577212-y94l9",
+   "createdAt": 1788408577212,
+   "type": "estandar",
+   "startDate": "2026-09-14",
+   "endDate": "2026-09-27"
+  },
+  {
+   "id": "1788408577947-s333k",
+   "createdAt": 1788408577947,
+   "type": "tematica",
+   "startDate": "2026-09-28",
+   "endDate": "2026-10-04"
+  },
+  {
+   "id": "1788408595263-jw1q0",
+   "createdAt": 1788408595263,
+   "type": "estandar",
+   "startDate": "2026-10-05",
+   "endDate": "2026-10-18"
+  },
+  {
+   "id": "1788408596122-twwb9",
+   "createdAt": 1788408596122,
+   "type": "tematica",
+   "startDate": "2026-10-19",
+   "endDate": "2026-10-25"
+  },
+  {
+   "id": "1788408624632-nenh7",
+   "createdAt": 1788408624632,
+   "type": "estandar",
+   "startDate": "2026-10-26",
+   "endDate": "2026-11-08"
+  },
+  {
+   "id": "1791548956264-bs31v",
+   "createdAt": 1791548956264,
+   "type": "tematica",
+   "startDate": "2026-11-09",
+   "endDate": "2026-11-15"
+  },
+  {
+   "id": "1791548958889-5p81f",
+   "createdAt": 1791548958889,
+   "type": "estandar",
+   "startDate": "2026-11-16",
+   "endDate": "2026-11-29"
+  },
+  {
+   "id": "1792790510659-9n3iq",
+   "createdAt": 1792790510659,
+   "type": "tematica",
+   "startDate": "2026-11-30",
+   "endDate": "2026-12-06"
+  },
+  {
+   "id": "1793732991348-9uglg",
+   "createdAt": 1793732991348,
+   "type": "estandar",
+   "startDate": "2026-12-07",
+   "endDate": "2026-12-20"
+  },
+  {
+   "id": "1793732995903-446h2",
+   "createdAt": 1793732995903,
+   "type": "tematica",
+   "startDate": "2026-12-21",
+   "endDate": "2026-12-27"
+  },
+  {
+   "id": "1793733001303-2hz68",
+   "createdAt": 1793733001303,
+   "type": "estandar",
+   "startDate": "2026-12-28",
+   "endDate": "2027-01-10"
+  }
+ ],
+ "days": {
+  "2026-08-24": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "mafalda"
+   },
+   "galeria": {
+    "status": "listo",
+    "birth": true,
+    "name": "Lavinia Fontana"
+   }
+  },
+  "2026-08-25": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "garfield"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-08-26": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "garfield"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-08-27": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "gaturro"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-08-28": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "mafalda"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-08-29": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "mafalda"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-08-30": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "charlie"
+   },
+   "galeria": {
+    "status": "listo",
+    "birth": true
+   }
+  },
+  "2026-08-31": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "charlie"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-09-01": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "mafalda"
+   },
+   "galeria": {
+    "status": "listo",
+    "birth": true
+   }
+  },
+  "2026-09-02": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "garfield"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-09-03": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "garfield"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-09-04": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "mafalda"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-09-05": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "garfield"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-09-06": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "gaturro"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-09-07": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "mafalda"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-09-08": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "gaturro"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-09-09": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "gaturro"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-09-10": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "gaturro"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-09-11": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "gaturro"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-09-12": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "charlie"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-09-13": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "mafalda"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-09-14": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "mafalda"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-09-15": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "charlie"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-09-16": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "garfield"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-09-17": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "gaturro"
+   },
+   "galeria": {
+    "status": "listo",
+    "birth": true
+   }
+  },
+  "2026-09-18": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "mafalda"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-09-19": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "gaturro"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-09-20": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "gaturro"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-09-21": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "gaturro"
+   },
+   "galeria": {
+    "status": "listo",
+    "death": true
+   }
+  },
+  "2026-09-22": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "gaturro"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-09-23": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "garfield"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-09-24": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "charlie"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-09-25": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "charlie"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-09-26": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "gaturro"
+   },
+   "galeria": {
+    "status": "listo",
+    "birth": true
+   }
+  },
+  "2026-09-27": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "gaturro"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-09-28": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "mafalda"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-09-29": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "gaturro"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-09-30": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "charlie"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-10-01": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "charlie"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-10-02": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "mafalda"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-10-03": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "gaturro"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-10-04": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "charlie"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-10-05": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "charlie"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-10-06": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "garfield"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-10-07": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "garfield"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-10-08": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "gaturro"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-10-09": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "mafalda"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-10-10": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "mafalda"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-10-11": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "mafalda"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-10-12": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "mafalda"
+   },
+   "galeria": {
+    "status": "listo",
+    "birth": true
+   }
+  },
+  "2026-10-13": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "garfield"
+   },
+   "galeria": {
+    "status": "listo",
+    "birth": true
+   }
+  },
+  "2026-10-14": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "garfield"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-10-15": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "gaturro"
+   },
+   "galeria": {
+    "status": "listo",
+    "birth": true
+   }
+  },
+  "2026-10-16": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo"
+   },
+   "galeria": {
+    "status": "listo",
+    "birth": true
+   }
+  },
+  "2026-10-17": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "mafalda"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-10-18": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "charlie"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-10-19": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "garfield"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-10-20": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "mafalda"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-10-21": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "garfield"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-10-22": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "garfield"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-10-23": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "garfield"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-10-24": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "mafalda"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-10-25": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "mafalda"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-10-26": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "mafalda"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-10-27": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "gaturro"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-10-28": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "garfield"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-10-29": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "charlie"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-10-30": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "gaturro"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-10-31": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "gaturro"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-11-01": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "mafalda"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-11-02": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "mafalda"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-11-03": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "garfield"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-11-04": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "charlie"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-11-05": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "charlie"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-11-06": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "charlie"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-11-07": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "charlie"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-11-08": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "listo"
+   },
+   "tira": {
+    "status": "listo",
+    "comic": "charlie"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-11-09": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-11-10": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-11-11": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-11-12": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-11-13": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-11-14": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-11-15": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "progreso"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-11-16": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-11-17": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-11-18": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-11-19": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-11-20": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-11-21": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-11-22": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "progreso"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-11-23": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-11-24": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-11-25": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-11-26": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-11-27": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-11-28": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-11-29": {
+   "efemerides": {
+    "status": "listo"
+   },
+   "secundaria": {
+    "status": "progreso"
+   },
+   "galeria": {
+    "status": "listo"
+   }
+  },
+  "2026-11-30": {
+   "galeria": {
+    "status": "progreso"
+   }
+  },
+  "2026-12-01": {
+   "galeria": {
+    "status": "progreso"
+   }
+  },
+  "2026-12-02": {
+   "galeria": {
+    "status": "progreso"
+   }
+  },
+  "2026-12-03": {
+   "galeria": {
+    "status": "progreso"
+   }
+  },
+  "2026-12-04": {
+   "galeria": {
+    "status": "progreso"
+   }
+  },
+  "2026-12-05": {
+   "galeria": {
+    "status": "progreso"
+   }
+  },
+  "2026-12-06": {
+   "galeria": {
+    "status": "progreso"
+   }
+  }
+ }
 }
