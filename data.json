@@ -1529,6 +1529,10 @@
    },
    "galeria": {
     "status": "listo"
+   },
+   "tira": {
+    "status": "pendiente",
+    "comic": "garfield"
    }
   },
   "2026-11-28": {
