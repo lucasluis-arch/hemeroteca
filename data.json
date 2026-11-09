@@ -1309,8 +1309,11 @@
     "status": "listo"
    },
    "tira": {
-    "status": "pendiente",
+    "status": "progreso",
     "comic": "mafalda"
+   },
+   "secundaria": {
+    "status": "progreso"
    }
   },
   "2026-11-10": {
