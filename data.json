@@ -1326,8 +1326,11 @@
     "status": "listo"
    },
    "tira": {
-    "status": "pendiente",
+    "status": "progreso",
     "comic": "garfield"
+   },
+   "secundaria": {
+    "status": "progreso"
    }
   },
   "2026-11-11": {
