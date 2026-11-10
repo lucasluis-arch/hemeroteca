@@ -1331,7 +1331,8 @@
     "doneAt": "2026-11-10"
    },
    "secundaria": {
-    "status": "progreso"
+    "status": "listo",
+    "doneAt": "2026-11-10"
    }
   },
   "2026-11-11": {
