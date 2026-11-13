@@ -1377,8 +1377,13 @@
     "status": "listo"
    },
    "tira": {
-    "status": "pendiente",
-    "comic": "garfield"
+    "status": "listo",
+    "comic": "garfield",
+    "doneAt": "2026-11-13"
+   },
+   "secundaria": {
+    "status": "listo",
+    "doneAt": "2026-11-13"
    }
   },
   "2026-11-14": {
