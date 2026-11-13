@@ -1594,35 +1594,56 @@
    "tira": {
     "status": "pendiente",
     "comic": "mafalda"
+   },
+   "efemerides": {
+    "status": "progreso"
    }
   },
   "2026-12-01": {
    "galeria": {
+    "status": "progreso"
+   },
+   "efemerides": {
     "status": "progreso"
    }
   },
   "2026-12-02": {
    "galeria": {
     "status": "progreso"
+   },
+   "efemerides": {
+    "status": "progreso"
    }
   },
   "2026-12-03": {
    "galeria": {
+    "status": "progreso"
+   },
+   "efemerides": {
     "status": "progreso"
    }
   },
   "2026-12-04": {
    "galeria": {
     "status": "progreso"
+   },
+   "efemerides": {
+    "status": "progreso"
    }
   },
   "2026-12-05": {
    "galeria": {
     "status": "progreso"
+   },
+   "efemerides": {
+    "status": "progreso"
    }
   },
   "2026-12-06": {
    "galeria": {
+    "status": "progreso"
+   },
+   "efemerides": {
     "status": "progreso"
    }
   }
