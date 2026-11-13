@@ -1650,6 +1650,14 @@
   "2026-12-09": {
    "efemerides": {
     "status": "progreso"
+   },
+   "galeria": {
+    "status": "progreso"
+   }
+  },
+  "2026-12-08": {
+   "galeria": {
+    "status": "progreso"
    }
   }
  }
