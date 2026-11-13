@@ -1588,14 +1588,14 @@
    }
   },
   "2026-11-30": {
-   "galeria": {
-    "status": "progreso"
-   },
    "tira": {
     "status": "pendiente",
     "comic": "mafalda"
    },
    "efemerides": {
+    "status": "progreso"
+   },
+   "galeria": {
     "status": "progreso"
    }
   },
