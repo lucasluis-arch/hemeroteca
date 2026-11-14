@@ -1394,11 +1394,13 @@
     "status": "listo"
    },
    "tira": {
-    "status": "progreso",
-    "comic": "mafalda"
+    "status": "listo",
+    "comic": "mafalda",
+    "doneAt": "2026-11-14"
    },
    "secundaria": {
-    "status": "progreso"
+    "status": "listo",
+    "doneAt": "2026-11-14"
    }
   },
   "2026-11-15": {
