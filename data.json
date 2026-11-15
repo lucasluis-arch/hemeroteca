@@ -1408,14 +1408,16 @@
     "status": "listo"
    },
    "secundaria": {
-    "status": "progreso"
+    "status": "listo",
+    "doneAt": "2026-11-15"
    },
    "galeria": {
     "status": "listo"
    },
    "tira": {
-    "status": "progreso",
-    "comic": "mafalda"
+    "status": "listo",
+    "comic": "mafalda",
+    "doneAt": "2026-11-15"
    }
   },
   "2026-11-16": {
@@ -1426,11 +1428,13 @@
     "status": "listo"
    },
    "tira": {
-    "status": "progreso",
-    "comic": "garfield"
+    "status": "listo",
+    "comic": "garfield",
+    "doneAt": "2026-11-15"
    },
    "secundaria": {
-    "status": "progreso"
+    "status": "listo",
+    "doneAt": "2026-11-15"
    }
   },
   "2026-11-17": {
