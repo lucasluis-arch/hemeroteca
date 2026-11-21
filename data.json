@@ -1513,8 +1513,13 @@
     "status": "listo"
    },
    "tira": {
-    "status": "pendiente",
-    "comic": "charlie"
+    "status": "listo",
+    "comic": "charlie",
+    "doneAt": "2026-11-21"
+   },
+   "secundaria": {
+    "status": "listo",
+    "doneAt": "2026-11-21"
    }
   },
   "2026-11-22": {
