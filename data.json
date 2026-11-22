@@ -1527,14 +1527,16 @@
     "status": "listo"
    },
    "secundaria": {
-    "status": "progreso"
+    "status": "listo",
+    "doneAt": "2026-11-22"
    },
    "galeria": {
     "status": "listo"
    },
    "tira": {
-    "status": "progreso",
-    "comic": "garfield"
+    "status": "listo",
+    "comic": "garfield",
+    "doneAt": "2026-11-22"
    }
   },
   "2026-11-23": {
