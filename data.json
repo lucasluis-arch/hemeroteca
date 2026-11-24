@@ -1566,6 +1566,10 @@
    "tira": {
     "status": "pendiente",
     "comic": "charlie"
+   },
+   "secundaria": {
+    "status": "listo",
+    "doneAt": "2026-11-24"
    }
   },
   "2026-11-25": {
