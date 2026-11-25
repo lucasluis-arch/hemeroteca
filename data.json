@@ -1581,8 +1581,13 @@
     "status": "listo"
    },
    "tira": {
-    "status": "pendiente",
-    "comic": "gaturro"
+    "status": "listo",
+    "comic": "gaturro",
+    "doneAt": "2026-11-25"
+   },
+   "secundaria": {
+    "status": "listo",
+    "doneAt": "2026-11-25"
    }
   },
   "2026-11-26": {
