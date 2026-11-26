@@ -1613,7 +1613,7 @@
     "status": "listo"
    },
    "tira": {
-    "status": "pendiente",
+    "status": "progreso",
     "comic": "charlie"
    }
   },
@@ -1625,7 +1625,7 @@
     "status": "listo"
    },
    "tira": {
-    "status": "pendiente",
+    "status": "progreso",
     "comic": "charlie"
    }
   },
@@ -1640,13 +1640,13 @@
     "status": "listo"
    },
    "tira": {
-    "status": "pendiente",
+    "status": "progreso",
     "comic": "charlie"
    }
   },
   "2026-11-30": {
    "tira": {
-    "status": "pendiente",
+    "status": "progreso",
     "comic": "charlie"
    },
    "efemerides": {
