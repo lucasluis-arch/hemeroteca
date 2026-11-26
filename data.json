@@ -1603,7 +1603,8 @@
     "doneAt": "2026-11-26"
    },
    "secundaria": {
-    "status": "progreso"
+    "status": "listo",
+    "doneAt": "2026-11-26"
    }
   },
   "2026-11-27": {
@@ -1616,6 +1617,10 @@
    "tira": {
     "status": "listo",
     "comic": "charlie",
+    "doneAt": "2026-11-26"
+   },
+   "secundaria": {
+    "status": "listo",
     "doneAt": "2026-11-26"
    }
   },
