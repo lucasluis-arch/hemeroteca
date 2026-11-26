@@ -1598,8 +1598,9 @@
     "status": "listo"
    },
    "tira": {
-    "status": "progreso",
-    "comic": "charlie"
+    "status": "listo",
+    "comic": "charlie",
+    "doneAt": "2026-11-26"
    },
    "secundaria": {
     "status": "progreso"
@@ -1613,8 +1614,9 @@
     "status": "listo"
    },
    "tira": {
-    "status": "progreso",
-    "comic": "charlie"
+    "status": "listo",
+    "comic": "charlie",
+    "doneAt": "2026-11-26"
    }
   },
   "2026-11-28": {
@@ -1625,8 +1627,9 @@
     "status": "listo"
    },
    "tira": {
-    "status": "progreso",
-    "comic": "charlie"
+    "status": "listo",
+    "comic": "charlie",
+    "doneAt": "2026-11-26"
    }
   },
   "2026-11-29": {
@@ -1640,14 +1643,16 @@
     "status": "listo"
    },
    "tira": {
-    "status": "progreso",
-    "comic": "charlie"
+    "status": "listo",
+    "comic": "charlie",
+    "doneAt": "2026-11-26"
    }
   },
   "2026-11-30": {
    "tira": {
-    "status": "progreso",
-    "comic": "charlie"
+    "status": "listo",
+    "comic": "charlie",
+    "doneAt": "2026-11-26"
    },
    "efemerides": {
     "status": "progreso"
